@@ -6,8 +6,13 @@ import { useState, useMemo } from 'react';
 import styles from './subscription.module.css';
 import SubscriptionList from '../../components/subscription/SubscriptionList.tsx';
 import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
+import { useModalStore } from '../../store/useModalStore.tsx';
+
+
 
 export default function Subscription() {
+
+    const { openForm } = useModalStore();
 
     const [searchText, setSearchText] = useState("")
     const [filter, setFilter] = useState<'all' | 'sub'>('all')
@@ -17,7 +22,7 @@ export default function Subscription() {
     const filterData = useMemo(() => {
         if (!subscriptions) return [];
 
-        const data = filter === 'all' ? SUBSCRIPTION_SERVICES :  (subscriptions ?? []);
+        const data = filter === 'all' ? SUBSCRIPTION_SERVICES : (subscriptions ?? []);
 
         return data.filter((item) => {
             const matchCategory = subFilter === 'All' ? true : item.category.toLowerCase() === subFilter.toLowerCase();
@@ -31,6 +36,12 @@ export default function Subscription() {
 
     return (
         <div className={styles.container}>
+
+            <div className={styles.topSection}>
+                <div className={styles.title}>DashBoard</div>
+                <button className={styles.addSubscriptionBtn} onClick={openForm}>+ 구독 추가</button>
+            </div>
+
             <SummaryCards />
             <div className={styles.divider}></div>
 
@@ -42,6 +53,8 @@ export default function Subscription() {
                     onSubFilter={setSubFilter}
                 />
             </div>
+
+            <p style={{ padding : '0rem 2rem' , fontSize : '12px' , fontWeight : '700' , color : '#999'}}>Showing {filterData.length} items</p>
 
             <div className={styles.ListViewWrap}>
                 <SubscriptionList data={filterData} />

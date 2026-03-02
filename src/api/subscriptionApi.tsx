@@ -48,9 +48,26 @@ export const insertSubscription = async (form : insertSubscriptionData) => {
         .single();
     
     if (error) {
-        console.error('에러 발생 : ', error.message);
+        console.error('데이터 추가 중 에러 발생 : ', error.message);
         throw error;
     }
 
     return data
+}
+
+export const updateSubscription = async (id : string, updateData : Partial<insertSubscriptionData>) => {
+    if(!id) throw new Error("id가 없습니다.");
+
+    const { data, error} = await supabase
+        .from('subscription')
+        .update(updateData)
+        .eq('id',id)
+        .select()
+        .single();
+
+    if (error) {
+        console.error('업데이트 중 에러 발생 : ', error.message)
+        throw error;
+    }
+
 }

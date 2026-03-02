@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { SUBSCRIPTION_SERVICES } from "../constants/subscriptionData.tsx";
 import toast from "react-hot-toast";
 import { IoFemaleSharp } from "react-icons/io5";
@@ -15,10 +15,20 @@ const initial_state = {
     payment_name: "",
 }
 
-export const useSubscriptionLogic = () => {
+export const useSubscriptionLogic = (initialData : any = null) => {
 
     const [form, setForm] = useState(initial_state);
 
+    useEffect(() => {
+        if(initialData) {
+            setForm({
+                ...initialData,
+            })
+            console.log( "실행된다~~~~~~~")
+        } else {
+            setForm(initial_state);
+        }
+    },[initialData])
 
     const changeService = (newServiceId: string) => {
 
@@ -38,7 +48,7 @@ export const useSubscriptionLogic = () => {
 
         const currentService = SUBSCRIPTION_SERVICES.find(s => s.service_name === form.service_name);
 
-        const selectedPlan = currentService?.plans.find(p => p.id === newPlanId);
+        const selectedPlan = currentService?.plans.find(p => p.name === newPlanId);
 
         const newPrice = selectedPlan ? selectedPlan.price : 0;
 
@@ -91,7 +101,7 @@ export const useSubscriptionLogic = () => {
 
 
     const currentPlanOptions = currentServiceData?.plans.map(p => ({
-        value: p.id,
+        value: p.name,
         label: `${p.name} (${p.price.toLocaleString()}원)`
     })) || [];
 

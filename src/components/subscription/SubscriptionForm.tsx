@@ -1,15 +1,16 @@
 import { useState } from 'react';
 
 import { useSubscriptionLogic } from '../../hooks/useSubscriptionLogic.tsx';
-import { useAddSubscription } from '../../hooks/useAddSubscription.tsx';
-
-import CustomSelect from './ServiceSelect.tsx';
+import { useSubscriptionMutation } from '../../hooks/useSubscriptionMutation.tsx';
+import { X } from 'lucide-react';
 import OptionSelect from './OptionSelect.tsx';
 import { MyDatePicker } from '../ui/DatePicker.tsx';
 import styles from './SubscriptionForm.module.css';
 import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
 import toast from 'react-hot-toast';
 import { PAYMENT_DETAIL_OPTIONS } from '../../constants/paymentOptions.tsx';
+import AddSubscriptionModal from './AddSubscriptionModal.tsx';
+import { useModalStore } from '../../store/useModalStore.tsx';
 
 const payment_Type = [
     { id: 'CREDIT_CARD', label: '카드' },
@@ -17,18 +18,15 @@ const payment_Type = [
     { id: 'ETC', label: '기타' },
 ]
 
-export default function SubscriptionForm() {
+type Props = {
+    initialData?: {};
+    isEditMode?: boolean;
+    onClose?: () => void
+}
 
-    const [selectPayment, setSelectPayment] = useState<string>('CREDIT_CARD');
-    const initialPaymentOption = PAYMENT_DETAIL_OPTIONS[selectPayment] || [];
-    const [currentPaymentOptions, setCurrentPaymentOptions] = useState(initialPaymentOption)
+export default function SubscriptionForm({ initialData, isEditMode, onClose }: Props) {
 
-    const { mutate, isPending } = useAddSubscription();
-
-    const handleChangePaymentOptions = (selectPayment : string) => {
-        const currentPaymentOptions = PAYMENT_DETAIL_OPTIONS[selectPayment];
-        setCurrentPaymentOptions(currentPaymentOptions);
-    }
+    console.log("수정할 데이터 반아옴", initialData)
 
     const {
         form,
@@ -42,11 +40,19 @@ export default function SubscriptionForm() {
         currentPlanOptions,
         validateForm,
         reset,
-    } = useSubscriptionLogic();
+    } = useSubscriptionLogic(initialData);
+    
+    const currentPaymentId = payment_Type.find(p => p.label === form.payment_type)?.id || 'CREDIT_CARD';
+    const currentPaymentOptions = PAYMENT_DETAIL_OPTIONS[currentPaymentId] || [];
+
+    const { addMutation } = useSubscriptionMutation();
+    const { closeForm } = useModalStore();
+
+
 
     const serviceOptions = SUBSCRIPTION_SERVICES.map(item => ({
-        value: item.service_name,
-        label: item.name
+        value: item.service_name, //영어
+        label: item.name, //한글
     }));
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -55,10 +61,10 @@ export default function SubscriptionForm() {
         const validResult = validateForm(form);
 
         if (validResult) {
-            mutate(form, {
+            addMutation.mutate(form, {
                 onSuccess: () => {
                     console.log("구독이 추가되었습니다.");
-                    reset();  
+                    reset();
                 }
             })
         }
@@ -66,7 +72,12 @@ export default function SubscriptionForm() {
 
     return (
         <div className={styles.container}>
-
+            <div className={styles.top}>
+                <h2>Subscription</h2>
+                <button className={styles.closeBtn} onClick={isEditMode ? onClose : closeForm}>
+                    <X size={24} color='#333' strokeWidth={2.5} />
+                </button>
+            </div>
             <div className={styles.inputWrap}>
                 <div className={styles.inputName}>서비스명</div>
                 <OptionSelect
@@ -74,7 +85,7 @@ export default function SubscriptionForm() {
                     options={serviceOptions}
                     placeholder="서비스를 선택하세요"
                     onSelect={changeService}
-
+                    isEditMode={isEditMode}
                 />
             </div>
 
@@ -136,9 +147,10 @@ export default function SubscriptionForm() {
                 <div className={styles.paymentMenu}>
                     {payment_Type.map((item, index) => (
                         <button
+                            key={item.id}
                             type='button'
                             className={form.payment_type === item.label ? styles.activeBtn : styles.defaultBtn}
-                            onClick={() => { setSelectPayment(item.id); changePayment(item.label); handleChangePaymentOptions(item.id) }}
+                            onClick={() => { changePayment(item.label) }}
                         >
                             {item.label === "카드" ? "신용/체크카드" : item.label}
                         </button>
@@ -147,23 +159,25 @@ export default function SubscriptionForm() {
 
                 <div className={styles.inputWrap}>
                     <div className={styles.inputName}>
-                        {selectPayment === 'CREDIT_CARD'
+                        {currentPaymentId === 'CREDIT_CARD'
                             ? <p>카드 정보</p>
-                            : selectPayment === 'E_WALLET' ? <p>간편결제 종류</p> : <p>기타 결제수단</p>
+                            : currentPaymentId === 'E_WALLET' ? <p>간편결제 종류</p> : <p>기타 결제수단</p>
                         }
                     </div>
 
                     <OptionSelect
                         value={form.payment_name}
-                        options = {currentPaymentOptions} 
-                        placeholder={selectPayment === "CREDIT_CARD" ? "카드사를 선택해주세요" : selectPayment === "E_WALLET" ? "간편결제를 선택해주세요" : "상세수단을 선택해주세요"}
+                        options={currentPaymentOptions}
+                        placeholder={currentPaymentId === "CREDIT_CARD" ? "카드사를 선택해주세요" : currentPaymentId === "E_WALLET" ? "간편결제를 선택해주세요" : "상세수단을 선택해주세요"}
                         onSelect={changePaymentName}
                     />
                 </div>
             </div>
 
             <div className={styles.addBtnWrap}>
-                <button className={styles.addBtn} disabled={isPending} onClick={handleSubmit}>추가</button>
+                <button className={styles.addBtn} disabled={addMutation.isPending} onClick={handleSubmit}>
+                    {isEditMode ? '수정' : '추가'}
+                </button>
             </div>
         </div>
     )

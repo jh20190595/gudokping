@@ -11,7 +11,7 @@ export interface SubscriptionService {
     name: string;
     category: CategoryType;
     logoUrl: string;
-    site_url: string; // 추가된 필드
+    site_url: string;
     plans: Plan[];
 }
 

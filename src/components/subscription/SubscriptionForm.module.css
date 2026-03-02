@@ -1,21 +1,32 @@
-.container {
+.container {}
 
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+
+.closeBtn {
+  background-color: white;
+  border-style: none;
+}
+
 
 .inputWrap {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: flex-start;
   gap: 0.5rem;
-  width: 100%; 
+  width: 100%;
   text-align: left;
   font-weight: 600;
   font-size: 0.875rem;
   color: #333;
-  margin-top : 0.75rem;
+  margin-top: 0.75rem;
 }
 
-.inputWrap > div {
+.inputWrap>div {
   width: 100%;
 }
 
@@ -26,50 +37,49 @@
 
 .inputWrap :global(.react-datepicker__input-container input) {
   width: 100%;
-  padding: 0.75rem; 
-  border-radius: 0.5rem; 
+  padding: 0.75rem;
+  border-radius: 0.5rem;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  text-align: left; 
+  text-align: left;
 }
 
 .input {
   width: 100%;
   padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem; 
+  border-radius: 0.5rem;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  text-align: left; 
-  resize : none;
+  text-align: left;
+  resize: none;
 }
 
 .paymentMenu {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap : 10px;
-  padding : 0;
+  gap: 10px;
+  padding: 0;
   margin: 0;
   width: 100%;
 }
 
 .defaultBtn {
-  flex : 1;
-  padding : 2rem 1rem;
+  flex: 1;
+  padding: 2rem 1rem;
   background-color: white;
   border-radius: 12px;
-  font-size : 14px;
+  font-size: 14px;
   font-weight: 500;
 }
 
 .activeBtn {
-  padding : 2rem 1rem;
+  padding: 2rem 1rem;
   background-color: white;
-  border : 2px solid #007AFF;
+  border: 2px solid #007AFF;
   border-radius: 12px;
-  color : #007AFF;
-  font-size : 14px;
+  color: #007AFF;
+  font-size: 14px;
   font-weight: 700;
-  flex : 1;
+  flex: 1;
 }
-

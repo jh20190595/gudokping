@@ -18,7 +18,7 @@ export default function Card({ title, value, icon, color, subText,logo }: Props)
                 <div className={styles.itemTitle}>{title}</div>
             </div>
             <div className={styles.itemContent}>
-                {logo && <div><img src={logo} style={{ width : '30px',height : '30px', borderRadius : '30%'}}/></div>}
+                {logo && <div><img src={logo} style={{ width : '60px',height : '40px', borderRadius : '30%' ,objectFit : 'contain' , display : 'block'}}/></div>}
                 <div className={styles.itemValue}>{value}</div>
                 {subText && <div className={styles.itemSubText}>{subText}</div>}
             </div>
