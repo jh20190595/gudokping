@@ -8,7 +8,7 @@ import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
 
 function UpcomingList() {
 
-    const { data: subscriptions, isLoading, isError, error } = useSubscriptions();
+    const { data: subscriptions, isLoading, isError, error } = useSubscriptions('created_at');
 
     const upcomingList = useMemo(() => {
         if (!subscriptions) return [];

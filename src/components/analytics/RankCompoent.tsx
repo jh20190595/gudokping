@@ -1,0 +1,42 @@
+import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
+import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
+import { Lightbulb } from 'lucide-react';
+import styles from './RankComponent.module.css';
+
+export default function RankComponent() {
+
+    const { data: subscriptions } = useSubscriptions('price');
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.top}>
+                <Lightbulb size={16} color="#000" />
+                <h4 style={{ margin: 0 }}>Top 5 Subscriptions</h4>
+            </div>
+            <ul className={styles.listWrap}>
+                {subscriptions.map((sub, index) => {
+
+                    const serviceLogo = SUBSCRIPTION_SERVICES.find(f => f.service_name === sub.service_name)?.logoUrl
+
+                    return (
+                        <li key={sub.id} className={styles.listItem}>
+
+                            <div className={styles.listReft}>
+                                <div className={styles.listRank}><span>{`${index + 1}`}</span></div>
+                                <div className={styles.listImg}><img src={serviceLogo} style={{ width: '40px', height: '40px', objectFit: 'contain', borderRadius: '30%' }} /></div>
+                                <div className={styles.listContent}>
+                                    <p style={{ fontSize: '12px', fontWeight: '700' }}>{sub.service_name}</p>
+                                    <p style={{ fontSize: '10px', fontWeight: '600', color: '#666' }}>{sub.category}</p>
+                                </div>
+                            </div>
+
+                            <div className={styles.listRight}>
+                                <p>₩ {sub.price.toLocaleString()}원/월</p>
+                            </div>
+                        </li>
+                    )
+                })}
+            </ul>
+        </div>
+    )
+}

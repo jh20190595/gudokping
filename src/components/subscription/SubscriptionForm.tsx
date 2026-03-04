@@ -41,11 +41,11 @@ export default function SubscriptionForm({ initialData, isEditMode, onClose }: P
         validateForm,
         reset,
     } = useSubscriptionLogic(initialData);
-    
+
     const currentPaymentId = payment_Type.find(p => p.label === form.payment_type)?.id || 'CREDIT_CARD';
     const currentPaymentOptions = PAYMENT_DETAIL_OPTIONS[currentPaymentId] || [];
 
-    const { addMutation } = useSubscriptionMutation();
+    const { addMutation, updateMutation } = useSubscriptionMutation();
     const { closeForm } = useModalStore();
 
 
@@ -61,12 +61,20 @@ export default function SubscriptionForm({ initialData, isEditMode, onClose }: P
         const validResult = validateForm(form);
 
         if (validResult) {
-            addMutation.mutate(form, {
-                onSuccess: () => {
-                    console.log("구독이 추가되었습니다.");
-                    reset();
-                }
-            })
+            if (isEditMode) {
+                updateMutation.mutate({id : form.id , updateData : form}, {
+                    onSuccess: () => {
+                        console.log("수정이 완료되었습니다.");
+                    }
+                })
+            } else {
+                addMutation.mutate(form, {
+                    onSuccess: () => {
+                        console.log("구독이 추가되었습니다.");
+                        reset();
+                    }
+                })
+            }
         }
     }
 

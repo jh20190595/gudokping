@@ -12,7 +12,7 @@ export default function SideBar() {
             <div className={styles.logoWrap}>
                 <NavLink
                     to="./"
-                >logo</NavLink>
+                >asset</NavLink>
             </div>
 
             <div className={styles.sectionContainer}>
@@ -43,8 +43,17 @@ export default function SideBar() {
                         <RiFileListFill size={16} color="#666" />
                         <span>My Subscription</span>
                     </NavLink>
-                </div>
 
+                    <NavLink
+                        to="./analytics"
+                        className={({ isActive }) =>
+                            isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem
+                        }
+                    >
+                        <RiFileListFill size={16} color="#666" />
+                        <span>analytics</span>
+                    </NavLink>
+                </div>
             </div>
 
         </div>

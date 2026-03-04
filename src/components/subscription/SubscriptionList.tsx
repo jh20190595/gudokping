@@ -3,6 +3,8 @@ import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
 import styles from './SubscriptionList.module.css';
 import { IoPencilOutline } from 'react-icons/io5';
 import SubscriptionForm from './SubscriptionForm.tsx';
+import { X } from 'lucide-react';
+import DeleteModal from '../ui/DeleteModal.tsx';
 
 const COLORS: Record<string, string> = {
     'ott': "#fca5a5",
@@ -13,8 +15,11 @@ const COLORS: Record<string, string> = {
 };
 
 export function SubscriptionItem({ item }) {
+
     const [isOpen, setIsOpen] = useState(false);
     const [isEditForm, setIsEditForm] = useState(false);
+    const [isDeleteForm, setIsDeleteForm] = useState(false);
+
     const serviceInfo = SUBSCRIPTION_SERVICES.find(f => f.service_name.toLowerCase() === item.service_name.toLowerCase());
     const categoryColor = COLORS[item.category.toLowerCase()] || "#eee";
 
@@ -24,6 +29,16 @@ export function SubscriptionItem({ item }) {
             setIsOpen(prev => !prev);
         }
     };
+
+    const handleDelete = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setIsDeleteForm(true)
+    }
+
+    const handleCloseDeleteModal = (e : React.MouseEvent) => {
+        e.stopPropagation();
+        setIsDeleteForm(false);
+    }
 
     return (
         <>
@@ -59,6 +74,15 @@ export function SubscriptionItem({ item }) {
                             </button>
                         </a>
                     </div>
+                    {item.next_billing_date && (
+                        <div className={styles.deleteBtnWrap}>
+                            <button className={styles.deleteBtn} onClick={(e) => handleDelete(e)}>
+                                <X size={11} color='#000' strokeWidth={3} />
+                            </button>
+                        </div>
+                    )}
+                    {isDeleteForm && <DeleteModal id = {item.id} onClose={(e) => handleCloseDeleteModal(e)} />}
+
                 </div>
 
                 <div className={styles.listFold}>
@@ -70,7 +94,7 @@ export function SubscriptionItem({ item }) {
 
                         <div className={styles.foldItem}>
                             <span className={styles.foldTitle}>메모</span>
-                            <span className={styles.foldText}>{item.memo}</span>
+                            <span className={styles.foldText}>{item.memo === "" ? "-" : item.memo}</span>
                         </div>
 
                         <div className={styles.foldItem}>
@@ -107,8 +131,8 @@ export function SubscriptionItem({ item }) {
                 <div className={styles.modalOverlay} onClick={() => setIsEditForm(false)}>
                     <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
                         <SubscriptionForm
-                            initialData = {item}
-                            isEditMode = {true}
+                            initialData={item}
+                            isEditMode={true}
                             onClose={() => setIsEditForm(false)}
                         />
                     </div>
@@ -127,6 +151,8 @@ export default function SubscriptionList({ data }) {
                     <SubscriptionItem key={item.id || item.service_name} item={item} />
                 ))}
             </ul>
+
+            <div style={{ height : '150px', flexShrink : 0}}/>
         </div>
     );
 }

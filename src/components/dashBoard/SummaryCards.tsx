@@ -4,11 +4,13 @@ import Card from '../ui/Card.tsx';
 import styles from './SummaryCards.module.css';
 import { IoWallet, IoApps, IoPricetag, IoCalendar } from 'react-icons/io5';
 import { useMemo } from 'react';
+import { useModalStore } from '../../store/useModalStore.tsx';
 
 
 export default function SummaryCards() {
 
     const { summary, isLoading } = useSubscriptionSummary();
+    const { openForm } = useModalStore(); 
 
     const {
         totalMonthlycost = 0,
@@ -33,7 +35,7 @@ export default function SummaryCards() {
         },
         {
             title: "가장 비싼 구독",
-            logo : MaxPriceserviceLogo || "",
+            logo: MaxPriceserviceLogo || "",
             subText: MaxPriceService === null ? '-' : `₩ ${MaxPriceService?.price.toLocaleString()}원`,
             icon: <IoPricetag size={22} />,
             color: "#fef3c7"
@@ -48,6 +50,12 @@ export default function SummaryCards() {
 
     return (
         <div className={styles.container}>
+
+            <div className={styles.topSection}>
+                <div className={styles.title}>DashBoard</div>
+                <button className={styles.addSubscriptionBtn} onClick={openForm}>+ 구독 추가</button>
+            </div>
+
             <div className={styles.summaryWrap}>
                 {summaryData.map((item, index) => (
                     <Card key={index} {...item} />

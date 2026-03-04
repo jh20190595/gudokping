@@ -1,0 +1,64 @@
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    gap : 10px;
+}
+
+.listWrap {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+}
+
+.listItem {
+    border: 2px solid #333;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3em 1rem;
+}
+
+.listReft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap : 20px;
+}
+
+.listRank {
+    background-color: black;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listImg {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 12px;
+}
+
+.listRight > p {
+    font-size : 11px;
+    font-weight: 600;
+}

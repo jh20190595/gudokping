@@ -17,7 +17,7 @@ export default function Subscription() {
     const [searchText, setSearchText] = useState("")
     const [filter, setFilter] = useState<'all' | 'sub'>('all')
     const [subFilter, setSubFilter] = useState<'All' | 'OTT' | 'Shopping' | 'AI' | 'Food' | 'Music'>('All')
-    const { data: subscriptions } = useSubscriptions();
+    const { data: subscriptions } = useSubscriptions('created_at');
 
     const filterData = useMemo(() => {
         if (!subscriptions) return [];
@@ -36,12 +36,7 @@ export default function Subscription() {
 
     return (
         <div className={styles.container}>
-
-            <div className={styles.topSection}>
-                <div className={styles.title}>DashBoard</div>
-                <button className={styles.addSubscriptionBtn} onClick={openForm}>+ 구독 추가</button>
-            </div>
-
+            
             <SummaryCards />
             <div className={styles.divider}></div>
 

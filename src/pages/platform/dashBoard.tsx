@@ -13,11 +13,6 @@ export default function DashBoard() {
     return (
         <div className={styles.container}>
 
-            <div className={styles.topSection}>
-                <div className={styles.title}>DashBoard</div>
-                <button className={styles.addSubscriptionBtn} onClick={openForm}>+ 구독 추가</button>
-            </div>
-
             <SummaryCards />
             <div className={styles.divider}></div>
 

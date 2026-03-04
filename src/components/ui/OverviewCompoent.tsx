@@ -9,7 +9,7 @@ const COLORS = [
 const categoryList = ['OTT', 'SHOPPING', 'AI', 'FOOD', 'MUSIC'];
 
 export default function OverviewComponent() {
-    const { data: subscriptions, isLoading, isError, error } = useSubscriptions();
+    const { data: subscriptions, isLoading, isError, error } = useSubscriptions('created_at');
 
     const [isMounted, setIsMounted] = useState(false);
 

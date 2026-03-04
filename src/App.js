@@ -7,6 +7,7 @@ import PublicLayout from './components/layout/PublicLayout.tsx';
 import PublicPage from './pages/Public/PublicPage.tsx';
 import LoginValidation from './components/auth/LoginValidation.tsx';
 import { Toaster } from 'react-hot-toast';
+import Analytics from './pages/platform/analytics.tsx';
 ;
 
 function App() {
@@ -15,13 +16,13 @@ function App() {
         <BrowserRouter>
 
             <Toaster
-                position='top-center'
-                reverseOrder={false}
-                containerStyle={{
+                position='top-center' //알림창 위치
+                reverseOrder={false} // false는 생성된 순으로 아래, true는 최신이 맨 위에
+                containerStyle={{ //알림을 감싸는 박스에 직접 css지정할 때 사용
                     zIndex: 99999,
                 }}
-                toastOptions={{
-                    duration: 1000,
+                toastOptions={{ 
+                    duration: 2000,
                     style: {
                         background: '#333',
                         color: '#fff',
@@ -36,6 +37,7 @@ function App() {
                     <Route element={<PlatformLayout />}>
                         <Route path='/dashBoard' element={<DashBoard />} />
                         <Route path='/subscription' element={<Subscription />} />
+                        <Route path='/analytics' element={<Analytics/>}/>
                     </Route>
                 </Route>
 

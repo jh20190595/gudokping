@@ -4,7 +4,7 @@ import { SUBSCRIPTION_SERVICES } from "../constants/subscriptionData.tsx";
 
 export const useSubscriptionSummary = () => {
     
-    const { data : subscriptions , isLoading , isError} = useSubscriptions();
+    const { data : subscriptions , isLoading , isError} = useSubscriptions('created_at');
 
 
     const summary = useMemo(() => {
