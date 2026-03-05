@@ -5,6 +5,7 @@ import SummaryCards from '../../components/dashBoard/SummaryCards.tsx'
 import styles from './analytics.module.css'
 import RankComponent from '../../components/analytics/RankCompoent.tsx';
 import BudgetComponent from '../../components/analytics/BudgetComponent.tsx';
+import VisualComponent from '../../components/analytics/VisualComponent.tsx';
 
 export default function Analytics() {
 
@@ -31,7 +32,7 @@ export default function Analytics() {
                 </section>
 
                 <section className={styles.visualWrap}> {/* 시각자료 영역 */}
-                    <h2>z</h2>
+                    <VisualComponent/>
                 </section>
 
             </div>

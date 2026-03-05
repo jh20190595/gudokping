@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
 import styles from './BudgetComponent.module.css';
-import { Pencil } from 'lucide-react';
+import { Pen, Pencil } from 'lucide-react';
+import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.tsx';
+import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
 
 export default function BudgetComponent() {
+
+    const { summary } = useSubscriptionSummary();
+    const { totalMonthlycost = 0 } = summary || {};
+    const { data: subcriptions } = useSubscriptions();
 
     const [budget, setBudget] = useState<number>(() => {
         const save = localStorage.getItem('user_budget');
@@ -11,28 +17,74 @@ export default function BudgetComponent() {
 
     useEffect(() => {
         localStorage.setItem('user_budget', budget.toString());
-    },[budget])
+    }, [budget])
 
-    const handleBudget = (e : React.ChangeEvent<HTMLInputElement>) => {
-        const value = Number(e.target.value);
-        setBudget(Math.max(0,value));
+    const handleBudget = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const rawValue = e.target.value.replace(/,/g, '');
+        const value = Number(rawValue);
+
+        if (!isNaN(value)) {
+            setBudget(Math.max(0, value));
+        }
     }
 
     return (
         <div className={styles.container}>
-                <div className={styles.top}>
-                    <h4 style={{ margin : 0}}>Monthly Budget</h4>
-                    <p style={{ fontSize : '10px' , fontWeight : '600', color : '#333'}}>* 목표 금액 안에서 알뜰하게 구독하기</p>
-                </div>
 
-                <div className={styles.inputWrap}>
-                    <span>Budget : </span>
+            <div className={styles.top}>
+                <h4 style={{ margin: 0 }}>Monthly Budget</h4>
+                <p style={{ fontSize: '10px', fontWeight: '600', color: '#333' }}>* 목표 금액 안에서 알뜰하게 구독하기</p>
+            </div>
+
+            <div className={styles.inputWrap}>
+                <span>Budget  :  </span>
+                <div className={styles.input}>
+                    <span>₩</span>
                     <input
-                        type='number'
-                        value={budget === 0 ? '': budget}
+                        value={budget === 0 ? '' : budget.toLocaleString()}
                         onChange={handleBudget}
                     />
+                    <Pencil size={16} color='#999' />
                 </div>
+
+            </div>
+
+            <div className={styles.gaugeBarWrap}>
+                <div>
+                    <span style={{ fontSize: "18px", fontWeight: '600' }}>{`₩ ${totalMonthlycost.toLocaleString()} \n`}</span>
+                    <span style={{ fontSize: '13px', fontWeight: '500', color: '#666' }}>{`/ \n₩ ${budget.toLocaleString()}`}</span>
+                </div>
+                <GaugeBar budget={budget} monthlyCost={totalMonthlycost} />
+            </div>
+
+
+        </div>
+    )
+}
+
+function GaugeBar({ budget, monthlyCost }: { budget: number, monthlyCost: number }) {
+
+    const persent = budget > 0 ? Math.min((monthlyCost / Number(budget)) * 100, 100) : 0;
+    const isOverBudget = budget > 0 && monthlyCost > budget;
+    const barColor = isOverBudget ? '#fecaca' : "#86efac"
+    
+    return (
+        <div style={{
+            width: '100%',
+            height: '14px',
+            borderRadius: '8px',
+            border: '1px solid #666',
+            backgroundColor: '#f3f4f6',
+            boxSizing: 'border-box',
+            overflow: 'hidden'
+        }}>
+            <div style={{
+                width: `${persent}%`,
+                height: '100%',
+                borderRadius: '8px',
+                backgroundColor: barColor,
+                transition: 'width 1s cubic-bezier(0.4,0,0.2,1)'
+            }}></div>
         </div>
     )
 }

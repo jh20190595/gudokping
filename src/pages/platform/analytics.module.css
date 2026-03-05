@@ -9,18 +9,19 @@
     background-color: #e5e7eb;
 }
 
-.contentWrap{
+.contentWrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 2fr;
-    padding: 1rem 1rem;
-    gap: 10px;
+    grid-template-rows: 1fr 430px 2fr;
+    padding: 3.5rem 3.5rem;
+    gap: 20px;
+    flex : 1;
 }
 
 .contentWrap > section {
     border: 2px solid #333;
     border-radius: 5px;
-    padding : 20px;
+    padding : 30px;
 }
 
 .chartsWrap {
@@ -38,5 +39,4 @@
 
 .visualWrap {
     grid-column: span 2;
-
 }

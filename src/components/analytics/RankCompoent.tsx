@@ -14,7 +14,7 @@ export default function RankComponent() {
                 <h4 style={{ margin: 0 }}>Top 5 Subscriptions</h4>
             </div>
             <ul className={styles.listWrap}>
-                {subscriptions.map((sub, index) => {
+                {subscriptions.slice(0,5).map((sub, index) => {
 
                     const serviceLogo = SUBSCRIPTION_SERVICES.find(f => f.service_name === sub.service_name)?.logoUrl
 
@@ -25,8 +25,8 @@ export default function RankComponent() {
                                 <div className={styles.listRank}><span>{`${index + 1}`}</span></div>
                                 <div className={styles.listImg}><img src={serviceLogo} style={{ width: '40px', height: '40px', objectFit: 'contain', borderRadius: '30%' }} /></div>
                                 <div className={styles.listContent}>
-                                    <p style={{ fontSize: '12px', fontWeight: '700' }}>{sub.service_name}</p>
-                                    <p style={{ fontSize: '10px', fontWeight: '600', color: '#666' }}>{sub.category}</p>
+                                    <p style={{ margin : 0, fontSize: '12px', fontWeight: '700' }}>{sub.service_name}</p>
+                                    <p style={{ margin : 0, fontSize: '10px', fontWeight: '600', color: '#666' }}>{sub.category}</p>
                                 </div>
                             </div>
 
