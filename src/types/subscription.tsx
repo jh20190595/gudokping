@@ -12,4 +12,5 @@ export interface Subscription {
     next_billing_date : string;
     payment_type : string;
     payment_name : string;
+    billing_cycle : string;
 }

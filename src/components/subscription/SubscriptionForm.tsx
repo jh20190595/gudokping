@@ -35,9 +35,11 @@ export default function SubscriptionForm({ initialData, isEditMode, onClose }: P
         changePrice,
         changeMemo,
         changeDate,
+        changeBillingCycle,
         changePayment,
         changePaymentName,
         currentPlanOptions,
+        billingCycleOptions,
         validateForm,
         reset,
     } = useSubscriptionLogic(initialData);
@@ -53,6 +55,7 @@ export default function SubscriptionForm({ initialData, isEditMode, onClose }: P
     const serviceOptions = SUBSCRIPTION_SERVICES.map(item => ({
         value: item.service_name, //영어
         label: item.name, //한글
+        logoUrl : item.logoUrl,
     }));
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -62,7 +65,7 @@ export default function SubscriptionForm({ initialData, isEditMode, onClose }: P
 
         if (validResult) {
             if (isEditMode) {
-                updateMutation.mutate({id : form.id , updateData : form}, {
+                updateMutation.mutate({ id: form.id, updateData: form }, {
                     onSuccess: () => {
                         console.log("수정이 완료되었습니다.");
                     }
@@ -94,6 +97,7 @@ export default function SubscriptionForm({ initialData, isEditMode, onClose }: P
                     placeholder="서비스를 선택하세요"
                     onSelect={changeService}
                     isEditMode={isEditMode}
+                    serviceType='serviceName'
                 />
             </div>
 
@@ -147,6 +151,16 @@ export default function SubscriptionForm({ initialData, isEditMode, onClose }: P
                 <MyDatePicker
                     date={form.next_billing_date}
                     onChange={(date) => changeDate('next_billing_date', date)}
+                />
+            </div>
+
+            <div className={styles.inputWrap}>
+                <div className={styles.inputName}>결제 주기</div>
+                <OptionSelect
+                    value={form.billing_cycle}
+                    options={billingCycleOptions}
+                    placeholder="요금제를 선택하세요"
+                    onSelect={changeBillingCycle}
                 />
             </div>
 

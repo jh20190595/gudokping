@@ -68,7 +68,7 @@ export default function BudgetComponent() {
 
 function GaugeBar({ budget, monthlyCost }: { budget: number, monthlyCost: number }) {
 
-    const percent = budget > 0 ? Math.min((monthlyCost / Number(budget)) * 100, 100) : 0;
+    const percent = budget > 0 ? Math.min(monthlyCost / Number(budget),1) : 0;
     const isOverBudget = budget > 0 && monthlyCost > budget;
     const barColor = isOverBudget ? '#fecaca' : "#86efac"
 
@@ -83,11 +83,13 @@ function GaugeBar({ budget, monthlyCost }: { budget: number, monthlyCost: number
             overflow: 'hidden'
         }}>
             <div style={{
-                width: `${percent}%`,
+                width: '100%',
                 height: '100%',
                 borderRadius: '8px',
                 backgroundColor: barColor,
-                transition: 'width 1s cubic-bezier(0.4,0,0.2,1)'
+                transformOrigin : 'left',
+                transform : `scaleX(${percent})`,
+                transition : 'transform 1s cubic-bezier(0.4,0,0.2,1)'
             }}></div>
         </div>
     )

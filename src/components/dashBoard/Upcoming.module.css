@@ -49,17 +49,24 @@
     text-overflow: ellipsis;
     font-size : 13px;
     font-weight: 700;
+    position: relative;
 }
+
+.notice {
+    background: transparent;
+    border : none;
+}
+
 
 .itemCenter {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap : 5px;
 }
 
 .itemRight {
     white-space: nowrap;
-
 }
 
 .divider {

@@ -23,7 +23,7 @@ export default function SummaryCards() {
     const summaryData = [
         {
             title: "이번 달 총 결제",
-            value: totalMonthlycost === 0 ? '-' : `₩ ${totalMonthlycost.toLocaleString()}원`,
+            value: totalMonthlycost === 0 ? '-' : `₩ ${Math.floor(totalMonthlycost).toLocaleString()}원`,
             icon: <IoWallet size={22} />,
             color: "#dbeafe"
         },

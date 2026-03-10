@@ -6,17 +6,17 @@ import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
 import TreemapComponent from '../charts/TreemapComponent.tsx';
 import BubblesComponent from '../charts/BubblesComponent.tsx';
 import CalendarComponent from '../charts/CalendarComponent.tsx';
-import SpectrumComponent from '../charts/SpectrumComponent.tsx';
+import DonutComponent from '../charts/DonutComponent.tsx';
 
 
 const CHARTS_MAP: Record<string, React.ReactNode> = {
     'Treemap': <TreemapComponent />,
     'Bubbles': <BubblesComponent />,
     'Calendar': <CalendarComponent />,
-    'Spectrum': <SpectrumComponent />,
+    'Donut': <DonutComponent />,
 }
 
-const TAP_TYPE = ['Treemap', 'Bubbles', 'Calendar', 'Spectrum'];
+const TAP_TYPE = ['Treemap', 'Bubbles', 'Calendar', 'Donut'];
 
 export default function VisualComponent() {
     const { data: subscriptions } = useSubscriptions('price');

@@ -43,7 +43,7 @@ export default function OverviewComponent() {
             return {
                 name: item,
                 value: totalPrice,
-                percent: Math.min((totalPrice / maxSpend) * 100, 100),
+                percent: maxSpend > 0 ? Math.min((totalPrice / maxSpend),1) : 0,
                 color: COLORS[index]
             }
         })
@@ -69,11 +69,13 @@ export default function OverviewComponent() {
                             overflow: 'hidden'
                         }}>
                             <div style={{
-                                width: isMounted ? `${item.percent}%` : '0%',
+                                width: '100%',
                                 height: '100%',
                                 borderRadius: '8px',
                                 backgroundColor: item.color,
-                                transition: 'width 1s cubic-bezier(0.4, 0, 0.2, 1)'
+                                transformOrigin : 'left',
+                                transform : `scaleX(${item.percent})`,
+                                transition: 'transform 1s cubic-bezier(0.4, 0, 0.2, 1)'
                             }}></div>
                         </div>
                     </li>

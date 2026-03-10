@@ -1,0 +1,9 @@
+.container {
+    flex :1;
+}
+
+/* 💡 Recharts 차트 클릭 시 생기는 못생긴 테두리 제거 */
+.chartWrapper :global(path:focus),
+.chartWrapper :global(rect:focus) {
+    outline: none !important;
+}

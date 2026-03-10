@@ -6,6 +6,7 @@ import styles from './analytics.module.css'
 import RankComponent from '../../components/analytics/RankCompoent.tsx';
 import BudgetComponent from '../../components/analytics/BudgetComponent.tsx';
 import VisualComponent from '../../components/analytics/VisualComponent.tsx';
+import MonthlyCostComponent from '../../components/analytics/MonthlyCostComponent.tsx';
 
 export default function Analytics() {
 
@@ -20,7 +21,7 @@ export default function Analytics() {
             <div className={styles.contentWrap}>
 
                 <section className={styles.chartsWrap}> {/* 그래프 영역 */}
-                    <h2>Spending Trend</h2>
+                    <MonthlyCostComponent/>
                 </section>
 
                 <section className={styles.rankWrap}> {/* 가격순위  영역 */}

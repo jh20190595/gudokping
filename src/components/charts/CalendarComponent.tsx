@@ -1,80 +1,81 @@
-import { itemAxisPredicate } from 'recharts/types/state/selectors/axisSelectors';
 import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
 import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
 import styles from './CalendarComponent.module.css';
-import { useState } from 'react';
-
-const getLastDayOfThisMonth = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth() + 1;
-
-    const currentDate = today.getDate();
-
-    const lastDate = new Date(year, month, 0).getDate();
-    const nextMonthLastDate = new Date(year, month + 1, 0).getDate();
-
-    return [currentDate, lastDate, nextMonthLastDate];
-}
+import { useState, useMemo } from 'react';
 
 export default function CalendarComponent() {
-    const [currentDate, lastDate, nextMonthLastDate] = getLastDayOfThisMonth();
-    const [isFoldOpen, setIsFoldOpen] = useState(false)
-    const [selectedDay, setSelectedDay] = useState<number | null>(null)
-    const [selectedSubs, setSelectedSubs] = useState<any[]>([])
+    
+    const data = useMemo(() => {
+        const today = new Date();
+        return Array.from({ length: 28 }, (_, i) => {
+            const d = new Date(today);
+            d.setDate(today.getDate() + i); // 32 -> 3월이 31일까지니 4월 1일로 저장
+            return d;
+        });
+    }, []);
 
-    const currentMonthDays = Array.from({ length: lastDate - currentDate + 1 }, (_, i) => currentDate + i);
-    const nextMonthDays = Array.from({ length: nextMonthLastDate }, (_, i) => i + 1)
-    const data = [...currentMonthDays, ...nextMonthDays].slice(0, 28)
+    const [selectedDay, setSelectedDay] = useState<number | null>(null);
+    const [isFoldOpen, setIsFoldOpen] = useState(false);
+    const [selectedSubs, setSelectedSubs] = useState<any[]>([]);
+
     const { data: subscriptions = [] } = useSubscriptions('created_at');
 
-    const handleFoldOpen = (day: number, matchSub: any[]) => {
-
+    const handleFoldOpen = (dateValue: number, matchSub: any[]) => {
         if (matchSub.length === 0) return;
-        if (selectedDay === day) {
-            setSelectedDay(null)
+        if (selectedDay === dateValue) {
+            setSelectedDay(null);
         } else {
             setSelectedSubs(matchSub);
-            setSelectedDay(day)
+            setSelectedDay(dateValue);
         }
-    }
+    };
 
     return (
-        <ul className={styles.dayListWrap} >
-            {data.map((day, index) => {
+        <ul className={styles.dayListWrap}>
+            {data.map((item, index) => {
+                const day = item.getDate(); 
+                const dateValue = item.getTime(); 
+
                 const matchSub = subscriptions.filter((sub) => {
-                    if (!subscriptions) return false
-                    return new Date(sub.next_billing_date).getDate() === day
-                }) // 해당 일 서비스 가져오기
-                const matchSubLogo = matchSub.map((item) => (
-                    SUBSCRIPTION_SERVICES.find(f => f.service_name === item.service_name)?.logoUrl
-                )) // 해당 일 서비스의 로고 가져오기
+                    if (!sub.next_billing_date) return false;
+                    const subDate = new Date(sub.next_billing_date); 
+                    return (
+                        subDate.getFullYear() === item.getFullYear() &&
+                        subDate.getMonth() === item.getMonth() &&
+                        subDate.getDate() === item.getDate()
+                    );
+                });
+
                 return (
-                    <li key={`day-${index}`} className={`${styles.dayItem} ${matchSub.length > 0 ? styles.dayItembgChange : ''}`} onClick={() => handleFoldOpen(day, matchSub)} aria-disabled={matchSub.length === 0}>
+                    <li 
+                        key={`day-${index}`} 
+                        className={`${styles.dayItem} ${matchSub.length > 0 ? styles.dayItembgChange : ''}`} 
+                        onClick={() => handleFoldOpen(dateValue, matchSub)} 
+                        aria-disabled={matchSub.length === 0}
+                    >
                         <p>{day}</p>
                         <p>{matchSub.length}</p>
                     </li>
-                )
+                );
             })}
 
             <li className={`${styles.foldWrap} ${selectedDay !== null ? styles.open : ''}`}>
                 <ul className={styles.foldInner}>
                     {selectedSubs.map((item) => {
-                        const serviceLogo = SUBSCRIPTION_SERVICES.find(f => f.service_name === item.service_name)?.logoUrl
+                        const serviceLogo = SUBSCRIPTION_SERVICES.find(f => f.service_name === item.service_name)?.logoUrl;
                         return (
                             <li key={item.id} className={styles.foldItem}>
-                                    <img src={serviceLogo} style={{ width: '30px', height: '30px', objectFit: 'contain', borderRadius: '30%' }} />
-                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'cneter', gap: '5px' }}>
-                                        <p style={{ fontSize: '12px', fontWeight: '700' }}>{item.service_name}</p>
-                                        <p style={{ fontSize: '10px', fontWeight: '500', color: '#333' }} >{item.category}</p>
-                                    </div>
-                                    <p> * {item.next_billing_date}</p>
+                                <img src={serviceLogo} style={{ width: '30px', height: '30px', objectFit: 'contain', borderRadius: '30%' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
+                                    <p style={{ fontSize: '12px', fontWeight: '700' }}>{item.service_name}</p>
+                                    <p style={{ fontSize: '10px', fontWeight: '500', color: '#333' }} >{item.category}</p>
+                                </div>
+                                <p> * {item.next_billing_date}</p>
                             </li>
-                        )
+                        );
                     })}
                 </ul>
             </li>
-
         </ul>
     );
 }

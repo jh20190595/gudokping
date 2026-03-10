@@ -6,6 +6,7 @@
   padding: 0 15px;
   height: 48px;
   font-size: 16px;
+  font-weight: 600;
   background-color: white;
   border: 1px solid #e5e8eb;
   border-radius: 8px;
@@ -19,22 +20,27 @@
   box-shadow: 0 0 0 2px rgba(49, 130, 246, 0.2);
 }
 
+
 .SelectContent {
   overflow: hidden;
+  padding : 12px 4px;
   background-color: white;
   border-radius: 8px;
   border: 1px solid #e5e8eb;
   box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2);
   width: var(--radix-select-trigger-width); 
   z-index: 99999;
-  max-height: 70vh; /* 모달의 최대 높이를 브라우저 화면 높이의 90%로 제한 */
-  overflow-y: auto; /* 내용이 90vh를 넘어가면 세로 스크롤바 생성 */
+  max-height: 70vh; 
+  overflow-y: auto; 
 }
 
 .SelectViewport {
   padding: 5px;
   max-height: 400px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap : 20px;
 }
 
 .SelectItem {
@@ -43,6 +49,7 @@
   color: #333;
   border-radius: 5px;
   display: flex;
+  gap : 12px;
   align-items: center;
   height: 40px;
   padding: 0 35px 0 15px;

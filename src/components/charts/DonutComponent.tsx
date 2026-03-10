@@ -1,0 +1,97 @@
+import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
+import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.tsx';
+import styles from './DonutComponent.module.css'
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
+import { useMemo } from 'react';
+
+const COLORS = ["#fca5a5", "#93c5fd", "#c4b5fd", "#86efac", '#dbeafe'];
+const CATEGORY = ['ott', 'music', 'shopping', 'ai', 'food']
+
+export default function DonutComponent() {
+
+    const { data: subscriptions = [] } = useSubscriptions();
+
+    const { summary } = useSubscriptionSummary();
+    const totalMonthlycost = summary?.totalMonthlycost || 0;
+
+    const filterData = useMemo(() => {
+        if (!subscriptions) return [];
+
+        const categoryData = CATEGORY.map((categoryName) => {
+            const totalValue = subscriptions
+                .filter((sub) => sub.category.toLocaleLowerCase() === categoryName)
+                .reduce((acc, sub) => {
+                    const monthlyPrice = sub.billing_cycle === 'yearly' ? sub.price / 12 : sub.price;
+                    return acc + monthlyPrice
+                }, 0)
+            return {
+                name: categoryName,
+                value: totalValue
+            }
+        })
+
+        return categoryData.filter(f => f.value > 0);
+    }, [subscriptions])
+
+    return (
+        <div className={styles.chartWrapper}>
+            <div style={{ gridRow : 'span 2'}}>
+                <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                        <Pie
+                            data={filterData}
+                            dataKey="value" // value를 기준으로 조각하기
+                            cx="50%" // 차트의 X축 중심 위치
+                            cy="50%" // 차트의 Y축 중심 위치
+                            innerRadius={150} // 안쪽을 
+                            outerRadius={200} // 바깥쪽 반지름
+                            paddingAngle={5} // 간격
+                            stroke="none" // 테두리 선 제거
+                            animationDuration={800}
+                            animationBegin={100}
+                        >
+                            {filterData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                    </PieChart>
+                </ResponsiveContainer>
+
+                <div className={styles.title}>
+                    <div style={{ fontSize: '12px', color: '#666' }}>Total</div>
+                    <div style={{ fontSize: '20px', fontWeight: 'bold' }}>
+                        ₩ {Math.floor(totalMonthlycost).toLocaleString()}
+                    </div>
+                </div>
+            </div>
+            <ul className= {styles.legendWrap}>
+                {filterData.map((item, index) => {
+                    const percent = totalMonthlycost > 0
+                        ? Math.round((item.value / totalMonthlycost) * 100)
+                        : 0;
+
+                    return (
+                        <li key={`legend-${item.name}`} className={styles.item}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <span style={{
+                                    display: 'inline-block',
+                                    width: '12px',
+                                    height: '12px',
+                                    borderRadius: '50%',
+                                    backgroundColor: COLORS[index % COLORS.length]
+                                }}></span>
+                                <span style={{ textTransform: 'uppercase' }}>{item.name}</span>
+                            </div>
+
+                            <div style={{ display: 'flex', gap: '16px' }}>
+                                <span style={{ color: '#000' }}>{percent}%</span>
+                            </div>
+                        </li>
+                    )
+                })}
+            </ul>
+
+
+        </div>
+    );
+}

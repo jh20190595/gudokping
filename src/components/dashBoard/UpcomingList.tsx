@@ -1,15 +1,14 @@
 import { useEffect, useMemo, memo, useState } from 'react';
 import styles from './Upcoming.module.css';
 import { calculateDday } from '../../utils/dateUtils.tsx';
-import { sub } from 'date-fns';
 import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
-import { IoChevronBack, IoChevronForward } from "react-icons/io5";
+import { IoAlertSharp, IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
 
 function UpcomingList() {
 
     const { data: subscriptions, isLoading, isError, error } = useSubscriptions('created_at');
-
+    const [currentPage, setCurrentPage] = useState<number>(1);
     const upcomingList = useMemo(() => {
         if (!subscriptions) return [];
 
@@ -43,7 +42,6 @@ function UpcomingList() {
         setCurrentPage(prev => prev + 1);
     }
 
-    const [currentPage, setCurrentPage] = useState<number>(1);
     const totalPage = Math.ceil(upcomingList.length / 5);
     const currentItem = upcomingList.slice((currentPage - 1) * 5, currentPage * 5);
 
@@ -60,10 +58,13 @@ function UpcomingList() {
                         const serviceLogo = SUBSCRIPTION_SERVICES.find(f => f.service_name.toLowerCase() === item.service_name.toLowerCase())
                         return (
                             <li key={item.id} className={styles.item}>
-                                <div className={styles.itemLeft}><img src={serviceLogo?.logoUrl || "Logo"} style={{ width: '40px', height: '40px', borderRadius: '30%', objectFit : 'contain', }} /></div>
+                                <div className={styles.itemLeft}><img src={serviceLogo?.logoUrl || "Logo"} style={{ width: '40px', height: '40px', borderRadius: '30%', objectFit: 'contain', }} /></div>
                                 <div className={styles.itemCenter}>
                                     <span>{item.service_name}</span>
-                                    <span>{item.dDay === 0 ? "D-day" : `D-${item.dDay}`}</span>
+                                    <div style={{ display: 'flex', alignItems : 'center'}}>
+                                        <span style={{ fontSize: '11px', fontWeight: '700' }}>{item.dDay === 0 ? "D-day" : `D-${item.dDay}`}</span>
+                                        {item.dDay === 0 && (<button className={styles.notice}><IoAlertSharp size={18} color='#ef4444' /></button>)}
+                                    </div>
                                 </div>
                                 <div className={styles.itemRight}>₩ {item.price.toLocaleString()}</div>
                             </li>

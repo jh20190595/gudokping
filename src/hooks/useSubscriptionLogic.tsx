@@ -10,6 +10,7 @@ const initial_state = {
     category: "",
     start_date: new Date(),
     next_billing_date: new Date(),
+    billing_cycle : 'monthly',
     memo: "",
     payment_type: "카드",
     payment_name: "",
@@ -88,6 +89,10 @@ export const useSubscriptionLogic = (initialData : any = null) => {
         setForm(prev => ({ ...prev, [key]: date }));
     }
 
+    const changeBillingCycle = (value : string) => {
+        setForm(prev => ({ ...prev, billing_cycle : value}))
+    }
+
     const changePayment = (value: string) => {
         setForm(prev => ({ ...prev, payment_type: value, payment_name: "" }))
     }
@@ -98,10 +103,13 @@ export const useSubscriptionLogic = (initialData : any = null) => {
 
 
     const currentServiceData = SUBSCRIPTION_SERVICES.find(s => s.service_name === form.service_name);
-
+    const billingCycleOptions = [
+        { value : 'monthly', label : 'monthly',},
+        { value : 'yearly', label : 'yearly'}
+    ]
 
     const currentPlanOptions = currentServiceData?.plans.map(p => ({
-        value: p.name,
+        value: p.name, // 플랜명으로 저장 ex) '월간 멤버십', '벅스 크루 할인'
         label: `${p.name} (${p.price.toLocaleString()}원)`
     })) || [];
 
@@ -146,8 +154,10 @@ export const useSubscriptionLogic = (initialData : any = null) => {
         changePrice,
         changeMemo,
         changeDate,
+        changeBillingCycle,
         changePayment,
         changePaymentName,
+        billingCycleOptions,
         currentPlanOptions,
         validateForm,
         reset,
