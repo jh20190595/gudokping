@@ -54,6 +54,12 @@
     gap :20px;
 }
 
+.budgetWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .noticeText {
     animation: noticeOpacity 0.5s ease-in-out forwards;
 }

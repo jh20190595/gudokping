@@ -42,7 +42,7 @@
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.5s;
-        overflow-anchor: none;
+    overflow-anchor: none;
 }
 
 .open .listFold {

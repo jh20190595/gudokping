@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './BudgetComponent.module.css';
-import { Pen, Pencil } from 'lucide-react';
+import { Bug, Pen, Pencil } from 'lucide-react';
 import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.tsx';
 import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
 
@@ -50,9 +50,12 @@ export default function BudgetComponent() {
             </div>
 
             <div className={styles.gaugeBarWrap}>
-                <div>
+                <div className={styles.budgetWrap}>
+                    <div>
                     <span style={{ fontSize: "18px", fontWeight: '600' }}>{`₩ ${totalMonthlycost.toLocaleString()} \n`}</span>
                     <span style={{ fontSize: '13px', fontWeight: '500', color: '#666' }}>{`/ \n₩ ${budget.toLocaleString()}`}</span>
+                    </div>
+                    <span style={{ fontSize : '13px' , fontWeight : '700', color : '#f87171' }}>{`${Math.floor(Math.min(totalMonthlycost / Number(budget) * 100,100))}%`}</span>
                 </div>
                 <GaugeBar budget={budget} monthlyCost={totalMonthlycost} />
                 {totalMonthlycost > budget && <h5 style={{ margin: 0, color: 'red', fontSize: '11px', fontWeight: '600' }} className={styles.noticeText}>* 예산을 초과하였습니다.</h5>}
@@ -65,7 +68,7 @@ export default function BudgetComponent() {
 
 function GaugeBar({ budget, monthlyCost }: { budget: number, monthlyCost: number }) {
 
-    const persent = budget > 0 ? Math.min((monthlyCost / Number(budget)) * 100, 100) : 0;
+    const percent = budget > 0 ? Math.min((monthlyCost / Number(budget)) * 100, 100) : 0;
     const isOverBudget = budget > 0 && monthlyCost > budget;
     const barColor = isOverBudget ? '#fecaca' : "#86efac"
 
@@ -80,7 +83,7 @@ function GaugeBar({ budget, monthlyCost }: { budget: number, monthlyCost: number
             overflow: 'hidden'
         }}>
             <div style={{
-                width: `${persent}%`,
+                width: `${percent}%`,
                 height: '100%',
                 borderRadius: '8px',
                 backgroundColor: barColor,

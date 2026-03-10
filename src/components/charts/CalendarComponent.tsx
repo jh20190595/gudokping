@@ -20,20 +20,27 @@ const getLastDayOfThisMonth = () => {
 export default function CalendarComponent() {
     const [currentDate, lastDate, nextMonthLastDate] = getLastDayOfThisMonth();
     const [isFoldOpen, setIsFoldOpen] = useState(false)
-    const [currentOpenDay, setCurrentOpenDay] = useState(Infinity);
+    const [selectedDay, setSelectedDay] = useState<number | null>(null)
+    const [selectedSubs, setSelectedSubs] = useState<any[]>([])
+
     const currentMonthDays = Array.from({ length: lastDate - currentDate + 1 }, (_, i) => currentDate + i);
     const nextMonthDays = Array.from({ length: nextMonthLastDate }, (_, i) => i + 1)
     const data = [...currentMonthDays, ...nextMonthDays].slice(0, 28)
     const { data: subscriptions = [] } = useSubscriptions('created_at');
 
-    const handleFoldOpen = (day: number, matchSub) => {
-        if (matchSub.length === 0) return
-        setIsFoldOpen(true);
-        setCurrentOpenDay(day);
+    const handleFoldOpen = (day: number, matchSub: any[]) => {
+
+        if (matchSub.length === 0) return;
+        if (selectedDay === day) {
+            setSelectedDay(null)
+        } else {
+            setSelectedSubs(matchSub);
+            setSelectedDay(day)
+        }
     }
 
     return (
-        <ul className={styles.dayListWrap}>
+        <ul className={styles.dayListWrap} >
             {data.map((day, index) => {
                 const matchSub = subscriptions.filter((sub) => {
                     if (!subscriptions) return false
@@ -43,25 +50,31 @@ export default function CalendarComponent() {
                     SUBSCRIPTION_SERVICES.find(f => f.service_name === item.service_name)?.logoUrl
                 )) // 해당 일 서비스의 로고 가져오기
                 return (
-                    <>
-                        <li key={`day-${index}`} className={`${styles.dayItem} ${matchSub.length > 0 ? styles.dayItembgChange : ''}`} onClick={() => handleFoldOpen(day, matchSub)} aria-disabled={matchSub.length === 0}>
-                            <p>{day}</p>
-                            <p>{matchSub.length}</p>
-                        </li>
-
-                        {matchSub.length > 0 && currentOpenDay === day && (
-                            <ul>
-                                {matchSub.map((item) => (
-                                    <li>
-
-                                    </li>
-                                ))}
-                            </ul>
-                        )
-                        }
-                    </>
+                    <li key={`day-${index}`} className={`${styles.dayItem} ${matchSub.length > 0 ? styles.dayItembgChange : ''}`} onClick={() => handleFoldOpen(day, matchSub)} aria-disabled={matchSub.length === 0}>
+                        <p>{day}</p>
+                        <p>{matchSub.length}</p>
+                    </li>
                 )
             })}
+
+            <li className={`${styles.foldWrap} ${selectedDay !== null ? styles.open : ''}`}>
+                <ul className={styles.foldInner}>
+                    {selectedSubs.map((item) => {
+                        const serviceLogo = SUBSCRIPTION_SERVICES.find(f => f.service_name === item.service_name)?.logoUrl
+                        return (
+                            <li key={item.id} className={styles.foldItem}>
+                                    <img src={serviceLogo} style={{ width: '30px', height: '30px', objectFit: 'contain', borderRadius: '30%' }} />
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'cneter', gap: '5px' }}>
+                                        <p style={{ fontSize: '12px', fontWeight: '700' }}>{item.service_name}</p>
+                                        <p style={{ fontSize: '10px', fontWeight: '500', color: '#333' }} >{item.category}</p>
+                                    </div>
+                                    <p> * {item.next_billing_date}</p>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </li>
+
         </ul>
     );
 }
