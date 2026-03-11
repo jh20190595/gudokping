@@ -1,5 +1,5 @@
 export interface Subscription {
-    id : number;
+    id : string;
     user_id? : string;
     service_name : string;
     plan_name : string;

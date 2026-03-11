@@ -1,0 +1,98 @@
+.overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal {
+    background-color: #fff;
+    border: 4px solid #000;
+    box-shadow: 10px 10px 0px #000;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    color: #000;
+    font-weight: 800;
+    border-radius: 4px;
+    animation: modalAppear 0.2s ease-out;
+}
+
+@keyframes modalAppear {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.btnWrap {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.cancelBtn, .ExtendBtn {
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 0.6rem 1.4rem;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.cancelBtn { background-color: #fff; }
+.ExtendBtn { background-color: #86efac; box-shadow: 3px 3px 0px #000; }
+.ExtendBtn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000; }
+
+/* 💡 직접 수정 섹션 추가 */
+.editLinkWrap {
+    margin-top: 25px;
+    text-align: center;
+    border-top: 2px dashed #eee;
+    padding-top: 15px;
+}
+
+.editLinkBtn {
+    background: transparent; border: none;
+    color: #666; font-size: 12px; font-weight: 700;
+    text-decoration: underline; text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.editLinkBtn:hover { color: #000; }
+
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background-color: transparent;
+    border : none;
+    box-shadow :none;
+    padding : 0;
+    width : 90%;
+    max-width: 520px;
+    max-height : 95vh;
+    padding : 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    -ms-overflow-style : none;
+    scrollbar-width : none;
+}
+
+.modalContent::-webkit-scrollbar {
+    display: none;
+}

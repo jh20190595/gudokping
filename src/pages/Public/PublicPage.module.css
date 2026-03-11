@@ -347,3 +347,31 @@
   border-top: 1px solid #e7e5e4;
   text-align: center;
 }
+
+.btn1 {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border-radius: 9999px; font-weight: 600;
+  transition: all 0.2s ease; cursor: pointer; border: none;
+  padding: 0.625rem 1.5rem; 
+}
+
+.btn2 {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border-radius: 9999px; font-weight: 600;
+  transition: all 0.2s ease; cursor: pointer; border: none;
+  padding: 1rem 2rem;
+}
+
+.btnPrimary {
+  background-color: #292524; color: #fafaf9; 
+}
+
+.btnPrimary:hover {
+  background-color: #44403c; 
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.headerBtn {
+  font-size: 0.875rem;
+}

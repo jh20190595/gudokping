@@ -18,10 +18,18 @@ export const useSubscriptionSummary = () => {
         }
 
         const totalMonthlycost = subscriptions.reduce((acc, item) => {
-            const monthlyPrice = item.billing_cycle === 'yearly' ? item.price / 12 : item.price;
-            return acc + monthlyPrice; //년단위 일경우 금액을 12로 나눈다
-        }, 0);
+            const today = new Date();
+            const startDate = new Date(item.start_date);
 
+            let monthlyPrice = 0;
+
+            if (startDate <= today) {
+                monthlyPrice = item.billing_cycle === 'yearly' ? item.price / 12 : item.price;
+            }
+
+            return acc + monthlyPrice;
+        }, 0);
+        
         const currentYear = new Date().getFullYear();
 
         const annualTotalCost = subscriptions.reduce((acc, item) => {
@@ -30,7 +38,7 @@ export const useSubscriptionSummary = () => {
                 const startYear = startDate.getFullYear(); // 월구독인 경우 구독 시작한 년도 구하고
 
                 if (startYear === currentYear) { // 구독 시작한 년도 === 현재 년도 같으면
-                    const startMonth = startDate.getMonth() + 1; 
+                    const startMonth = startDate.getMonth() + 1;
                     const monthsActiveThisYear = 12 - startMonth + 1; // 구독 시작한 달 구한뒤 12개월에서 빼기
                     return acc + (item.price * monthsActiveThisYear);
 

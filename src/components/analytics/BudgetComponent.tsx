@@ -52,8 +52,8 @@ export default function BudgetComponent() {
             <div className={styles.gaugeBarWrap}>
                 <div className={styles.budgetWrap}>
                     <div>
-                    <span style={{ fontSize: "18px", fontWeight: '600' }}>{`₩ ${totalMonthlycost.toLocaleString()} \n`}</span>
-                    <span style={{ fontSize: '13px', fontWeight: '500', color: '#666' }}>{`/ \n₩ ${budget.toLocaleString()}`}</span>
+                    <span style={{ fontSize: "18px", fontWeight: '600' }}>{`₩ ${Math.floor(totalMonthlycost).toLocaleString()} \n`}</span>
+                    <span style={{ fontSize: '13px', fontWeight: '500', color: '#666' }}>{`/ \n₩ ${Math.floor(budget).toLocaleString()}`}</span>
                     </div>
                     <span style={{ fontSize : '13px' , fontWeight : '700', color : '#f87171' }}>{`${Math.floor(Math.min(totalMonthlycost / Number(budget) * 100,100))}%`}</span>
                 </div>

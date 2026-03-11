@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, CreditCard, Bell, PieChart, Sparkles } from 'lucide-react';
+import { CheckCircle, CreditCard, Bell, PieChart, Sparkles, ArrowRight } from 'lucide-react';
 import styles from './PublicPage.module.css';
-import LoginButton from '../../components/auth/LoginButton.tsx'
+import LoginModal from '../../components/auth/LoginModal.tsx'; // 💡 경로 확인해주세요!
 
 const PublicPage = () => {
     const [scrollY, setScrollY] = useState(0);
+    // 💡 모달 상태를 부모로 끌어올림!
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
         window.addEventListener('scroll', handleScroll);
@@ -19,14 +22,15 @@ const PublicPage = () => {
     ];
 
     const total = subscriptionData.reduce((sum, item) => sum + item.amount, 0);
-    const DonutChart = ({ data }) => {
+    
+    const DonutChart = ({ data }: { data: any[] }) => {
         const size = 200;
         const center = size / 2;
         const radius = size / 2 - 10;
 
         let currentAngle = -90;
 
-        const createSlice = (percentage, color) => {
+        const createSlice = (percentage: number, color: string) => {
             const angle = (percentage / 100) * 360;
             const startAngle = currentAngle * (Math.PI / 180);
             const endAngle = (currentAngle + angle) * (Math.PI / 180);
@@ -93,9 +97,13 @@ const PublicPage = () => {
                             <CreditCard size={32} color="#44403c" />
                         </div>
                     </div>
-                    <LoginButton type = {1}>
-                        Get Started
-                    </LoginButton>
+                    {/* 💡 기존 LoginButton (type 1) 대체 */}
+                    <button 
+                        className={`${styles.btn1} ${styles.btnPrimary} ${styles.headerBtn}`}
+                        onClick={() => setIsLoginModalOpen(true)}
+                    >
+                        Get Started <ArrowRight size={16} />
+                    </button>
                 </div>
             </header>
 
@@ -125,9 +133,13 @@ const PublicPage = () => {
                             구독핑과 함께 모든 구독을 한눈에 관리하고, 똑똑하게 절약하세요.
                         </p>
 
-                        <LoginButton type = {2}>
-                            무료로 시작하기
-                        </LoginButton>
+                        {/* 💡 기존 LoginButton (type 2) 대체 */}
+                        <button 
+                            className={`${styles.btn2} ${styles.btnPrimary}`}
+                            onClick={() => setIsLoginModalOpen(true)}
+                        >
+                            무료로 시작하기 <ArrowRight size={16} />
+                        </button>
                     </div>
                 </div>
             </section>
@@ -276,9 +288,13 @@ const PublicPage = () => {
                         복잡한 구독 관리, 구독핑이 쉽게 만들어드릴게요.<br />
                         무료로 시작하고, 구독 비용을 절약해보세요.
                     </p>
-                    <LoginButton type = {2}>
-                        무료로 시작하기
-                    </LoginButton>
+                    {/* 💡 기존 LoginButton (type 2) 대체 */}
+                    <button 
+                        className={`${styles.btn2} ${styles.btnPrimary}`}
+                        onClick={() => setIsLoginModalOpen(true)}
+                    >
+                        무료로 시작하기 <ArrowRight size={16} />
+                    </button>
                 </div>
             </section>
 
@@ -294,6 +310,11 @@ const PublicPage = () => {
                     </p>
                 </div>
             </footer>
+
+            {/* 🚨 핵심: 부모 컴포넌트 맨 밑에 모달 딱 1개만 배치! */}
+            {isLoginModalOpen && (
+                <LoginModal onClose={() => setIsLoginModalOpen(false)} />
+            )}
         </div>
     );
 };

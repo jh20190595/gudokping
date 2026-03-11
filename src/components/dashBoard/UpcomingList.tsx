@@ -1,14 +1,20 @@
 import { useEffect, useMemo, memo, useState } from 'react';
 import styles from './Upcoming.module.css';
+import { IoAlertSharp, IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { calculateDday } from '../../utils/dateUtils.tsx';
 import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
-import { IoAlertSharp, IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
+import ExtendModal from '../ui/ExtendModal.tsx';
+import { Subscription } from '../../types/subscription.tsx';
+import SubscriptionForm from '../subscription/SubscriptionForm.tsx';
 
 function UpcomingList() {
 
     const { data: subscriptions, isLoading, isError, error } = useSubscriptions('created_at');
     const [currentPage, setCurrentPage] = useState<number>(1);
+    const [isExtendId, setIsExtendId] = useState<string | null>(null);
+    const [editTargetItem, setEditTargetItem] = useState<Subscription | null>(null);
+
     const upcomingList = useMemo(() => {
         if (!subscriptions) return [];
 
@@ -17,7 +23,7 @@ function UpcomingList() {
                 const dDay = calculateDday(item.next_billing_date);
                 return { ...item, dDay };
             })
-            .filter((item) => item.dDay >= 0 && item.dDay <= 31)
+            .filter((item) => item.dDay >= -7 && item.dDay <= 31)
             .sort((a, b) => a.dDay - b.dDay);
 
     }, [subscriptions]);
@@ -42,6 +48,11 @@ function UpcomingList() {
         setCurrentPage(prev => prev + 1);
     }
 
+    const handleExtend = (e: React.MouseEvent, id: string) => {
+        e.stopPropagation();
+        setIsExtendId(id)
+    }
+
     const totalPage = Math.ceil(upcomingList.length / 5);
     const currentItem = upcomingList.slice((currentPage - 1) * 5, currentPage * 5);
 
@@ -61,9 +72,26 @@ function UpcomingList() {
                                 <div className={styles.itemLeft}><img src={serviceLogo?.logoUrl || "Logo"} style={{ width: '40px', height: '40px', borderRadius: '30%', objectFit: 'contain', }} /></div>
                                 <div className={styles.itemCenter}>
                                     <span>{item.service_name}</span>
-                                    <div style={{ display: 'flex', alignItems : 'center'}}>
-                                        <span style={{ fontSize: '11px', fontWeight: '700' }}>{item.dDay === 0 ? "D-day" : `D-${item.dDay}`}</span>
-                                        {item.dDay === 0 && (<button className={styles.notice}><IoAlertSharp size={18} color='#ef4444' /></button>)}
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <span style={{ fontSize: '11px', fontWeight: '700' }}>
+                                            {item.dDay === 0 
+                                                ? "D-day" 
+                                                : item.dDay < 0 
+                                                    ? `D+${Math.abs(item.dDay)}`
+                                                    : `D-${item.dDay}`
+                                            }
+                                        </span>
+                                        {item.dDay <= 0 && (<button className={styles.notice} onClick={e => handleExtend(e, item.id)}><IoAlertSharp size={18} color='#ef4444' /></button>)}
+                                        {isExtendId === item.id && (
+                                            <ExtendModal
+                                                sub={item}
+                                                onClose={(e) => { e.stopPropagation(); setIsExtendId(null) }}
+                                                onOpenEdit={() => {
+                                                    const { dDay, ...sub } = item // dDay 빼야함
+                                                    setEditTargetItem(sub as Subscription)
+                                                }}
+                                            />
+                                        )}
                                     </div>
                                 </div>
                                 <div className={styles.itemRight}>₩ {item.price.toLocaleString()}</div>
@@ -88,7 +116,17 @@ function UpcomingList() {
                 )}
             </div>
 
-
+            {editTargetItem && (
+                <div className={styles.modalOverlay} onClick={() => setEditTargetItem(null)}>
+                    <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+                        <SubscriptionForm
+                            initialData={editTargetItem}
+                            isEditMode={true}
+                            onClose={() => setEditTargetItem(null)}
+                        />
+                    </div>
+                </div>
+            )}
 
         </div>
     );

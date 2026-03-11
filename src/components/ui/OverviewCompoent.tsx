@@ -16,7 +16,7 @@ export default function OverviewComponent() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsMounted(true);
-        }, 100); // 
+        }, 200); // 
         return () => clearTimeout(timer);
     }, []);
 
@@ -74,8 +74,8 @@ export default function OverviewComponent() {
                                 borderRadius: '8px',
                                 backgroundColor: item.color,
                                 transformOrigin : 'left',
-                                transform : `scaleX(${item.percent})`,
-                                transition: 'transform 1s cubic-bezier(0.4, 0, 0.2, 1)'
+                                transform : isMounted ? `scaleX(${item.percent})` : 'scaleX(0)',
+                                transition: 'transform 1s cubic-bezier(0.4, 0, 0.2, 1)' 
                             }}></div>
                         </div>
                     </li>

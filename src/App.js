@@ -7,12 +7,37 @@ import PublicLayout from './components/layout/PublicLayout.tsx';
 import PublicPage from './pages/Public/PublicPage.tsx';
 import LoginValidation from './components/auth/LoginValidation.tsx';
 import { Toaster } from 'react-hot-toast';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import LoadingScreen from './components/ui/LoadingScreen.tsx';
+import { useAuthStore } from './store/useAuthStore.tsx';
+import { supabase } from './lib/supabase.ts';
 
 const Analytics = lazy(() => import('./pages/platform/analytics.tsx')) // 지연로딩
 
 function App() {
+
+    const { setSession, setAuthLoading } = useAuthStore();
+
+    useEffect(() => {
+    // 1. 초기 세션 확인
+    supabase.auth.getSession().then(({ data: { session } }) => {
+        setSession(session);
+        setAuthLoading(false);
+    });
+
+    // 2. 인증 상태 변경 감시
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+        setSession(session);
+        setAuthLoading(false);
+    });
+
+    // 💡 핵심 수정: 리턴문에서 명확하게 authListener 내부의 subscription을 해지합니다.
+    return () => {
+        if (authListener && authListener.subscription) {
+            authListener.subscription.unsubscribe();
+        }
+    };
+}, [setSession, setAuthLoading]);
 
 
     return (

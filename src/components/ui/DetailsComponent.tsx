@@ -51,7 +51,7 @@ export default function DetailsComponent() {
                                 <div><img src={serviceLogoUrl} style={{ width: '30px', height: '30px', borderRadius: '30%', objectFit: 'contain' }} /></div>
                                 <div className={styles.textWrap}>
                                     <div>{item.service_name}</div>
-                                    <div>₩ {item.price.toLocaleString()}/월</div>
+                                    <div>₩ {item.price.toLocaleString()}/{item.billing_cycle === 'yearly' ? '년' : '월'}</div>
                                 </div>
                             </div>
                         </li>
