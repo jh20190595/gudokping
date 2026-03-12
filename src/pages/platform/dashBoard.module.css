@@ -3,32 +3,6 @@
     min-height: 100vh;
 }
 
-.title {
-    font-size : 1.625rem;
-    font-weight: 700;
-}
-
-.topSection {
-    padding: 1.875rem 1.875rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.addSubscriptionBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding : 0.5rem 3.125rem;
-    background-color: #d1fae5;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 3px solid #666; 
-    border-radius: 0.5rem;
-}
-
 .divider {
     width: 100%;
     height: 0.25rem;

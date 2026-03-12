@@ -5,18 +5,16 @@ import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
 import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
 import TreemapComponent from '../charts/TreemapComponent.tsx';
 import BubblesComponent from '../charts/BubblesComponent.tsx';
-import CalendarComponent from '../charts/CalendarComponent.tsx';
 import DonutComponent from '../charts/DonutComponent.tsx';
 
 
 const CHARTS_MAP: Record<string, React.ReactNode> = {
     'Treemap': <TreemapComponent />,
     'Bubbles': <BubblesComponent />,
-    'Calendar': <CalendarComponent />,
     'Donut': <DonutComponent />,
 }
 
-const TAP_TYPE = ['Treemap', 'Bubbles', 'Calendar', 'Donut'];
+const TAP_TYPE = ['Treemap', 'Bubbles','Donut'];
 
 export default function VisualComponent() {
     const { data: subscriptions } = useSubscriptions('price');
@@ -39,7 +37,7 @@ export default function VisualComponent() {
                 </ul>
             </div>
 
-            <div className={activeTap !== 'Calendar' ? styles.content : styles.calendarContent}>
+            <div className={styles.content}>
                 {CHARTS_MAP[activeTap]}
             </div>
             <div className={styles.footer}></div>

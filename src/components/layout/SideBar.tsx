@@ -10,9 +10,7 @@ export default function SideBar() {
         <div className={styles['container']}>
 
             <div className={styles.logoWrap}>
-                <NavLink
-                    to="./"
-                >asset</NavLink>
+                ]               로고 들어갈 자리
             </div>
 
             <div className={styles.sectionContainer}>
@@ -45,6 +43,16 @@ export default function SideBar() {
                     </NavLink>
 
                     <NavLink
+                        to="./calendar"
+                        className={({ isActive }) =>
+                            isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem
+                        }
+                    >
+                        <RiFileListFill size={16} color="#666" />
+                        <span>Calendar</span>
+                    </NavLink>
+
+                    <NavLink
                         to="./analytics"
                         className={({ isActive }) =>
                             isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem
@@ -53,6 +61,31 @@ export default function SideBar() {
                         <RiFileListFill size={16} color="#666" />
                         <span>analytics</span>
                     </NavLink>
+                </div>
+
+
+                <div className={styles.sectionWrap}>
+                    <div className={styles.sectionTitle}>Community</div>
+                    <NavLink
+                        to="./feedback"
+                        className={({ isActive }) =>
+                            isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem
+                        }
+                    >
+                        <RiFileListFill size={16} color="#666" />
+                        <span>feedback</span>
+                    </NavLink>
+
+                    <NavLink
+                        to="./help"
+                        className={({ isActive }) =>
+                            isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem
+                        }
+                    >
+                        <RiFileListFill size={16} color="#666" />
+                        <span>help (FAQ)</span>
+                    </NavLink>
+
                 </div>
             </div>
 

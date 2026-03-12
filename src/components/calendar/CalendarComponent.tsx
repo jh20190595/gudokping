@@ -3,8 +3,15 @@ import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
 import styles from './CalendarComponent.module.css';
 import { useState, useMemo } from 'react';
 
+const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
+
 export default function CalendarComponent() {
     
+    const headerDays = useMemo(() => {
+        const todayIdx = new Date().getDay();
+        return Array.from({length : 7}, (_,i) => WEEKDAYS[(todayIdx + i) % 7]);
+    },[])
+
     const data = useMemo(() => {
         const today = new Date();
         return Array.from({ length: 28 }, (_, i) => {
@@ -15,7 +22,6 @@ export default function CalendarComponent() {
     }, []);
 
     const [selectedDay, setSelectedDay] = useState<number | null>(null);
-    const [isFoldOpen, setIsFoldOpen] = useState(false);
     const [selectedSubs, setSelectedSubs] = useState<any[]>([]);
 
     const { data: subscriptions = [] } = useSubscriptions('created_at');
@@ -30,8 +36,25 @@ export default function CalendarComponent() {
         }
     };
 
+
     return (
-        <ul className={styles.dayListWrap}>
+        <div className={styles.container}>
+
+            <div className={styles.headerDays}>
+                {headerDays.map((day,idx) => (
+                    <div 
+                        key={`header-${idx}`} 
+                        className={styles.headerItem}
+                        style={{
+                            color : day === '일' ? '#ff6b6b' : day === '토' ? '#74b9ff' : '#000'
+                        }}
+                    >
+                        {day}
+                    </div>    
+                ))}
+            </div>
+            
+            <div className={styles.content}> 
             {data.map((item, index) => {
                 const day = item.getDate(); 
                 const dateValue = item.getTime(); 
@@ -46,18 +69,22 @@ export default function CalendarComponent() {
                     );
                 });
 
+                const isToday = index === 0;
+
                 return (
                     <li 
                         key={`day-${index}`} 
-                        className={`${styles.dayItem} ${matchSub.length > 0 ? styles.dayItembgChange : ''}`} 
+                        className={`${styles.dayItem} ${matchSub.length > 0 ? styles.hasSub : ''}`} 
                         onClick={() => handleFoldOpen(dateValue, matchSub)} 
                         aria-disabled={matchSub.length === 0}
                     >
-                        <p>{day}</p>
-                        <p>{matchSub.length}</p>
+                        <p className={styles.dateNumber}>
+                            {day} {isToday && (<span className={styles.todayBadge}>오늘</span>)}
+                        </p>
                     </li>
                 );
             })}
+            </div>
 
             <li className={`${styles.foldWrap} ${selectedDay !== null ? styles.open : ''}`}>
                 <ul className={styles.foldInner}>
@@ -76,6 +103,6 @@ export default function CalendarComponent() {
                     })}
                 </ul>
             </li>
-        </ul>
+        </div>
     );
 }

@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { CheckCircle, CreditCard, Bell, PieChart, Sparkles, ArrowRight } from 'lucide-react';
 import styles from './PublicPage.module.css';
 import LoginModal from '../../components/auth/LoginModal.tsx'; // 💡 경로 확인해주세요!
+import { useNavigate } from 'react-router-dom';
 
 const PublicPage = () => {
     const [scrollY, setScrollY] = useState(0);
     // 💡 모달 상태를 부모로 끌어올림!
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        
+    },[navigate])
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
