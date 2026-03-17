@@ -103,7 +103,7 @@ const PublicPage = () => {
                             <CreditCard size={32} color="#44403c" />
                         </div>
                     </div>
-                    {/* 💡 기존 LoginButton (type 1) 대체 */}
+                   
                     <button 
                         className={`${styles.btn1} ${styles.btnPrimary} ${styles.headerBtn}`}
                         onClick={() => setIsLoginModalOpen(true)}
@@ -139,7 +139,7 @@ const PublicPage = () => {
                             구독핑과 함께 모든 구독을 한눈에 관리하고, 똑똑하게 절약하세요.
                         </p>
 
-                        {/* 💡 기존 LoginButton (type 2) 대체 */}
+              
                         <button 
                             className={`${styles.btn2} ${styles.btnPrimary}`}
                             onClick={() => setIsLoginModalOpen(true)}
@@ -294,7 +294,7 @@ const PublicPage = () => {
                         복잡한 구독 관리, 구독핑이 쉽게 만들어드릴게요.<br />
                         무료로 시작하고, 구독 비용을 절약해보세요.
                     </p>
-                    {/* 💡 기존 LoginButton (type 2) 대체 */}
+      
                     <button 
                         className={`${styles.btn2} ${styles.btnPrimary}`}
                         onClick={() => setIsLoginModalOpen(true)}
@@ -316,8 +316,7 @@ const PublicPage = () => {
                     </p>
                 </div>
             </footer>
-
-            {/* 🚨 핵심: 부모 컴포넌트 맨 밑에 모달 딱 1개만 배치! */}
+            
             {isLoginModalOpen && (
                 <LoginModal onClose={() => setIsLoginModalOpen(false)} />
             )}

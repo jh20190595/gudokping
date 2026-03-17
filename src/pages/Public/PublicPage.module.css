@@ -117,7 +117,7 @@
 
 .heroDesc {
   font-size: 1.25rem;
-  color: #57534e;
+  color: var(--text-sub);
   margin-bottom: 2.5rem;
   max-width: 42rem;
   margin-left: auto;
@@ -156,7 +156,7 @@
 
 .sectionDesc {
   font-size: 1.125rem;
-  color: #57534e;
+  color: var(--text-sub);
 }
 
 .featureGrid {
@@ -210,7 +210,7 @@
 }
 
 .cardDesc {
-  color: #57534e;
+  color: var(--text-sub);
   line-height: 1.6;
 }
 

@@ -64,7 +64,7 @@ export default function OverviewComponent() {
                             height: '12px',
                             borderRadius: '8px',
                             border: '1px solid #666',
-                            backgroundColor: '#f3f4f6',
+                            backgroundColor: 'var(--bg-sub)',
                             boxSizing: 'border-box',
                             overflow: 'hidden'
                         }}>

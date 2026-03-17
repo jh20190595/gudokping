@@ -46,7 +46,7 @@ export default function CalendarComponent() {
                         key={`header-${idx}`} 
                         className={styles.headerItem}
                         style={{
-                            color : day === '일' ? '#ff6b6b' : day === '토' ? '#74b9ff' : '#000'
+                            color : day === '일' ? '#ff6b6b' : day === '토' ? '#74b9ff' : 'var(--text-main)'
                         }}
                     >
                         {day}
@@ -95,7 +95,7 @@ export default function CalendarComponent() {
                                 <img src={serviceLogo} style={{ width: '30px', height: '30px', objectFit: 'contain', borderRadius: '30%' }} />
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
                                     <p style={{ fontSize: '12px', fontWeight: '700' }}>{item.service_name}</p>
-                                    <p style={{ fontSize: '10px', fontWeight: '500', color: '#333' }} >{item.category}</p>
+                                    <p style={{ fontSize: '10px', fontWeight: '500', color: 'var(--text-main)' }} >{item.category}</p>
                                 </div>
                                 <p> * {item.next_billing_date}</p>
                             </li>

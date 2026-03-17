@@ -1,20 +1,18 @@
 .container {
     width: 100%;
     margin: 0 auto;
-    background-color: #fff;
-    border: 2.5px solid #1a1a1a;
+    background-color: var(--bg-card);
+    border: 3px solid var(--border-shadow); 
     border-radius: 20px;
-    box-shadow: 6px 6px 0px #1a1a1a;
+    box-shadow: 6px 6px 0px var(--border-shadow); 
     overflow: hidden;
     box-sizing: border-box;
     font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
 }
 
-
 .headerDays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-
     padding: 10px 12px;
 }
 
@@ -24,24 +22,14 @@
     font-weight: 700;
     letter-spacing: 0.05em;
     padding: 6px 0;
-    color: #ccc;
 }
 
-.headerItem[style*="red"] {
-    color: #ff6b6b !important;
-}
 
-.headerItem[style*="blue"] {
-    color: #74b9ff !important;
-}
-
-/* ── 날짜 그리드 ── */
 .content {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    /* 셀 사이 구분선만 border로 */
-    border-left: 1.5px solid #e5e5e5;
-    border-top: 1.5px solid #e5e5e5;
+    border-left: 2px solid var(--border-shadow);
+    border-top: 2px solid var(--border-shadow);
     padding: 0;
     margin: 0;
     list-style: none;
@@ -55,20 +43,19 @@
     gap: 6px;
     min-height: 90px;
     padding: 10px 10px 8px;
-    border-right: 1.5px solid #e5e5e5;
-    border-bottom: 1.5px solid #e5e5e5;
-    background-color: #fff;
+
+    border-right: 2px solid var(--border-shadow);
+    border-bottom: 2px solid var(--border-shadow);
+    background-color: var(--bg-card);
     transition: background-color 0.15s ease;
     cursor: default;
     position: relative;
 }
 
-
 .dayItem.hasSub {
     cursor: pointer;
-    background-color: #fdba74;
+    background-color: var(--hover-yellow); 
 }
-
 
 .dateNumber {
     display: flex;
@@ -77,31 +64,32 @@
     margin: 0;
     font-size: 15px;
     font-weight: 800;
-    color: #1a1a1a;
+    color: var(--text-main);
     line-height: 1;
 }
 
 .todayBadge {
-    font-size: 9px;
-    font-weight: 700;
-    background-color: #1a1a1a;
-    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    background-color: var(--text-main); 
+    color: var(--bg-main); 
     padding: 2px 6px;
     border-radius: 99px;
     letter-spacing: 0.04em;
 }
+
 
 .foldWrap {
     list-style: none;
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.5s ease;
-    padding : 2rem 2rem
+    padding: 0 2rem;
 }
 
 .foldWrap.open {
     grid-template-rows: 1fr;
-    border-top: 2px solid #1a1a1a;
+    border-top: 3px solid var(--border-shadow); 
 }
 
 .foldInner {
@@ -109,7 +97,7 @@
     overflow: hidden;
     min-height: 0;
     margin: 0;
-    padding: 0rem 2rem;
+    padding: 0 2rem;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -125,25 +113,19 @@
 
 .foldItem {
     display: grid;
-    grid-template-columns: 0fr 0.2fr 0.3fr;
+    grid-template-columns: 0fr 0.2fr 1fr;
     align-items: center;
+    justify-content: space-between;
     gap: 14px;
-    background: #fff;
-    border: 2px solid #1a1a1a;
+    background: var(--bg-sub); 
+    border: 2px solid var(--border-shadow); 
     border-radius: 10px;
     padding: 12px 16px;
-    box-shadow: 2px 2px 0 #1a1a1a;
+    box-shadow: 2px 2px 0 var(--border-shadow); 
 }
 
 .foldItem p {
     margin: 0;
     font-size: 12px;
     font-weight: 600;
-    color: #555;
-}
-
-.foldItem p:first-of-type {
-    font-size: 13px;
-    font-weight: 800;
-    color: #1a1a1a;
 }

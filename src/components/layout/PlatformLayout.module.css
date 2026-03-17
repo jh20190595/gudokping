@@ -9,6 +9,7 @@
 .sideWrap {
     flex : 0 0 350px;
     box-shadow: 1px 0 10px rgba(0,0,0,0.05);
+    position : relative;
 }
 
 .contentWrap {

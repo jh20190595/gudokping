@@ -48,7 +48,7 @@ export default function DetailsComponent() {
                     return (
                         <li key={item.id}>
                             <div className={styles.itemContent}>
-                                <div><img src={serviceLogoUrl} style={{ width: '30px', height: '30px', borderRadius: '30%', objectFit: 'contain' }} /></div>
+                                <div style={{ backgroundColor :'#fff' , borderRadius : '8px'}}><img src={serviceLogoUrl} style={{ width: '30px', height: '30px', borderRadius: '30%', objectFit: 'contain' }} /></div>
                                 <div className={styles.textWrap}>
                                     <div>{item.service_name}</div>
                                     <div>₩ {item.price.toLocaleString()}/{item.billing_cycle === 'yearly' ? '년' : '월'}</div>

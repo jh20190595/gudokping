@@ -24,8 +24,8 @@
 }
 
 .input {
-    background-color: #fff;
-    border : 1px solid #000;
+    background-color: var(--bg-card);
+    border : 1px solid var(--border-shadow);
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -41,11 +41,11 @@
     width: 97%;
     font-size: 14px;
     font-weight: 700;
-    color: #000;
+    color : var(--text-main)
 }
 
 .input:hover {
-    border : 2px solid #000;
+    border : 2px solid var(--border-shadow);
 }
 
 .gaugeBarWrap {
@@ -54,23 +54,3 @@
     gap :20px;
 }
 
-.budgetWrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.noticeText {
-    animation: noticeOpacity 0.5s ease-in-out forwards;
-}
-
-@keyframes noticeOpacity {
-    0% {
-        opacity: 0;
-        transform : translateY(-5px);
-    }
-    100% {
-        opacity: 1;
-        transform : translateY(0)
-    }
-}

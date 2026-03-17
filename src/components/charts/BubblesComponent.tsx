@@ -9,9 +9,9 @@ const CustomImageLayer = ({ nodes }: any) => {
         <g style={{ pointerEvents: 'none' }}>
             <defs>
                 <radialGradient id="sunlit-glow" cx="30%" cy="30%" r="70%">
-                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
-                    <stop offset="40%" stopColor="#ffffff" stopOpacity="0.1" />
-                    <stop offset="100%" stopColor="#000000" stopOpacity="0.1" />
+                    <stop offset="0%" stopColor="#fff" stopOpacity="0.8" />
+                    <stop offset="40%" stopColor="#fff" stopOpacity="0.1" />
+                    <stop offset="100%" stopColor="#000" stopOpacity="0.1" />
                 </radialGradient>
 
                 {nodes.map((node: any) => {

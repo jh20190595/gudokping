@@ -62,7 +62,7 @@ const CustomTreeMap = (props: any) => {
                 width={innerWidth}
                 height={innerHeight}
                 fill={bgColor}
-                stroke="#000"
+                stroke="var(--border-shadow)"
                 strokeWidth={2}
                 rx={8}
             />

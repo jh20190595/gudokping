@@ -10,7 +10,7 @@ export default function RankComponent() {
     return (
         <div className={styles.container}>
             <div className={styles.top}>
-                <Lightbulb size={16} color="#000" />
+                <Lightbulb size={16} color="var(--border-shadow)" />
                 <h4 style={{ margin: 0 }}>Top 5 Subscriptions</h4>
             </div>
             <ul className={styles.listWrap}>
@@ -22,7 +22,7 @@ export default function RankComponent() {
                         <li key={sub.id} className={styles.listItem}>
 
                             <div className={styles.listReft}>
-                                <div className={styles.listRank}><span>{`${index + 1}`}</span></div>
+                                <div className={styles.listRank}><span style={{ color : '#fff'}}>{`${index + 1}`}</span></div>
                                 <div className={styles.listImg}><img src={serviceLogo} style={{ width: '40px', height: '40px', objectFit: 'contain', borderRadius: '30%' }} /></div>
                                 <div className={styles.listContent}>
                                     <p style={{ margin : 0, fontSize: '12px', fontWeight: '700' }}>{sub.service_name}</p>

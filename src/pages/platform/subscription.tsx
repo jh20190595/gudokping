@@ -49,7 +49,7 @@ export default function Subscription() {
                 />
             </div>
 
-            <p style={{ padding : '0rem 2rem' , fontSize : '12px' , fontWeight : '700' , color : '#999'}}>Showing {filterData.length} items</p>
+            <p className={styles.countText}>Showing {filterData.length} items</p>
 
             <div className={styles.ListViewWrap}>
                 <SubscriptionList data={filterData} />

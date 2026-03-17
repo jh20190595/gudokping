@@ -10,7 +10,7 @@
 }
 
 .modal {
-    background-color: #fff;
+    background-color: var(--bg-card);
     border-radius: 16px;
     padding: 40px 30px;
     width: 90%;
@@ -42,7 +42,7 @@
 }
 
 .desc {
-    font-size: 0.9rem; color: #57534e;
+    font-size: 0.9rem; color: var(--text-sub);
     margin-bottom: 30px;
 }
 

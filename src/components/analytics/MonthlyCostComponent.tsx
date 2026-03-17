@@ -52,13 +52,13 @@ export default function MonthlyCostComponent() {
                         dy={10}
                     />
                     <Tooltip
-                        cursor = {{ fill : '#f3f4f6'}}
+                        cursor = {{ fill : 'var(--bg-sub)'}}
                         formatter={(value : number) => [`₩ ${Math.floor(value).toLocaleString()}`, '금액']}
                         contentStyle={{
-                            backgroundColor : '#fff',
-                            border : '2px solid #000',
+                            backgroundColor : 'var(--bg-card)',
+                            border : '2px solid var(--border-shadow)',
                             borderRight : '8px',
-                            boxShadow : '4px 4px 0px #000',
+                            boxShadow : '4px 4px 0px var(--border-shadow)',
                             padding : '10px 15px',
                         }}
                         labelStyle={{ color : '#666', fontSize : '12px', fontWeight : 700, marginBottom : '4px'}}
@@ -69,7 +69,7 @@ export default function MonthlyCostComponent() {
                         {chartData.map((entry, index) => (
                             <Cell
                                 key={`cell-${index}`}
-                                fill={index === currentMonth ? '#93c5fd' : '#f3f4f6'}
+                                fill={index === currentMonth ? '#93c5fd' : 'var(--bg-sub)'}
                             />
                         ))}
                     </Bar>

@@ -2,10 +2,10 @@
     max-width: 600px;
     margin: 40px auto;
     padding: 30px;
-    background: #fff;
-    border: 3px solid #000;
+    background: var(--bg-card);
+    border: 3px solid var(--border-shadow);
     border-radius: 16px;
-    box-shadow: 8px 8px 0px #000;
+    box-shadow: 8px 8px 0px var(--border-shadow);
 }
 
 .title {
@@ -40,7 +40,7 @@
 
 .select, .textarea, .disabledInput {
     padding: 12px;
-    border: 2px solid #000;
+    border: 2px solid var(--border-shadow);
     border-radius: 8px;
     font-size: 15px;
     font-family: inherit;
@@ -48,7 +48,7 @@
 
 .select:focus, .textarea:focus {
     outline: none;
-    background-color: #fffbeb;
+    background-color: var(--bg-card)beb;
 }
 
 .disabledInput {
@@ -59,29 +59,30 @@
 
 .textarea {
     resize: none;
+    color : var(--text-main);
 }
 
 .submitBtn {
     margin-top: 10px;
     padding: 15px;
     background-color: #fdba74;
-    border: 2px solid #000;
+    border: 2px solid var(--border-shadow);
     border-radius: 8px;
     font-size: 16px;
     font-weight: 800;
     cursor: pointer;
-    box-shadow: 4px 4px 0px #000;
+    box-shadow: 4px 4px 0px var(--border-shadow);
     transition: all 0.1s;
 }
 
 .submitBtn:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px #000;
+    box-shadow: 6px 6px 0px var(--border-shadow);
 }
 
 .submitBtn:active {
     transform: translate(2px, 2px);
-    box-shadow: 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px var(--border-shadow);
 }
 
 .submitBtn:disabled {

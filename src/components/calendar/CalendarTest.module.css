@@ -3,10 +3,10 @@
     width: 100%;
     max-width: 1000px; /* 너무 넓어지지 않게 제한 */
     margin: 0 auto;
-    background-color: #fff;
-    border: 3px solid #000;
+    background-color: var(--bg-card);
+    border: 3px solid var(--border-shadow);
     border-radius: 16px;
-    box-shadow: 8px 8px 0px #000; /* 볼드한 그림자 효과 */
+    box-shadow: 8px 8px 0px var(--border-shadow); /* 볼드한 그림자 효과 */
     padding: 24px;
     box-sizing: border-box;
 }
@@ -17,7 +17,7 @@
     grid-template-columns: repeat(7, 1fr);
     gap: 12px;
     margin-bottom: 16px;
-    border-bottom: 3px solid #000;
+    border-bottom: 3px solid var(--border-shadow);
     padding-bottom: 12px;
 }
 
@@ -25,7 +25,7 @@
     text-align: center;
     font-size: 16px;
     font-weight: 800;
-    color: #000;
+    color : var(--text-main)
 }
 
 /* 달력 그리드 */
@@ -45,12 +45,12 @@
     flex-direction: column;
     min-height: 100px; /* 칸을 시원하게 키움 */
     padding: 10px;
-    border: 2px solid #000;
+    border: 2px solid var(--border-shadow);
     border-radius: 12px;
-    background-color: #fff;
+    background-color: var(--bg-card);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    box-shadow: 3px 3px 0px #000;
+    box-shadow: 3px 3px 0px var(--border-shadow);
 }
 
 /* 구독이 있는 날짜의 배경색 */
@@ -60,17 +60,17 @@
 
 .dayItem:hover:not(:disabled) {
     transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px #000;
+    box-shadow: 5px 5px 0px var(--border-shadow);
 }
 
 /* 선택된 날짜 강조 */
 .dayItem.selected {
-    border-color: #fff;
-    background-color: #000;
-    color: #fff;
+    border-color: var(--bg-card);
+    background-color : var(--bg-main)
+    color: var(--bg-card);
 }
 .dayItem.selected .dateNumber {
-    color: #fff;
+    color: var(--bg-card);
 }
 
 /* 날짜 숫자 */
@@ -88,8 +88,8 @@
 /* '오늘' 뱃지 */
 .todayBadge {
     font-size: 10px;
-    background-color: #000;
-    color: #fff;
+    background-color : var(--bg-main)
+    color: var(--bg-card);
     padding: 2px 6px;
     border-radius: 4px;
 }
@@ -106,8 +106,8 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    border: 1px solid #000;
-    background-color: #fff;
+    border: 1px solid var(--border-shadow);
+    background-color: var(--bg-card);
     object-fit: cover;
 }
 
@@ -119,8 +119,8 @@
     justify-content: center;
     width: 24px;
     height: 24px;
-    background-color: #fff;
-    border: 1px solid #000;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-shadow);
     border-radius: 50%;
 }
 
@@ -157,19 +157,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid #000;
+    border: 2px solid var(--border-shadow);
     border-radius: 12px;
     padding: 16px 20px;
     background-color: #f9f9f9;
-    box-shadow: 2px 2px 0px #000;
+    box-shadow: 2px 2px 0px var(--border-shadow);
 }
 
 .foldLogo {
     width: 40px;
     height: 40px;
     border-radius: 30%;
-    border: 1px solid #000;
-    background-color: #fff;
+    border: 1px solid var(--border-shadow);
+    background-color: var(--bg-card);
     object-fit: contain;
 }
 
@@ -195,8 +195,8 @@
 }
 
 .foldDateBox {
-    background-color: #000;
-    color: #fff;
+    background-color : var(--bg-main)
+    color: var(--bg-card);
     font-size: 13px;
     font-weight: 700;
     padding: 8px 12px;

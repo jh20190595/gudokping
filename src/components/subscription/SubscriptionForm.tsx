@@ -86,7 +86,7 @@ export default function SubscriptionForm({ initialData, isEditMode, onClose }: P
             <div className={styles.top}>
                 <h2>Subscription</h2>
                 <button className={styles.closeBtn} onClick={isEditMode ? onClose : closeForm}>
-                    <X size={24} color='#333' strokeWidth={2.5} />
+                    <X size={24}  className = {styles.topCloseBtn} strokeWidth={2.5} />
                 </button>
             </div>
             <div className={styles.inputWrap}>

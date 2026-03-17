@@ -33,11 +33,11 @@ export default function BudgetComponent() {
 
             <div className={styles.top}>
                 <h4 style={{ margin: 0 }}>Monthly Budget</h4>
-                <p style={{ fontSize: '10px', fontWeight: '600', color: '#333' }}>* 목표 금액 안에서 알뜰하게 구독하기</p>
+                <p style={{ fontSize: '10px', fontWeight: '600', color: 'var(--text-main)' }}>* 목표 금액 안에서 알뜰하게 구독하기</p>
             </div>
 
             <div className={styles.inputWrap}>
-                <span>Budget  :  </span>
+                <span style= {{ color : 'var(--text-main)'}}>Budget  :  </span>
                 <div className={styles.input}>
                     <span>₩</span>
                     <input
@@ -53,7 +53,7 @@ export default function BudgetComponent() {
                 <div className={styles.budgetWrap}>
                     <div>
                     <span style={{ fontSize: "18px", fontWeight: '600' }}>{`₩ ${Math.floor(totalMonthlycost).toLocaleString()} \n`}</span>
-                    <span style={{ fontSize: '13px', fontWeight: '500', color: '#666' }}>{`/ \n₩ ${Math.floor(budget).toLocaleString()}`}</span>
+                    <span style={{ fontSize: '13px', fontWeight: '500', color: 'var(--text-main)' }}>{`/ \n₩ ${Math.floor(budget).toLocaleString()}`}</span>
                     </div>
                     <span style={{ fontSize : '13px' , fontWeight : '700', color : '#f87171' }}>{`${Math.floor(Math.min(totalMonthlycost / Number(budget) * 100,100))}%`}</span>
                 </div>
@@ -78,7 +78,7 @@ function GaugeBar({ budget, monthlyCost }: { budget: number, monthlyCost: number
             height: '14px',
             borderRadius: '8px',
             border: '1px solid #666',
-            backgroundColor: '#f3f4f6',
+            backgroundColor: 'var(--bg-sub)',
             boxSizing: 'border-box',
             overflow: 'hidden'
         }}>

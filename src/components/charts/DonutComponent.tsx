@@ -4,7 +4,13 @@ import styles from './DonutComponent.module.css'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import { useMemo } from 'react';
 
-const COLORS = ["#fca5a5", "#93c5fd", "#c4b5fd", "#86efac", '#dbeafe'];
+const COLORS = [
+    '#FF3366',
+    '#00E5FF', 
+    '#FFD500', 
+    '#B026FF', 
+    '#00FF88'
+];
 const CATEGORY = ['ott', 'music', 'shopping', 'ai', 'food']
 
 export default function DonutComponent() {
@@ -58,7 +64,7 @@ export default function DonutComponent() {
                 </ResponsiveContainer>
 
                 <div className={styles.title}>
-                    <div style={{ fontSize: '12px', color: '#666' }}>Total</div>
+                    <div style={{ fontSize: '12px', color: 'var(--text-main)' }}>Total</div>
                     <div style={{ fontSize: '20px', fontWeight: 'bold' }}>
                         ₩ {Math.floor(totalMonthlycost).toLocaleString()}
                     </div>
@@ -84,7 +90,7 @@ export default function DonutComponent() {
                             </div>
 
                             <div style={{ display: 'flex', gap: '16px' }}>
-                                <span style={{ color: '#000' }}>{percent}%</span>
+                                <span style={{ color: 'var(--text-main)' }}>{percent}%</span>
                             </div>
                         </li>
                     )

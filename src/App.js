@@ -14,6 +14,7 @@ import { supabase } from './lib/supabase.ts';
 import Calendar from './pages/platform/calendar.tsx';
 import Feedback from './pages/platform/feedback.tsx';
 import Help from './pages/platform/help.tsx';
+import Setting from './pages/platform/setting.tsx';
 
 const Analytics = lazy(() => import('./pages/platform/analytics.tsx')) // 지연로딩
 
@@ -53,8 +54,8 @@ function App() {
                 toastOptions={{ 
                     duration: 2000,
                     style: {
-                        background: '#333',
-                        color: '#fff',
+                        background: 'var(--bg-main)',
+                        color: 'var(--text-main)',
                     }
                 }}
             />
@@ -69,6 +70,7 @@ function App() {
                         <Route path='/calendar' element={<Calendar />} />
                         <Route path='/feedback' element={<Feedback/>} />
                         <Route path='/help' element={<Help/>} />
+                        <Route path='/setting' element={<Setting/>}/>
                         <Route path='/analytics' element={
                             <Suspense fallback={<div><LoadingScreen/></div>}>
                                 <Analytics/>

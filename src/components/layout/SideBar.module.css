@@ -3,6 +3,9 @@
     flex-direction: column;
     align-items: flex-start;
     padding : 1.25rem; 
+    position: fixed;
+    top : 0;
+    left : 0;
 }
 
 .logoWrap {
@@ -37,4 +40,8 @@
 
 .active {
     font-weight: bold;
+}
+
+span {
+    color : var(--text-main);
 }

@@ -9,13 +9,13 @@
 }
 
 .modal {
-    background-color: #fff;
-    border: 4px solid #000;
-    box-shadow: 10px 10px 0px #000;
+    background-color: var(--bg-card);
+    border: 4px solid var(--border-shadow);
+    box-shadow: 10px 10px 0px var(--border-shadow);
     padding: 30px;
     width: 100%;
     max-width: 400px;
-    color: #000;
+    color : var(--text-main);
     font-weight: 800;
     border-radius: 4px;
     animation: modalAppear 0.2s ease-out;
@@ -33,7 +33,7 @@
 }
 
 .cancelBtn, .ExtendBtn {
-    border: 2px solid #000;
+    border: 2px solid var(--border-shadow);
     border-radius: 8px;
     padding: 0.6rem 1.4rem;
     font-size: 13px;
@@ -42,9 +42,9 @@
     transition: all 0.1s;
 }
 
-.cancelBtn { background-color: #fff; }
-.ExtendBtn { background-color: #86efac; box-shadow: 3px 3px 0px #000; }
-.ExtendBtn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000; }
+.cancelBtn { background-color: var(--bg-card); }
+.ExtendBtn { background-color: #86efac; box-shadow: 3px 3px 0px var(--border-shadow); }
+.ExtendBtn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--border-shadow); }
 
 /* 💡 직접 수정 섹션 추가 */
 .editLinkWrap {
@@ -61,6 +61,6 @@
     cursor: pointer;
 }
 
-.editLinkBtn:hover { color: #000; }
+.editLinkBtn:hover { color : var(--text-main) }
 
 

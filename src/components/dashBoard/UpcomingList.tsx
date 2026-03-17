@@ -71,9 +71,9 @@ function UpcomingList() {
                             <li key={item.id} className={styles.item}>
                                 <div className={styles.itemLeft}><img src={serviceLogo?.logoUrl || "Logo"} style={{ width: '40px', height: '40px', borderRadius: '30%', objectFit: 'contain', }} /></div>
                                 <div className={styles.itemCenter}>
-                                    <span>{item.service_name}</span>
+                                    <span style={{ color : '#000'}}>{item.service_name}</span>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <span style={{ fontSize: '11px', fontWeight: '700' }}>
+                                        <span style={{ fontSize: '11px', fontWeight: '700', color : item.dDay <= 1 ? "red ": "#000"}}>
                                             {item.dDay === 0 
                                                 ? "D-day" 
                                                 : item.dDay < 0 

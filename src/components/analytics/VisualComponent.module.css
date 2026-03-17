@@ -1,11 +1,11 @@
 .container {
     width: 100%;
     height: 100%;
-    padding : 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap :20px;
+    gap: 20px;
 }
 
 .top {
@@ -16,40 +16,60 @@
 }
 
 .topBtnWrap {
-    border : 2px solid #000;
-    border-radius: 7px;
+    background-color: var(--bg-sub); 
+    border: 2px solid var(--border-shadow);
+    border-radius: 8px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap : 5px;
-    padding : 5px;
-    list-style : none;
+    gap: 4px;
+    padding: 6px;
+    list-style: none;
+    margin: 0;
 }
 
-.topBtnItem > button {
-    border : none;
-    border-radius: 5px;
-    background: transparent;
-    cursor: pointer;
+.topBtnItem {
+    display: flex;
 }
+
+.topBtn {
+    border: 2px solid transparent;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-sub); 
+    font-weight: 700;
+    font-size: 14px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.topBtn:hover {
+    color: var(--text-main);
+}
+
 
 .topBtn.activeBtn {
-    background-color: #000;
-    color : #fff
+    background-color: var(--bg-card); 
+    color: var(--text-main);
+    border: 2px solid var(--border-shadow); 
+    box-shadow: 2px 2px 0px var(--border-shadow);
 }
 
+
 .content {
-    border: 3px solid #000;
-    border-radius: 8px;
+    background-color: var(--bg-card);
+    border: 3px solid var(--border-shadow);
+    box-shadow: 4px 4px 0px var(--border-shadow); 
+    border-radius: 12px;
     width: 100%;
     height: 500px;
-    padding : 5px;
+    padding: 16px;
 }
 
 .calendarContent {
     width: 100%;
     height: 500px;
-    padding : 5px;
+    padding: 5px;
 }
-

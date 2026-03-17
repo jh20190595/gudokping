@@ -2,6 +2,8 @@ import toast from 'react-hot-toast';
 import { useSubscriptionMutation } from '../../hooks/useSubscriptionMutation.tsx';
 import styles from './ExtendModal.module.css';
 import { Subscription } from '../../types/subscription.tsx';
+import { QueryClient, useQueryClient } from '@tanstack/react-query';
+import { useAuthStore } from '../../store/useAuthStore.tsx';
 
 interface Props {
     sub: Subscription;
@@ -11,6 +13,8 @@ interface Props {
 
 export default function ExtendModal({ sub, onClose, onOpenEdit }: Props) {
     const { updateMutation } = useSubscriptionMutation();
+    const { session } = useAuthStore();
+    const userId = session?.user.id
 
     const nextDateString = getNextDate(sub.next_billing_date, sub.start_date, sub.billing_cycle);
 
@@ -20,7 +24,6 @@ export default function ExtendModal({ sub, onClose, onOpenEdit }: Props) {
             { id: sub.id, updateData: { next_billing_date: nextDateString } },
             {
                 onSuccess: () => {
-                    toast.success('구독이 성공적으로 연장되었습니다! 🎉');
                     onClose(e);
                 },
                 onError: () => toast.error('연장에 실패했어요.')

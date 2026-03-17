@@ -39,7 +39,7 @@
     height: 50px;
     object-fit: contain;
     border-radius: 8px;
-    border : 2px solid #000;
+    border : 2px solid var(--border-shadow);
     background-color: #fff;
 }
 

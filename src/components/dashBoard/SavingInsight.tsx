@@ -13,13 +13,13 @@ function SavingInsight() {
     };
 
     return (
-        <div style={{ padding: '1.875rem', border: '1px solid #e5e7eb', borderRadius: '0.5rem', backgroundColor: '#fff' }}>
+        <div style={{ padding: '1.875rem', border: '1px solid #e5e7eb', borderRadius: '0.5rem', backgroundColor: 'var(--bg-card)' }}>
             <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '10px' }}>
                 👨‍👩‍👧‍👦 이번 달 파티 정산
             </h3>
             <p style={{ color: '#666', marginBottom: '20px' }}>
                 파티원들에게 받아야 할 총금액<br/>
-                <strong style={{ fontSize: '1.5rem', color: '#000' }}>12,750원</strong>
+                <strong style={{ fontSize: '1.5rem', color: 'var(--border-shadow)' }}>12,750원</strong>
             </p>
             
             <button 
@@ -28,7 +28,7 @@ function SavingInsight() {
                     width: '100%',
                     padding: '12px 0', 
                     backgroundColor: '#FEE500', /* 카카오톡 노란색 */
-                    color: '#000000', 
+                    color: 'var(--border-shadow)000', 
                     border: 'none', 
                     borderRadius: '8px', 
                     cursor: 'pointer', 

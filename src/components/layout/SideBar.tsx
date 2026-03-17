@@ -7,10 +7,10 @@ import { RiFileListFill } from "react-icons/ri";
 export default function SideBar() {
 
     return (
-        <div className={styles['container']}>
+        <div className={styles.container}>
 
             <div className={styles.logoWrap}>
-                ]               로고 들어갈 자리
+                로고 들어갈 자리
             </div>
 
             <div className={styles.sectionContainer}>
@@ -85,7 +85,15 @@ export default function SideBar() {
                         <RiFileListFill size={16} color="#666" />
                         <span>help (FAQ)</span>
                     </NavLink>
-
+                    <NavLink
+                        to="./setting"
+                        className={({ isActive }) =>
+                            isActive ? `${styles.menuItem} ${styles.active}` : styles.menuItem
+                        }
+                    >
+                        <RiFileListFill size={16} color="#666" />
+                        <span>setting</span>
+                    </NavLink>
                 </div>
             </div>
 

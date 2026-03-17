@@ -19,9 +19,10 @@
     display: flex; 
     align-items: center;
     gap : 10px;
-    border : 2px solid #000;
+    border : 2px solid var(--border-shadow);
     border-radius: 8px;
-    padding : 1rem 1rem
+    padding : 1rem 1rem;
+    background-color: var(--bg-main);
 }
 
 .textWrap div {

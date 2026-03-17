@@ -19,7 +19,7 @@
     top: calc(100%);
     right: 0; 
     width: 120px;
-    background: #fff;
+    background: var(--bg-card);
     border: 1px solid #e5e7eb;
     border-radius: 0.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

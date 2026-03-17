@@ -48,7 +48,7 @@ export function SubscriptionItem({ item }) {
                     <div className={styles.listImg}>
                         <img
                             src={serviceInfo?.logoUrl}
-                            style={{ width: '40px', height: '40px', borderRadius: '30%', objectFit: 'contain' }}
+                            style={{ width: '40px', height: '40px', borderRadius: '30%', objectFit: 'contain', color : '#000'}}
                             alt="logo"
                         />
                     </div>
@@ -56,7 +56,7 @@ export function SubscriptionItem({ item }) {
                     <div className={styles.listContent}>
                         <div className={styles.contentTop}>
                             <span style={{ fontSize: '14px', fontWeight: '600' }}>{item.service_name}</span>
-                            <div className={styles.listCategory} style={{ backgroundColor: categoryColor }}>
+                            <div className={styles.listCategory} style={{ backgroundColor: categoryColor, color : '#000' }}>
                                 {item.category}
                             </div>
                         </div>
@@ -77,7 +77,7 @@ export function SubscriptionItem({ item }) {
                     {item.next_billing_date && (
                         <div className={styles.deleteBtnWrap}>
                             <button className={styles.deleteBtn} onClick={(e) => handleDelete(e)}>
-                                <X size={11} color='#000' strokeWidth={3} />
+                                <X size={11} color='var(--text-main)' strokeWidth={3} />
                             </button>
                         </div>
                     )}
