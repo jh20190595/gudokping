@@ -1,24 +1,28 @@
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useAuthStore } from '../../store/useAuthStore.tsx';
 import { supabase } from '../../lib/supabase.ts';
 import styles from './setting.module.css';
-import { LogOut, User, Bell, Trash2, CreditCard, Moon, Download, Smartphone, Settings as SettingsIcon, Database,Sun } from 'lucide-react';
+import { LogOut, User, Bell, Trash2, CreditCard, Moon, Download, Smartphone, Settings as SettingsIcon, Database, Sun } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useEffect,useState } from 'react';
+import { useUpdateProfile,useProfileSettings} from '../../hooks/useProfile.tsx';
 
 export default function Settings() {
+    const [isDark, setIsDark] = useState(() => {
+        return localStorage.getItem('theme') === 'dark';
+    })
     const { session, setSession } = useAuthStore();
     const navigate = useNavigate();
+    const userId = session?.user?.id;
 
     const userEmail = session?.user?.email || '이메일 정보 없음';
     const userName = session?.user?.user_metadata?.name || '구독핑 유저';
     const avatarUrl = session?.user?.user_metadata?.avatar_url || 'https://via.placeholder.com/80';
 
-    const [isDark, setIsDark] = useState(() => {
-        return localStorage.getItem('theme') === 'dark';
-    })
+    const { data : isEmailEnabled = true , isLoading : isLoadingProfile } = useProfileSettings();
+    const { mutate : updateEmail, isPending } = useUpdateProfile();
 
-    useEffect(() => {
+    useEffect(() => {  
         if (isDark) {
             document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
@@ -28,7 +32,15 @@ export default function Settings() {
         }
     }, [isDark])
 
+    /*const handleToggleEmail = () => {
+        if(!userId || isPending) return;
 
+        console.log('현재 상태 :', isEmailEnabled, '보낼 상태 : ', !isEmailEnabled)
+        updateEmail({
+            id : userId,
+            emailEnabled : !isEmailEnabled,
+        })
+    }*/
 
     const handleLogout = async () => {
         const { error } = await supabase.auth.signOut();
@@ -48,10 +60,10 @@ export default function Settings() {
                 <p className={styles.subtitle}>내 계정과 앱 설정을 관리하세요.</p>
             </header>
 
-          
+
             <div className={styles.mainGrid}>
 
-    
+
                 <section className={styles.card}>
                     <h3 className={styles.cardTitle}>
                         <User size={20} strokeWidth={2.5} /> 내 프로필
@@ -65,39 +77,74 @@ export default function Settings() {
                     </div>
                 </section>
 
-          
+
                 <section className={styles.card}>
                     <h3 className={styles.cardTitle}>
                         <SettingsIcon size={20} strokeWidth={2.5} /> 환경 설정
                     </h3>
                     <div className={styles.listContent}>
-                        <div className={styles.listItem} onClick={() => toast('알림 기능은 준비 중입니다!', { icon: '🔔' })}>
+
+                        <div className={styles.listItem}  style={{ cursor : isPending ? 'not-allowed' : 'pointer' , opacity : isPending ? 0.6 : 1}}>
                             <div className={styles.itemLeft}>
                                 <Bell size={20} strokeWidth={2.5} />
                                 <span>결제일 알림</span>
                             </div>
-                            <div className={styles.togglePlaceholder}></div>
+
+                            <div
+                                className={styles.togglePlaceholder}
+                                style={{
+                                    backgroundColor: isEmailEnabled ? '#4ade80' : 'var(--text-sub)',
+                                    position: 'relative',
+                                }}
+                            >
+
+                                <div style={{
+                                    position: 'absolute',
+                                    top: '1px',
+                                    left: '2px',
+                                    width: '16px',
+                                    height: '16px',
+                                    borderRadius: '50%',
+                                    backgroundColor: 'var(--bg-card)',
+                                    border: '2px solid var(--border-shadow)',
+                                    transform: isEmailEnabled ? 'translateX(16px)' : 'translateX(0px)',
+                                    transition: 'transform 0.2s ease'
+                                }} />
+                            </div>
                         </div>
+
 
                         <div className={styles.listItem} onClick={() => setIsDark(!isDark)}>
                             <div className={styles.itemLeft}>
                                 {isDark ? <Sun size={20} strokeWidth={2.5} /> : <Moon size={20} strokeWidth={2.5} />}
                                 <span>{isDark ? '라이트 모드' : '다크 모드'}</span>
                             </div>
-             
-                            <div className={styles.togglePlaceholder} style={{ backgroundColor: isDark ? '#4ade80' : 'var(--text-sub)' }}>
+                            <div
+                                className={`${styles.togglePlaceholder} ${isDark ? styles.toggleOn : ''}`}
+                                style={{
+                                    backgroundColor: isDark ? '#4ade80' : 'var(--text-sub)',
+                                    position: 'relative',
+                                }}
+                            >
                                 <div style={{
-                                    width: '16px', height: '16px', backgroundColor: '#fff',
-                                    borderRadius: '50%', border: '2px solid var(--border-shadow)',
-                                    transform: isDark ? 'translateX(20px)' : 'translateX(0px)',
+                                    position: 'absolute',
+                                    top: '1px',
+                                    left: '2px',
+                                    width: '16px',
+                                    height: '16px',
+                                    borderRadius: '50%',
+                                    backgroundColor: 'var(--bg-card)',
+                                    border: '2px solid var(--border-shadow)',
+                                    transform: isDark ? 'translateX(16px)' : 'translateX(0px)',
                                     transition: 'transform 0.2s ease'
                                 }} />
                             </div>
                         </div>
+
                     </div>
                 </section>
 
-           
+
                 <section className={styles.card}>
                     <h3 className={styles.cardTitle}>
                         <Database size={20} strokeWidth={2.5} /> 데이터 관리
@@ -113,7 +160,7 @@ export default function Settings() {
                     </div>
                 </section>
 
-        
+
                 <section className={styles.card}>
                     <h3 className={styles.cardTitle}>
                         <CreditCard size={20} strokeWidth={2.5} /> 계정 관리
@@ -124,7 +171,6 @@ export default function Settings() {
                         </button>
                         <button
                             className={`${styles.actionBtn} ${styles.dangerBtn}`}
-                            onClick={() => toast('회원 탈퇴는 신중하게!', { icon: '⚠️' })}
                         >
                             <Trash2 size={18} strokeWidth={2.5} /> 회원 탈퇴
                         </button>

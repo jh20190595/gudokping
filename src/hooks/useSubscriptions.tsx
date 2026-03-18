@@ -3,6 +3,7 @@ import { fetchSubscriptionList } from "../api/subscriptionApi.tsx";
 import { Subscription } from "../types/subscription.tsx";
 import { useAuthStore } from "../store/useAuthStore.tsx";
 
+
 export const useSubscriptions = (sortBy : 'price' | 'created_at' = 'created_at') => {
 
     const { session } = useAuthStore();
@@ -21,3 +22,4 @@ export const useSubscriptions = (sortBy : 'price' | 'created_at' = 'created_at')
     }
 
 }
+

@@ -26,6 +26,7 @@ export const fetchSubscriptionList = async (userId: string | undefined , sortBy 
 
 }
 
+
 export type insertSubscriptionData = Omit<Subscription, 'id' | 'created_at'>
 
 export const insertSubscription = async (form : insertSubscriptionData) => {
@@ -78,3 +79,4 @@ export const deleteSubscription = async (id:string) => {
         return;
     }
 }
+

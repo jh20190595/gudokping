@@ -37,12 +37,15 @@
 .closeBtn:hover { transform: scale(1.1); }
 
 .title {
-    font-size: 1.5rem; font-weight: 700;
-    color: #292524; margin-bottom: 10px;
+    font-size: 1.5rem; 
+    font-weight: 700;
+    color : var(--text-main);
+    margin-bottom: 10px;
 }
 
 .desc {
-    font-size: 0.9rem; color: var(--text-sub);
+    font-size: 0.9rem; 
+    color: var(--text-main);
     margin-bottom: 30px;
 }
 
