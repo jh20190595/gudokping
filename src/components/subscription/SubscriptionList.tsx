@@ -48,7 +48,7 @@ export function SubscriptionItem({ item }) {
                     <div className={styles.listImg}>
                         <img
                             src={serviceInfo?.logoUrl}
-                            style={{ width: '40px', height: '40px', borderRadius: '30%', objectFit: 'contain', color : '#000'}}
+                            style={{ width: '40px', height: '40px', borderRadius: '30%', objectFit: 'contain'}}
                             alt="logo"
                         />
                     </div>
@@ -69,7 +69,7 @@ export function SubscriptionItem({ item }) {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <button className={styles.urlBtn}>
-                                <span style={{ fontSize: '12px', fontWeight: '600' }}>Website : </span>
+                                <span style={{ fontSize: '12px', fontWeight: '600',color : '#000' }}>Website : </span>
                                 {serviceInfo?.site_url}
                             </button>
                         </a>

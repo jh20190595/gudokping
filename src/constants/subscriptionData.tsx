@@ -260,7 +260,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Chatgpt',
         name: 'ChatGPT',
         category: 'AI',
-        logoUrl: '/logos/W9ys5CTrjOw-4TTskLe9eAcVE3gvoMMRUnn2Oj31sTr7iATjbUZfziy1QOo72HTlKsFEltwTd6v0VfA1P9BTlF96XEAXRNjyx1TVpJJLNHmtkhBokx3WTiMDep35jXUD8YB0VJ-rFWW0DUaVG3Glzg.svg',
+        logoUrl: '/logos/0WoyJmnu5iTkXGL4zABBvIKZjfW7PUtweEKYvUWupwhpaCjRCBPKCaPTuJsg1zmqQVnYXY1y27P9V1Nb2WPvLmoAa8cf78svMZi0SqKnIEfOd4q_Sc1L5hlHTeRF2elqViYXz7M0buILNrRsdT06jw.svg',
         site_url: 'https://chat.openai.com',
         plans: [
             { id: 'gpt-go', name: 'Go (월 $8)', price: 11200 },

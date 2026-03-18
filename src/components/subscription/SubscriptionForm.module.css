@@ -166,7 +166,7 @@
     background-color: #bfdbfe; 
     border: 2px solid var(--border-shadow);
     border-radius: 8px;
-    color : var(--text-main);
+    color : #000;
     font-size: 13px;
     font-weight: 800;
     cursor: pointer;
@@ -188,7 +188,7 @@
     border: 3px solid var(--border-shadow);
     border-radius: 8px;
     background-color: #86efac; 
-    color : var(--text-main);
+    color : #000;
     font-size: 16px;
     font-weight: 800;
     padding: 1rem;

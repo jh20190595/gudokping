@@ -1,14 +1,25 @@
 .container {
+  --bg-main : #f5f5f4;
+  --spinner-color : #292524;
+
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center; 
-  align-items: center;   
-  background-color: #f5f5f4;
+  align-items: center;
+  background-color: var(--bg-main);
+  transition: background-color 0.2s ease;
 }
 
+:global([data-theme='dark']) .container,
+:global(.dark) .container {
+  --bg-main : #1c1917;
+  --spinner-color : #f5f5f4;
+}
+
+
 .spinner {
-  color: #292524; 
+  color : var(--spinner-color);
   animation: spin 1s linear infinite; 
 }
 

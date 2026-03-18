@@ -24,20 +24,19 @@ export default function OptionSelect({ value, options, placeholder, onSelect, is
     // valuse = 영어 서비스명, 즉 supabase DB에 저장되는 값은 영어임
 
     const selectedOption = options.find(opt => opt.value === value);
-
+    const BLACK_LOGOS = ['Youtube_premium', 'ChatGPT'];
     return (
         <Select.Root value={value} onValueChange={onSelect} >
             <Select.Trigger className={styles.SelectTrigger} disabled={isEditMode} >
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px',}}>
                     {selectedOption?.logoUrl && (
                         <img
                             src={selectedOption.logoUrl}
                             alt="logo"
-                            style={{ width: '25px', height: '25px', borderRadius: '30%', objectFit: 'contain' }}
+                            style={{ width: '25px', height: '25px', borderRadius: '30%', objectFit: 'contain', backgroundColor : '#ffffff', padding: '2px', boxSizing : 'border-box'}}
                         />
                     )}
-                    <Select.Value className={styles.SelectValue} placeholder={placeholder} />
+                    <Select.Value placeholder={placeholder} />
                 </div>
                 <Select.Icon className={styles.SelectIcon}>
                     <ChevronDownIcon />
@@ -54,7 +53,7 @@ export default function OptionSelect({ value, options, placeholder, onSelect, is
                                     value={method.value}
                                     className={styles.SelectItem}
                                 >
-                                    {method.logoUrl && (<img src={method.logoUrl} style={{ width: '20px', height: '20px', objectFit: 'contain', borderRadius: '30%' }} />)}
+                                    {method.logoUrl && (<img src={method.logoUrl} style={{ width: '20px', height: '20px', objectFit: 'contain', borderRadius: '30%', }} />)}
                                     <Select.ItemText>{method.label}</Select.ItemText>
                                     <Select.ItemIndicator className={styles.SelectItemIndicator}>
                                         <CheckIcon />
