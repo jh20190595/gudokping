@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './help.module.css';
+import styles from './Help.module.css';
 import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5';
 
 interface FAQItem {

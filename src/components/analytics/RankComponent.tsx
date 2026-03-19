@@ -1,5 +1,5 @@
-import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
-import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
+import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.ts';
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
 import { Lightbulb } from 'lucide-react';
 import styles from './RankComponent.module.css';
 
@@ -23,7 +23,7 @@ export default function RankComponent() {
 
                             <div className={styles.listReft}>
                                 <div className={styles.listRank}><span style={{ color : '#fff'}}>{`${index + 1}`}</span></div>
-                                <div className={styles.listImg}><img src={serviceLogo} style={{ width: '40px', height: '40px', objectFit: 'contain', borderRadius: '30%' }} /></div>
+                                <div className={styles.listImg}><img src={serviceLogo} alt="logo" style={{ width: '40px', height: '40px', objectFit: 'contain', borderRadius: '30%' }} /></div>
                                 <div className={styles.listContent}>
                                     <p style={{ margin : 0, fontSize: '12px', fontWeight: '700' }}>{sub.service_name}</p>
                                     <p style={{ margin : 0, fontSize: '10px', fontWeight: '600', color: '#666' }}>{sub.category}</p>

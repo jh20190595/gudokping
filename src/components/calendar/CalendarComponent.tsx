@@ -1,5 +1,5 @@
-import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
-import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
+import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.ts';
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
 import styles from './CalendarComponent.module.css';
 import { useState, useMemo } from 'react';
 
@@ -92,7 +92,7 @@ export default function CalendarComponent() {
                         const serviceLogo = SUBSCRIPTION_SERVICES.find(f => f.service_name === item.service_name)?.logoUrl;
                         return (
                             <li key={item.id} className={styles.foldItem}>
-                                <img src={serviceLogo} style={{ width: '30px', height: '30px', objectFit: 'contain', borderRadius: '30%' }} />
+                                <img src={serviceLogo} alt = "logo" style={{ width: '30px', height: '30px', objectFit: 'contain', borderRadius: '30%' }} />
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
                                     <p style={{ fontSize: '12px', fontWeight: '700' }}>{item.service_name}</p>
                                     <p style={{ fontSize: '10px', fontWeight: '500', color: 'var(--text-main)' }} >{item.category}</p>

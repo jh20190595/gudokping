@@ -1,8 +1,9 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateEmailEnabled, fetchEmailEnabled } from "../api/profileApi.tsx"
-import { useAuthStore } from "../store/useAuthStore.tsx";
+import { updateEmailEnabled, fetchEmailEnabled,deleteUser } from "../api/profileApi.ts"
+import { useAuthStore } from "../store/useAuthStore.ts";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase.ts";
 
 export const useProfileSettings = () => {
     const { session } = useAuthStore();
@@ -38,3 +39,22 @@ export const useUpdateProfile = () => {
         }
     });
 }
+
+export const useDeleteUser = () => {
+    const { setSession } = useAuthStore();
+    const navigate = useNavigate();
+
+    return useMutation({
+        mutationFn : deleteUser,
+        onSuccess : async () => {
+            await supabase.auth.signOut();
+            setSession(null);
+            toast.success('회원 탈퇴가 완료되었습니다.');
+            navigate('/')
+        },
+        onError : (error : Error) => {
+            toast.error('탈퇴 실패:' + error.message);
+        }
+    })
+
+} 

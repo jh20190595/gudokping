@@ -24,7 +24,7 @@ const PublicPage = () => {
         { name: 'Netflix', amount: 13500, color: '#fecaca', percentage: 29.4 },
         { name: 'Spotify', amount: 10900, color: '#d1fae5', percentage: 23.7 },
         { name: 'YouTube Premium', amount: 14900, color: '#dbeafe', percentage: 32.5 },
-        { name: 'Apple Music', amount: 6600, color: '#fef3c7', percentage: 14.4 }
+        { name: 'Apple Music', amount: 6600, color: 'var(--hover-yellow)', percentage: 14.4 }
     ];
 
     const total = subscriptionData.reduce((sum, item) => sum + item.amount, 0);
@@ -77,7 +77,7 @@ const PublicPage = () => {
                     textAnchor="middle"
                     fontSize="24"
                     fontWeight="bold"
-                    fill="#1c1917"
+                    fill="#000"
                 >
                     ₩{(total / 1000).toFixed(1)}k
                 </text>
@@ -124,7 +124,7 @@ const PublicPage = () => {
                     >
                         <div className={styles.badge}>
                             <Sparkles size={16} color="#ca8a04" />
-                            <span>모든 구독을 한 곳에서</span>
+                            <span style ={{color : '#000'}}>모든 구독을 한 곳에서</span>
                         </div>
 
                         <h1 className={styles.heroTitle}>
@@ -186,9 +186,9 @@ const PublicPage = () => {
                                                     className={styles.legendColor}
                                                     style={{ backgroundColor: item.color }}
                                                 ></div>
-                                                <span>{item.name}</span>
+                                                <span style={{ color : '#000', fontWeight : '500'}}>{item.name}</span>
                                             </div>
-                                            <span style={{ fontWeight: 500, color: '#57534e' }}>
+                                            <span style={{ fontWeight: 500, color: '#000' }}>
                                                 {item.percentage.toFixed(1)}%
                                             </span>
                                         </div>
@@ -253,7 +253,7 @@ const PublicPage = () => {
                         <div className={styles.cardVisual}>
                             <div className={styles.cardInner}>
                                 <div className={styles.cardRow}>
-                                    <span style={{ color: '#57534e' }}>이번 달 구독료</span>
+                                    <span style={{ color: '#000' }}>이번 달 구독료</span>
                                     <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#292524' }}>
                                         ₩45,900
                                     </span>
@@ -311,7 +311,7 @@ const PublicPage = () => {
                             <CreditCard size={20} color="#44403c" />
                         </div>
                     </div>
-                    <p style={{ color: '#57534e' }}>
+                    <p style={{ color: '#000' }}>
                         모든 구독을 한 곳에서, 똑똑하게 관리하세요
                     </p>
                 </div>

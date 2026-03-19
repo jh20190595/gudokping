@@ -14,8 +14,14 @@ serve(async (req) => {
 
   const { data: tomorrowSubs, error } = await supabase
     .from("subscription")
-    .select("*")
-    .eq("next_billing_date", tomorrow);
+    .select(`
+      *,
+      profiles!inner(
+        is_email_enabled
+      )
+    `)
+    .eq("next_billing_date", tomorrow)
+    .eq("profiles.is_email_enabled", true);
 
   if (error) {
     console.log("🚨 DB 에러:", error);

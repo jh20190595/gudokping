@@ -1,4 +1,3 @@
-import { ReactNode } from "react"
 import styles from './Card.module.css';
 
 interface Props {
@@ -18,7 +17,7 @@ export default function Card({ title, value, icon, color, subText,logo }: Props)
                 <div className={styles.itemTitle}>{title}</div>
             </div>
             <div className={styles.itemContent}>
-                {logo && <div><img src={logo} style={{ width : '60px',height : '40px', borderRadius : '30%' ,objectFit : 'contain' , display : 'block'}}/></div>}
+                {logo && <div><img src={logo} alt="logo" style={{ width : '60px',height : '40px', borderRadius : '30%' ,objectFit : 'contain' , display : 'block'}}/></div>}
                 <div className={styles.itemValue}>{value}</div>
                 {subText && <div className={styles.itemSubText}>{subText}</div>}
             </div>

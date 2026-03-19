@@ -1,23 +1,13 @@
-import { SUBSCRIPTION_SERVICES } from "../../constants/subscriptionData.tsx";
+import { useState } from "react";
 import styles from './DetailsComponent.module.css';
+import { SUBSCRIPTION_SERVICES } from "../../constants/subscriptionData.ts";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
-import { useEffect, useState } from "react";
 import { motion } from 'framer-motion';
-import SortButton from "./SortButton.tsx";
-import LoadingScreen from "./LoadingScreen.tsx";
-import { useSubscriptions } from "../../hooks/useSubscriptions.tsx";
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
 
 export default function DetailsComponent() {
 
     const { data : subscriptions } = useSubscriptions();
-
-    useEffect(() => { //이미지 미리 로드해놓기
-        SUBSCRIPTION_SERVICES.forEach((service) => {
-            const img = new Image();
-            img.src = service.logoUrl;
-        });
-    }, []);
-    
 
     const handlePrevPage = () => {
         if (currentPage - 1 < 1) return
@@ -48,7 +38,7 @@ export default function DetailsComponent() {
                     return (
                         <li key={item.id}>
                             <div className={styles.itemContent}>
-                                <div style={{ backgroundColor :'#fff' , borderRadius : '8px'}}><img src={serviceLogoUrl} style={{ width: '30px', height: '30px', borderRadius: '30%', objectFit: 'contain' }} /></div>
+                                <div style={{ backgroundColor :'#fff' , borderRadius : '8px'}}><img src={serviceLogoUrl} alt = "logos" style={{ width: '30px', height: '30px', borderRadius: '30%', objectFit: 'contain' }} /></div>
                                 <div className={styles.textWrap}>
                                     <div>{item.service_name}</div>
                                     <div>₩ {item.price.toLocaleString()}/{item.billing_cycle === 'yearly' ? '년' : '월'}</div>

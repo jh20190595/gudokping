@@ -1,7 +1,6 @@
 import { useState,useEffect } from "react";
-import { SUBSCRIPTION_SERVICES } from "../constants/subscriptionData.tsx";
+import { SUBSCRIPTION_SERVICES } from "../constants/subscriptionData.ts";
 import toast from "react-hot-toast";
-import { IoFemaleSharp } from "react-icons/io5";
 
 const initial_state = {
     service_name: "",

@@ -1,7 +1,7 @@
 import { Treemap, ResponsiveContainer } from "recharts";
-import { useSubscriptions } from "../../hooks/useSubscriptions.tsx";
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
 import styles from './TreemapComponent.module.css'
-import { SUBSCRIPTION_SERVICES } from "../../constants/subscriptionData.tsx";
+import { SUBSCRIPTION_SERVICES } from "../../constants/subscriptionData.ts";
 
 
 const COLORS: Record<string, string> = {
@@ -34,7 +34,7 @@ export default function TreemapComponent() {
 
 
 const CustomTreeMap = (props: any) => {
-    const { x, y, width, height, name, value, index, depth } = props; // 자동으로 recharts에서 값을 넘겨준다.
+    const { x, y, width, height, name, value, depth } = props; // 자동으로 recharts에서 값을 넘겨준다.
 
     if (depth === 0) { // depth는 자신이 몇 번째 자식인지 나타냄 ex) 전체를 감싸는 부모 박스 = 0 리스트 박스 = 1
         return null;

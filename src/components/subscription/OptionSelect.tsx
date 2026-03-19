@@ -2,7 +2,6 @@ import React from 'react';
 import * as Select from '@radix-ui/react-select';
 import { ChevronDownIcon, CheckIcon } from '@radix-ui/react-icons';
 import styles from './OptionSelect.module.css';
-import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
 
 export interface SelectOptions {
     value: string;
@@ -24,7 +23,7 @@ export default function OptionSelect({ value, options, placeholder, onSelect, is
     // valuse = 영어 서비스명, 즉 supabase DB에 저장되는 값은 영어임
 
     const selectedOption = options.find(opt => opt.value === value);
-    const BLACK_LOGOS = ['Youtube_premium', 'ChatGPT'];
+
     return (
         <Select.Root value={value} onValueChange={onSelect} >
             <Select.Trigger className={styles.SelectTrigger} disabled={isEditMode} >
@@ -53,7 +52,7 @@ export default function OptionSelect({ value, options, placeholder, onSelect, is
                                     value={method.value}
                                     className={styles.SelectItem}
                                 >
-                                    {method.logoUrl && (<img src={method.logoUrl} style={{ width: '20px', height: '20px', objectFit: 'contain', borderRadius: '30%', }} />)}
+                                    {method.logoUrl && (<img src={method.logoUrl}  alt = "logo" style={{ width: '20px', height: '20px', objectFit: 'contain', borderRadius: '30%', }} />)}
                                     <Select.ItemText>{method.label}</Select.ItemText>
                                     <Select.ItemIndicator className={styles.SelectItemIndicator}>
                                         <CheckIcon />

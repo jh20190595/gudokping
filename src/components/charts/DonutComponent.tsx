@@ -1,7 +1,7 @@
-import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
-import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.tsx';
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
+import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.ts';
 import styles from './DonutComponent.module.css'
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { useMemo } from 'react';
 
 const COLORS = [

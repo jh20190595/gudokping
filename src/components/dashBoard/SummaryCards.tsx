@@ -1,15 +1,13 @@
-import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.tsx';
-import { useSubscriptionStore } from '../../store/useSettingStore.tsx';
+import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.ts';
 import Card from '../ui/Card.tsx';
 import styles from './SummaryCards.module.css';
 import { IoWallet, IoApps, IoPricetag, IoCalendar } from 'react-icons/io5';
-import { useMemo } from 'react';
-import { useModalStore } from '../../store/useModalStore.tsx';
+import { useModalStore } from '../../store/useModalStore.ts';
 
 
 export default function SummaryCards() {
 
-    const { summary, isLoading } = useSubscriptionSummary();
+    const { summary } = useSubscriptionSummary();
     const { openForm } = useModalStore(); 
 
     const {

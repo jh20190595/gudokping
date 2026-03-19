@@ -1,5 +1,4 @@
-import toast from 'react-hot-toast';
-import { useSubscriptionMutation } from '../../hooks/useSubscriptionMutation.tsx';
+import { useSubscriptionMutation } from '../../hooks/useSubscriptionsQuery.ts';
 import styles from './DeleteModal.module.css';
 
 type Props = {

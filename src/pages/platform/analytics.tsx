@@ -1,17 +1,14 @@
-import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
-import { useModalStore } from '../../store/useModalStore.tsx'
-import { calculateMonthlyTotal } from '../../utils/calculateMonthlyTotal.tsx';
 import SummaryCards from '../../components/dashBoard/SummaryCards.tsx'
-import styles from './analytics.module.css'
-import RankComponent from '../../components/analytics/RankCompoent.tsx';
+import styles from './Analytics.module.css'
+import RankComponent from '../../components/analytics/RankComponent.tsx';
 import BudgetComponent from '../../components/analytics/BudgetComponent.tsx';
 import VisualComponent from '../../components/analytics/VisualComponent.tsx';
 import MonthlyCostComponent from '../../components/analytics/MonthlyCostComponent.tsx';
 
 export default function Analytics() {
 
-    const { openForm } = useModalStore();
-    const { data: subscriptions } = useSubscriptions();
+
+
 
     return (
         <div className={styles.container}>

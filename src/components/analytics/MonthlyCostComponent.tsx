@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from 'recharts';
 import styles from './MonthlyCostComponent.module.css'
 

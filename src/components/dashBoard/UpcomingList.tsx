@@ -1,16 +1,16 @@
-import { useEffect, useMemo, memo, useState } from 'react';
+import {useMemo, memo, useState } from 'react';
 import styles from './Upcoming.module.css';
 import { IoAlertSharp, IoChevronBack, IoChevronForward } from "react-icons/io5";
-import { calculateDday } from '../../utils/dateUtils.tsx';
-import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
-import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
+import { calculateDday } from '../../utils/dateUtils.ts';
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
+import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.ts';
 import ExtendModal from '../ui/ExtendModal.tsx';
-import { Subscription } from '../../types/subscription.tsx';
+import { Subscription } from '../../types/subscription.ts';
 import SubscriptionForm from '../subscription/SubscriptionForm.tsx';
 
 function UpcomingList() {
 
-    const { data: subscriptions, isLoading, isError, error } = useSubscriptions('created_at');
+    const { data: subscriptions} = useSubscriptions('created_at');
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [isExtendId, setIsExtendId] = useState<string | null>(null);
     const [editTargetItem, setEditTargetItem] = useState<Subscription | null>(null);
@@ -27,13 +27,6 @@ function UpcomingList() {
             .sort((a, b) => a.dDay - b.dDay);
 
     }, [subscriptions]);
-
-    useEffect(() => {
-        SUBSCRIPTION_SERVICES.forEach((service) => {
-            const img = new Image();
-            img.src = service.logoUrl;
-        });
-    }, []);
 
 
     const handlePrevPage = () => {
@@ -69,7 +62,7 @@ function UpcomingList() {
                         const serviceLogo = SUBSCRIPTION_SERVICES.find(f => f.service_name.toLowerCase() === item.service_name.toLowerCase())
                         return (
                             <li key={item.id} className={styles.item}>
-                                <div className={styles.itemLeft}><img src={serviceLogo?.logoUrl || "Logo"} style={{ width: '40px', height: '40px', borderRadius: '30%', objectFit: 'contain', }} /></div>
+                                <div className={styles.itemLeft}><img src={serviceLogo?.logoUrl || "Logo"} alt='logo' style={{ width: '40px', height: '40px', borderRadius: '30%', objectFit: 'contain', }} /></div>
                                 <div className={styles.itemCenter}>
                                     <span style={{ color : '#000'}}>{item.service_name}</span>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>

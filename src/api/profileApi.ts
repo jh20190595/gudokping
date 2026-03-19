@@ -1,5 +1,4 @@
 import { supabase } from '../lib/supabase.ts'
-import toast from 'react-hot-toast'
 
 export const fetchEmailEnabled = async (userId : string | undefined) => {
 
@@ -36,4 +35,12 @@ export const updateEmailEnabled = async (id : string, emailEnabled : boolean) =>
 
         return data;
 
+}
+
+export const deleteUser = async () => {
+    const { data , error } = await supabase.functions.invoke('delete-user', {
+        method : 'POST',
+    });
+    if(error) throw error;
+    return data;
 }

@@ -1,14 +1,14 @@
 import { useState } from "react"
-import styles from './ExpenseChart.module.css';
-import OverviewComponent from "../ui/OverviewCompoent.tsx";
-import { useSubscriptions } from "../../hooks/useSubscriptions.tsx";
+import styles from './SubscriptionViewer.module.css';
+
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
 import DetailsComponent from "../ui/DetailsComponent.tsx";
 import LoadingScreen from "../ui/LoadingScreen.tsx";
+import OverviewComponent from "../ui/OverviewComponent.tsx";
 
-export default function ExpenseChart() {
+export default function SubscriptionViewer() {
 
-    const [sortType, setSortType] = useState<'price' | 'created_at'>('created_at')
-    const { data: subscriptions, isLoading } = useSubscriptions(sortType);
+    const { data: subscriptions, isLoading } = useSubscriptions('created_at');
     const [selectMenu, setSelectMenu] = useState<'Overview' | 'Details'>('Overview')
 
     if (subscriptions.length === 0) return <div>등록된 구독이 없어요! </div>

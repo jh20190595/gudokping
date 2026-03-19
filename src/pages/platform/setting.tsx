@@ -1,16 +1,19 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useAuthStore } from '../../store/useAuthStore.tsx';
+import { useAuthStore } from '../../store/useAuthStore.ts';
 import { supabase } from '../../lib/supabase.ts';
-import styles from './setting.module.css';
-import { LogOut, User, Bell, Trash2, CreditCard, Moon, Download, Smartphone, Settings as SettingsIcon, Database, Sun } from 'lucide-react';
+import styles from './Setting.module.css';
+import { LogOut, User, Bell, Trash2, CreditCard, Moon, Smartphone, Settings as SettingsIcon, Database, Sun } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useUpdateProfile,useProfileSettings} from '../../hooks/useProfile.tsx';
+import { useUpdateProfile,useProfileSettings, useDeleteUser} from '../../hooks/useProfile.ts';
+import { useThemeStore } from '../../store/useThemeStore.ts';
 
 export default function Settings() {
-    const [isDark, setIsDark] = useState(() => {
-        return localStorage.getItem('theme') === 'dark';
-    })
+
+    const { isDark , setIsDark } = useThemeStore();
+
+
+    const { mutate : deleteMutate, isPending : isDeletePending } = useDeleteUser();
+
     const { session, setSession } = useAuthStore();
     const navigate = useNavigate();
     const userId = session?.user?.id;
@@ -19,20 +22,16 @@ export default function Settings() {
     const userName = session?.user?.user_metadata?.name || '구독핑 유저';
     const avatarUrl = session?.user?.user_metadata?.avatar_url || 'https://via.placeholder.com/80';
 
-    const { data : isEmailEnabled = true , isLoading : isLoadingProfile } = useProfileSettings();
+    const { data : isEmailEnabled = true  } = useProfileSettings();
     const { mutate : updateEmail, isPending } = useUpdateProfile();
 
-    useEffect(() => {  
-        if (isDark) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
+    const handleDeleteUser = () => {
+        if(window.confirm('정말로 삭제하시겠습니까? 모든 데이터가 삭제됩니다.')){
+            deleteMutate();
         }
-    }, [isDark])
+    }
 
-    /*const handleToggleEmail = () => {
+    const handleToggleEmail = () => {
         if(!userId || isPending) return;
 
         console.log('현재 상태 :', isEmailEnabled, '보낼 상태 : ', !isEmailEnabled)
@@ -40,7 +39,7 @@ export default function Settings() {
             id : userId,
             emailEnabled : !isEmailEnabled,
         })
-    }*/
+    }
 
     const handleLogout = async () => {
         const { error } = await supabase.auth.signOut();
@@ -84,7 +83,7 @@ export default function Settings() {
                     </h3>
                     <div className={styles.listContent}>
 
-                        <div className={styles.listItem}  style={{ cursor : isPending ? 'not-allowed' : 'pointer' , opacity : isPending ? 0.6 : 1}}>
+                        <div className={styles.listItem} onClick={handleToggleEmail} style={{ cursor : isPending ? 'not-allowed' : 'pointer' , opacity : isPending ? 0.6 : 1}}>
                             <div className={styles.itemLeft}>
                                 <Bell size={20} strokeWidth={2.5} />
                                 <span>결제일 알림</span>
@@ -171,8 +170,10 @@ export default function Settings() {
                         </button>
                         <button
                             className={`${styles.actionBtn} ${styles.dangerBtn}`}
+                            onClick={handleDeleteUser}
                         >
-                            <Trash2 size={18} strokeWidth={2.5} /> 회원 탈퇴
+                            <Trash2 size={18} strokeWidth={2.5} />
+                            {isDeletePending ? '처리 중': '회원 탈퇴'}
                         </button>
                     </div>
                 </section>

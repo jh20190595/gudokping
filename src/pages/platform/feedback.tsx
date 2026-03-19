@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useAuthStore } from '../../store/useAuthStore.tsx';
+import { useAuthStore } from '../../store/useAuthStore.ts';
 import { useMutation } from '@tanstack/react-query';
-import styles from './feedback.module.css';
+import styles from './Feedback.module.css';
 import toast from 'react-hot-toast';
 import { supabase } from '../../lib/supabase.ts';
 

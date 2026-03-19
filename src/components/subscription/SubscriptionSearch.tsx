@@ -5,7 +5,6 @@ const CATEGORY_TYPE = ['All', 'OTT', 'Shopping', 'AI', 'Food', 'Music'];
 
 export default function SubscriptionSearch({ value, onSearch, onFilter, onSubFilter }) {
 
-    const [text, setText] = useState<string>("");
     const [activeTap, setActiveTap] = useState<'all' | 'sub'>('all')
     const [activeCategory, setActiceCategory] = useState<'All' | 'OTT' | 'Shopping' | 'AI' | 'Food' | 'Music'>("All")
 

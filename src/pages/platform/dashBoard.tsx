@@ -1,14 +1,10 @@
-import ExpenseChart from '../../components/dashBoard/ExpenseChart.tsx'
+import SubscriptionViewer from '../../components/dashBoard/SubscriptionViewer.tsx'
 import SummaryCards from '../../components/dashBoard/SummaryCards.tsx'
 import UpcomingList from '../../components/dashBoard/UpcomingList.tsx'
-
-import styles from './dashBoard.module.css'
-import SavingInsight from '../../components/dashBoard/SavingInsight.tsx';
-import { useModalStore } from '../../store/useModalStore.tsx';
+import PaymentReminer from '../../components/dashBoard/PaymentReminder.tsx'
+import styles from './DashBoard.module.css'
 
 export default function DashBoard() {
-
-    const {openForm} = useModalStore();
 
     return (
         <div className={styles.container}>
@@ -17,9 +13,9 @@ export default function DashBoard() {
             <div className={styles.divider}></div>
 
             <div className={styles.bottomSection}>
-                <section className={styles.chartArea}><ExpenseChart /></section>
+                <section className={styles.chartArea}><SubscriptionViewer /></section>
                 <section className={styles.listArea}><UpcomingList /></section>
-                <section className={styles.insightArea}><SavingInsight/></section>
+                <section className={styles.PaymentReminderArea}><PaymentReminer/></section>
             </div>
         </div>
     )

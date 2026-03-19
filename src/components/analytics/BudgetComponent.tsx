@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import styles from './BudgetComponent.module.css';
-import { Bug, Pen, Pencil } from 'lucide-react';
-import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.tsx';
-import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
+import { Pencil } from 'lucide-react';
+import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.ts';
 
 export default function BudgetComponent() {
 
     const { summary } = useSubscriptionSummary();
     const { totalMonthlycost = 0 } = summary || {};
-    const { data: subcriptions } = useSubscriptions();
 
     const [budget, setBudget] = useState<number>(() => {
         const save = localStorage.getItem('user_budget');

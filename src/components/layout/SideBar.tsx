@@ -1,21 +1,32 @@
-import { useState } from "react"
+
 import { NavLink } from "react-router-dom"
 import styles from './SideBar.module.css'
-import { IoHome, IoCard, IoBarChart, IoCalendarNumberSharp } from 'react-icons/io5';
+import { IoHome } from 'react-icons/io5';
 import { RiFileListFill } from "react-icons/ri";
+import { useAuthStore } from "../../store/useAuthStore.ts";
 
 export default function SideBar() {
+
+    const { session } = useAuthStore();
+
+    const userName = session?.user?.user_metadata?.name || '구독핑';
+    const avatarUrl = session?.user?.user_metadata?.avatar_url || 'https://via.placeholder.com/80';
 
     return (
         <div className={styles.container}>
 
             <div className={styles.logoWrap}>
-                로고 들어갈 자리
+                <img src={avatarUrl} alt="profile" className={styles.avatar} />
+                <div className={styles.userInfo}>
+                    <p className={styles.userName}>{userName}</p>
+                </div>
             </div>
+
+            <div className={styles.divider} />
 
             <div className={styles.sectionContainer}>
 
-                <div className={styles.sectionWrap}>
+                <div className={styles.topSectionWrap}>
 
                     <div className={styles.sectionTitle}>Main</div>
                     <NavLink
@@ -59,7 +70,7 @@ export default function SideBar() {
                         }
                     >
                         <RiFileListFill size={16} color="#666" />
-                        <span>analytics</span>
+                        <span>Analytics</span>
                     </NavLink>
                 </div>
 
@@ -73,7 +84,7 @@ export default function SideBar() {
                         }
                     >
                         <RiFileListFill size={16} color="#666" />
-                        <span>feedback</span>
+                        <span>Feedback</span>
                     </NavLink>
 
                     <NavLink
@@ -83,7 +94,7 @@ export default function SideBar() {
                         }
                     >
                         <RiFileListFill size={16} color="#666" />
-                        <span>help (FAQ)</span>
+                        <span>Help (FAQ)</span>
                     </NavLink>
                     <NavLink
                         to="./setting"
@@ -92,7 +103,7 @@ export default function SideBar() {
                         }
                     >
                         <RiFileListFill size={16} color="#666" />
-                        <span>setting</span>
+                        <span>Setting</span>
                     </NavLink>
                 </div>
             </div>

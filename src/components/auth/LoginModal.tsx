@@ -1,6 +1,6 @@
 import styles from './LoginModal.module.css';
 import toast from "react-hot-toast";
-import { signinWithKaKao } from "./authApi.tsx";
+import { signinWithKaKao } from "../../api/authApi.ts";
 import { RiKakaoTalkFill } from 'react-icons/ri';
 import { X } from 'lucide-react';
 

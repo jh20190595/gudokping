@@ -1,6 +1,6 @@
 import CalendarComponent from '../../components/calendar/CalendarComponent.tsx';
 import SummaryCards from '../../components/dashBoard/SummaryCards.tsx';
-import styles from './calendar.module.css';
+import styles from './Calendar.module.css';
 
 export default function Calendar() {
     return (

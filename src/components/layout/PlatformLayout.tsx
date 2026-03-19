@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import SideBar from "./SideBar.tsx";
 import styles from './PlatformLayout.module.css'
-import { useModalStore } from '../../store/useModalStore.tsx';
+import { useModalStore } from '../../store/useModalStore.ts';
 import AddSubscriptionModal from '../../components/subscription/AddSubscriptionModal.tsx'
 
 export default function DashBoardLayout() {
 
-    const { isOpen} = useModalStore();
+    const { isOpen } = useModalStore();
     
     return (
         <div className={styles.container}>

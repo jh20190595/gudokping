@@ -1,4 +1,4 @@
-import { supabase } from "../../lib/supabase.ts";
+import { supabase } from "../lib/supabase.ts";
 
 export const signInWithGoogle = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -24,4 +24,7 @@ export const signinWithKaKao = async () => {
             redirectTo : window.location.origin + '/dashboard',
         }
     });
+
+    if(error) throw error
+    
 };

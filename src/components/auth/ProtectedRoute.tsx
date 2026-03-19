@@ -1,10 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
 import LoadingScreen from "../ui/LoadingScreen.tsx";
-import { useAuthStore } from "../../store/useAuthStore.tsx";
+import { useAuthStore } from "../../store/useAuthStore.ts";
 
-export default function LoginValidation() {
+export default function ProtectedRoute() {
 
-    const { session, isAuthLoading, setSession, setAuthLoading } = useAuthStore();
+    const { session, isAuthLoading} = useAuthStore();
 
     if (isAuthLoading) {
         return <LoadingScreen />

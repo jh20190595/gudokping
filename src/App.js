@@ -1,27 +1,30 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import PlatformLayout from './components/layout/PlatformLayout.tsx';
-import DashBoard from './pages/platform/dashBoard.tsx';
-import Subscription from './pages/platform/subscription.tsx';
+import DashBoard from './pages/platform/DashBoard.tsx';
+import Subscription from './pages/platform/Subscription.tsx';
+import Calendar from './pages/platform/Calendar.tsx';
+import Feedback from './pages/platform/Feedback.tsx';
+import Help from './pages/platform/Help.tsx';
+import Setting from './pages/platform/Setting.tsx';
 import PublicLayout from './components/layout/PublicLayout.tsx';
-import PublicPage from './pages/Public/PublicPage.tsx';
-import LoginValidation from './components/auth/LoginValidation.tsx';
+import ProtectedRoute from './components/auth/ProtectedRoute.tsx';
 import { Toaster } from 'react-hot-toast';
 import LoadingScreen from './components/ui/LoadingScreen.tsx';
-import { useAuthStore } from './store/useAuthStore.tsx';
+import { useAuthStore } from './store/useAuthStore.ts';
 import { supabase } from './lib/supabase.ts';
-import Calendar from './pages/platform/calendar.tsx';
-import Feedback from './pages/platform/feedback.tsx';
-import Help from './pages/platform/help.tsx';
-import Setting from './pages/platform/setting.tsx';
 
-const Analytics = lazy(() => import('./pages/platform/analytics.tsx')) // 지연로딩
+import { SUBSCRIPTION_SERVICES } from './constants/subscriptionData.ts';
+import { useThemeStore } from './store/useThemeStore.ts';
+
+
+const Analytics = lazy(() => import('./pages/platform/Analytics.tsx')) // 지연로딩
 
 function App() {
-    const [isDark, setIsDark] = useState(() => {
-        return localStorage.getItem('theme') === 'dark';
-    })
+
+    const { isDark } = useThemeStore();
+
     useEffect(() => {
         if (isDark) {
             document.documentElement.setAttribute('data-theme', 'dark');
@@ -52,6 +55,12 @@ function App() {
         };
     }, [setSession, setAuthLoading]);
 
+    useEffect(() => {
+        SUBSCRIPTION_SERVICES.forEach((service) => {
+            const img = new Image();
+            img.src = service.logoUrl;
+        });
+    }, []);
 
     return (
         <BrowserRouter>
@@ -74,7 +83,7 @@ function App() {
 
                 <Route path='/' element={<PublicLayout />} />
 
-                <Route element={<LoginValidation />}>
+                <Route element={<ProtectedRoute />}>
                     <Route element={<PlatformLayout />}>
                         <Route path='/dashBoard' element={<DashBoard />} />
                         <Route path='/subscription' element={<Subscription />} />

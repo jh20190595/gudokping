@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { useSubscriptions } from "./useSubscriptions.tsx";
-import { SUBSCRIPTION_SERVICES } from "../constants/subscriptionData.tsx";
+import { useSubscriptions } from './useSubscriptionsQuery.ts';
+import { SUBSCRIPTION_SERVICES } from "../constants/subscriptionData.ts";
 
 export const useSubscriptionSummary = () => {
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
+import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.ts';
 import styles from './SubscriptionList.module.css';
 import { IoPencilOutline } from 'react-icons/io5';
 import SubscriptionForm from './SubscriptionForm.tsx';

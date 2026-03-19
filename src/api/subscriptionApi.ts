@@ -1,7 +1,5 @@
-import { SupabaseClient } from '@supabase/supabase-js'
 import { Subscription } from '../types/subscription.tsx'
 import { supabase } from '../lib/supabase.ts'
-import axios from 'axios'
 import toast from 'react-hot-toast'
 
 export const fetchSubscriptionList = async (userId: string | undefined , sortBy : 'price' | 'created_at' = 'created_at') => {

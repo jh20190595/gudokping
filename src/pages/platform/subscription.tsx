@@ -1,18 +1,14 @@
+import { useState, useMemo } from 'react';
 import SummaryCards from '../../components/dashBoard/SummaryCards.tsx';
 import SubscriptionSearch from '../../components/subscription/SubscriptionSearch.tsx';
-import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
-import { useState, useMemo } from 'react';
-
-import styles from './subscription.module.css';
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
+import styles from './Subscription.module.css';
 import SubscriptionList from '../../components/subscription/SubscriptionList.tsx';
-import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
-import { useModalStore } from '../../store/useModalStore.tsx';
+import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.ts';
 
 
 
 export default function Subscription() {
-
-    const { openForm } = useModalStore();
 
     const [searchText, setSearchText] = useState("")
     const [filter, setFilter] = useState<'all' | 'sub'>('all')

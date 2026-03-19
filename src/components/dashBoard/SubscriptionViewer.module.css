@@ -28,10 +28,10 @@
 .ListWrap {
     border: 2px solid #333;
     border-radius: 8px;
-    padding: 0; /* 내부 패딩을 0으로 해서 자식이 꽉 차게 */
+    padding: 0;
     margin: 0;
-    overflow: hidden; /* 자식 요소가 테두리를 넘지 않도록 */
-    background-color: var(--bg-card); /* 배경색 통일 */
-    display: flex; /* 자식이 높이를 100% 채우도록 */
+    overflow: hidden; 
+    background-color: var(--bg-card); 
+    display: flex; 
     flex-direction: column;
 }

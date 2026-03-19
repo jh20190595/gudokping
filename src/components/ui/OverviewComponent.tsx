@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import styles from './Overview.module.css';
-import { useSubscriptions } from "../../hooks/useSubscriptions.tsx";
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
 
 const COLORS = [
     "#fca5a5", "#93c5fd", "#c4b5fd", "#fdba74", "#86efac",
@@ -9,7 +9,7 @@ const COLORS = [
 const categoryList = ['OTT', 'SHOPPING', 'AI', 'FOOD', 'MUSIC'];
 
 export default function OverviewComponent() {
-    const { data: subscriptions, isLoading, isError, error } = useSubscriptions('created_at');
+    const { data: subscriptions } = useSubscriptions('created_at');
 
     const [isMounted, setIsMounted] = useState(false);
 

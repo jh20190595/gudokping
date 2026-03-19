@@ -1,9 +1,7 @@
 import toast from 'react-hot-toast';
-import { useSubscriptionMutation } from '../../hooks/useSubscriptionMutation.tsx';
+import { useSubscriptionMutation } from '../../hooks/useSubscriptionsQuery.ts';
 import styles from './ExtendModal.module.css';
-import { Subscription } from '../../types/subscription.tsx';
-import { QueryClient, useQueryClient } from '@tanstack/react-query';
-import { useAuthStore } from '../../store/useAuthStore.tsx';
+import { Subscription } from '../../types/subscription.ts';
 
 interface Props {
     sub: Subscription;
@@ -13,8 +11,6 @@ interface Props {
 
 export default function ExtendModal({ sub, onClose, onOpenEdit }: Props) {
     const { updateMutation } = useSubscriptionMutation();
-    const { session } = useAuthStore();
-    const userId = session?.user.id
 
     const nextDateString = getNextDate(sub.next_billing_date, sub.start_date, sub.billing_cycle);
 

@@ -1,0 +1,33 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8956D"/>
+      <stop offset="100%" stop-color="#C96A3A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon background -->
+  <rect x="0" y="0" width="300" height="300" rx="72" fill="url(#bg)"/>
+
+  <!-- Card body -->
+  <rect x="42" y="82" width="216" height="136" rx="14" fill="#FAF6F2"/>
+
+  <!-- Card top section -->
+  <rect x="42" y="82" width="216" height="28" rx="14" fill="#EDE4D8"/>
+  <rect x="42" y="96" width="216" height="14" fill="#EDE4D8"/>
+
+  <!-- Eyes -->
+  <circle cx="128" cy="150" r="5" fill="#4A3728"/>
+  <circle cx="172" cy="150" r="5" fill="#4A3728"/>
+
+  <!-- Smile -->
+  <path d="M124 167 Q150 181 176 167" fill="none" stroke="#4A3728" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Subtle cheeks -->
+  <ellipse cx="113" cy="163" rx="9" ry="6" fill="#C96A3A" opacity="0.2"/>
+  <ellipse cx="187" cy="163" rx="9" ry="6" fill="#C96A3A" opacity="0.2"/>
+
+  <!-- Dot accents -->
+  <circle cx="252" cy="42" r="4" fill="#ffffff" opacity="0.5"/>
+  <circle cx="48" cy="34" r="2.5" fill="#ffffff" opacity="0.4"/>
+</svg>

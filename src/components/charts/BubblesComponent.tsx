@@ -1,7 +1,7 @@
 import { ResponsiveCirclePacking } from '@nivo/circle-packing';
-import { useSubscriptions } from '../../hooks/useSubscriptions.tsx';
-import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.tsx';
-import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.tsx';
+import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
+import { useSubscriptionSummary } from '../../hooks/useSubscriptionSummary.ts';
+import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.ts';
 import styles from './BubblesComponent.module.css'
 
 const CustomImageLayer = ({ nodes }: any) => {
