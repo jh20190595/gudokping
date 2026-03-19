@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { useSubscriptions } from "../../hooks/useSubscriptionsQuery.ts";
-import { calculateDday } from "../../utils/dateUtils.tsx";
+import { calculateDday } from "../../utils/dateUtils.ts";
 import { SUBSCRIPTION_SERVICES } from "../../constants/subscriptionData.tsx";
 import styles from './KaKaoShareButton.module.css';
 
