@@ -5,11 +5,13 @@ import styles from './Calendar.module.css';
 export default function Calendar() {
     return (
         <div className={styles.container}>
-            <SummaryCards/>
-              <div className={styles.divider}></div>
 
+            <div className={styles.topSection}>
+                <SummaryCards />
+                <div className={styles.divider}></div>
+            </div>
             <div className={styles.content}>
-                <CalendarComponent/>
+                <CalendarComponent />
             </div>
         </div>
     )

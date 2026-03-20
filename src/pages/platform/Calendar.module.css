@@ -12,3 +12,13 @@
 .content {
     padding : 20px;
 }
+
+.topSection {
+    display: none;
+}
+
+@media (min-width : 768px) {
+    .topSection {
+        display: block;
+    }
+}

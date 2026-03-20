@@ -32,10 +32,11 @@ export default function Subscription() {
 
     return (
         <div className={styles.container}>
-            
-            <SummaryCards />
-            <div className={styles.divider}></div>
 
+            <div className={styles.topSection}>
+                <SummaryCards />
+                <div className={styles.divider}></div>
+            </div>
             <div className={styles.searchWrap}>
                 <SubscriptionSearch
                     value={searchText}

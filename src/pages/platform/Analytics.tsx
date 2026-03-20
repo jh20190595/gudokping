@@ -12,8 +12,10 @@ export default function Analytics() {
 
     return (
         <div className={styles.container}>
+            <div className={styles.topSection}>
             <SummaryCards />
             <div className={styles.divider}></div>
+            </div>
 
             <div className={styles.contentWrap}>
 

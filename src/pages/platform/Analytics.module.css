@@ -40,3 +40,13 @@
 .visualWrap {
     grid-column: span 2;
 }
+
+.topSection {
+    display: none;
+}
+
+@media (min-width : 768px) {
+    .topSection {
+        display: block;
+    }
+}
