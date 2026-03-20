@@ -13,7 +13,7 @@
 .bottomSection {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: max-content auto;
     padding : 1.5rem 1.875rem;
     gap: 1.875rem; 
 }

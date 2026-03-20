@@ -16,7 +16,7 @@ export default function PaymentReminder() {
                 const dDay = calculateDday(item.next_billing_date);
                 return { ...item, dDay };
             })
-            .filter((item) => item.dDay >= 0 && item.dDay <= 2)
+            .filter((item) => item.dDay >= 0 && item.dDay <= 1)
             .sort((a, b) => a.dDay - b.dDay);
     }, [subscriptions]);
 
@@ -47,49 +47,27 @@ export default function PaymentReminder() {
     const shareMessage = (serviceName: string, price: number, serviceLogo: string) => {
         const { Kakao } = window as any;
 
-        const DOMAIN = "https://www.gudokping.com";
+        const CURRENT_DOMAIN = window.location.origin;
+        const ASSET_DOMAIN = "https://www.gudokping.com";
 
-        // 이 로직이 있어야 카카오가 내 서버에 있는 멜론 로고를 긁어갑니다!
+
         const ImageUrl = serviceLogo.startsWith('http')
             ? serviceLogo
-            : `${DOMAIN}${serviceLogo}`;
+            : `${ASSET_DOMAIN}${serviceLogo}`;
+
         if (!Kakao || !Kakao.Share) {
-            alert("카카오 기능을 불러오는 중입니다. 잠시 후 다시 시도해 주세요!");
+            alert("카카오 공유 기능을 불러오는 중입니다. 잠시 후 다시 시도해 주세요!");
             return;
         }
 
-        Kakao.Share.sendDefault({
-            objectType: 'feed',
-
-            itemContent: {
-                profileText: `${serviceName} 정산 알림`,
-                profileImageUrl: ImageUrl,
-                items: [
-                    {
-                        item: '1인당 결제 금액',
-                        itemOp: `${price.toLocaleString()}원`
-                    }
-                ],
+        Kakao.Share.sendCustom({
+            templateId: 130867, 
+            templateArgs: {
+                'logoUrl': ImageUrl,  //
+                'serviceName': serviceName,
+                'price': price.toLocaleString(),
+                'webUrl': CURRENT_DOMAIN
             },
-
-            content: {
-                title: `💸 파티원 정산 알림!`,
-                description: `구독료 정산의 시간이 왔습니다. 늦지 않게 송금해 주세요!`,
-                imageUrl: ImageUrl,
-                link: {
-                    mobileWebUrl: 'https://gudokping.com',
-                    webUrl: 'https://gudokping.com',
-                },
-            },
-            buttons: [
-                {
-                    title: '구독핑 바로가기',
-                    link: {
-                        mobileWebUrl: 'https://gudokping.com',
-                        webUrl: 'https://gudokping.com',
-                    },
-                },
-            ],
         });
     };
 
@@ -124,7 +102,6 @@ export default function PaymentReminder() {
                             f => f.service_name === item.service_name
                         )?.logoUrl;
                         const isToday = item.dDay === 0;
-
                         return (
                             <li
                                 key={item.id ?? index}
