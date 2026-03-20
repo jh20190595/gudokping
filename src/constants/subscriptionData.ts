@@ -3,7 +3,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Netflix',
         name: '넷플릭스',
         category: 'OTT',
-        logoUrl: '/logos/netflix.svg',
+        logoUrl: '/logos/netflix 1.png',
         site_url: 'https://www.netflix.com',
         plans: [
             { id: 'nf-ad', name: '광고형 스탠다드', price: 7000 },
@@ -16,7 +16,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Youtube_premium',
         name: '유튜브 프리미엄',
         category: 'OTT',
-        logoUrl: '/logos/youtubepremium.svg',
+        logoUrl: '/logos/youtubepremium 1.png',
         site_url: 'https://www.youtube.com/premium',
         plans: [
             { id: 'yt-pl', name: '프리미엄 라이트', price: 8500 },
@@ -30,7 +30,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Tving',
         name: '티빙',
         category: 'OTT',
-        logoUrl: '/logos/tving.jpg',
+        logoUrl: '/logos/tving 1.png',
         site_url: 'https://www.tving.com',
         plans: [
             { id: 'tv-ad', name: '광고형 스탠다드', price: 5500 },
@@ -44,7 +44,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Disney_plus',
         name: '디즈니 플러스',
         category: 'OTT',
-        logoUrl: '/logos/disney.svg',
+        logoUrl: '/logos/disney 1.png',
         site_url: 'https://www.disneyplus.com',
         plans: [
             { id: 'dp-st', name: '스탠다드', price: 9900 },
@@ -56,7 +56,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Wavve',
         name: '웨이브',
         category: 'OTT',
-        logoUrl: '/logos/wavve.svg',
+        logoUrl: '/logos/wavve 1.png',
         site_url: 'https://www.wavve.com',
         plans: [
             { id: 'wv-ba', name: '베이직', price: 7900 },
@@ -69,7 +69,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Watcha',
         name: '왓챠',
         category: 'OTT',
-        logoUrl: '/logos/watcha.svg',
+        logoUrl: '/logos/watcha 1.png',
         site_url: 'https://watcha.com',
         plans: [
             { id: 'wc-ba', name: '베이직', price: 7900 },
@@ -81,7 +81,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Coupang_play',
         name: '쿠팡플레이',
         category: 'OTT',
-        logoUrl: '/logos/coupangplay.png',
+        logoUrl: '/logos/coupangplay 1.png',
         site_url: 'https://www.coupangplay.com',
         plans: [
             { id: 'cp-wow', name: '와우 멤버십 포함', price: 7890 },
@@ -92,7 +92,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Melon',
         name: '멜론',
         category: 'MUSIC',
-        logoUrl: '/logos/melon.svg',
+        logoUrl: '/logos/melon 1.png',
         site_url: 'https://www.melon.com',
         plans: [
             { id: 'ml-ms', name: '모바일 스트리밍 클럽 정기결제', price: 7590 },
@@ -107,7 +107,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Spotify',
         name: '스포티파이',
         category: 'MUSIC',
-        logoUrl: '/logos/spotify.svg',
+        logoUrl: '/logos/spotify 1.png',
         site_url: 'https://www.spotify.com',
         plans: [
             { id: 'sp-sd', name: '학생', price: 6000 },
@@ -121,7 +121,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Youtube_music',
         name: '유튜브 뮤직',
         category: 'MUSIC',
-        logoUrl: '/logos/youtubemusic.svg',
+        logoUrl: '/logos/youtubemusic 1.png',
         site_url: 'https://music.youtube.com',
         plans: [
             { id: 'ym-pr', name: '개인', price: 11900 },
@@ -133,7 +133,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Apple_music',
         name: '애플 뮤직',
         category: 'MUSIC',
-        logoUrl: '/logos/applemusic.svg',
+        logoUrl: '/logos/applemusic 1.png',
         site_url: 'https://www.apple.com/apple-music/',
         plans: [
             { id: 'am-in', name: '개인', price: 8900 },
@@ -145,7 +145,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Genie',
         name: '지니',
         category: 'MUSIC',
-        logoUrl: '/logos/genie.png',
+        logoUrl: '/logos/genie 1.png',
         site_url: 'https://www.genie.co.kr',
         plans: [
             { id: 'gn-sst', name: '스마트 음악감상', price: 7900 },
@@ -159,7 +159,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Bugs',
         name: '벅스',
         category: 'MUSIC',
-        logoUrl: '/logos/bugs.svg',
+        logoUrl: '/logos/bugs 1.png',
         site_url: 'https://music.bugs.co.kr',
         plans: [
             { id: 'bg-cst', name: '벅스 크루 할인', price: 5940 },
@@ -175,7 +175,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Coupang_eats',
         name: '쿠팡 이츠',
         category: 'FOOD',
-        logoUrl: '/logos/coupangeats.svg',
+        logoUrl: '/logos/coupangeats 1.png',
         site_url: 'https://www.coupangeats.com',
         plans: [
             { id: 'cw-mo', name: '월간 멤버십', price: 7890 },
@@ -186,7 +186,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Coupang_wow',
         name: '쿠팡 와우',
         category: 'SHOPPING',
-        logoUrl: '/logos/coupangwow.jpg',
+        logoUrl: '/logos/coupangwow 1.png',
         site_url: 'https://www.coupang.com',
         plans: [
             { id: 'cw-mo', name: '월간 멤버십', price: 7890 },
@@ -197,7 +197,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Naver_plus',
         name: '네이버 플러스 멤버십',
         category: 'SHOPPING',
-        logoUrl: '/logos/navermembership.svg',
+        logoUrl: '/logos/navermembership 1.png',
         site_url: 'https://nid.naver.com/membership/join',
         plans: [
             { id: 'np-mo', name: '월간 이용권', price: 4900 },
@@ -209,7 +209,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Baemin_club',
         name: '배민클럽',
         category: 'FOOD',
-        logoUrl: '/logos/bamin.svg',
+        logoUrl: '/logos/bamin 1.png',
         site_url: 'https://www.baemin.com',
         plans: [
             { id: 'bm-pmo', name: '월간 이용권(프로모션가)', price: 1990 },
@@ -221,7 +221,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Kurly_lovers',
         name: '컬리 러버스',
         category: 'SHOPPING',
-        logoUrl: '/logos/kurly.svg',
+        logoUrl: '/logos/kurly 1.png',
         site_url: 'https://www.kurly.com',
         plans: [
             { id: 'kl-pa', name: '컬리패스', price: 4500 },
@@ -232,7 +232,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Shinsegae_universe',
         name: '신세계 유니버스',
         category: 'SHOPPING',
-        logoUrl: '/logos/shinsegae.webp',
+        logoUrl: '/logos/shinsegae 1.png',
         site_url: 'https://www.shinsegae-universe.com',
         plans: [
             { id: 'su-ye', name: '연간 멤버십 (연 3만원)', price: 2500 },
@@ -243,7 +243,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Chatgpt',
         name: 'ChatGPT',
         category: 'AI',
-        logoUrl: '/logos/chatgpt.svg',
+        logoUrl: '/logos/chatgpt 1.png',
         site_url: 'https://chat.openai.com',
         plans: [
             { id: 'gpt-go', name: 'Go (월 $8)', price: 11200 },
@@ -256,7 +256,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Gemini',
         name: 'Gemini',
         category: 'AI',
-        logoUrl: '/logos/gemini.svg',
+        logoUrl: '/logos/gemini 1.png',
         site_url: 'https://gemini.google.com',
         plans: [
             { id: 'gmn-free', name: 'Gemini (Free)', price: 0 },
@@ -270,7 +270,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Claude',
         name: 'Claude',
         category: 'AI',
-        logoUrl: '/logos/claude.svg',
+        logoUrl: '/logos/claude 1.png',
         site_url: 'https://claude.ai',
         plans: [
             { id: 'cld-free', name: 'Free', price: 0 },
@@ -283,7 +283,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: 'Cursor',
         name: 'Cursor',
         category: 'AI',
-        logoUrl: '/logos/cursor.webp',
+        logoUrl: '/logos/cursor 1.png',
         site_url: 'https://www.cursor.com',
         plans: [
             { id: 'csr-hobby', name: 'Hobby (Free)', price: 0 },
