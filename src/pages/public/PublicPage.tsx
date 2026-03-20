@@ -100,7 +100,7 @@ const PublicPage = () => {
                 <div className={styles.headerInner}>
                     <div className={styles.logo}>
                         <div className={styles.logoIconBox}>
-                            <CreditCard size={32} color="#44403c" />
+                            <img src="/mainLogos/gudokping_icon.svg" alt='logo' style={{ width : '30px', height : '30px', objectFit : 'contain'}}/>
                         </div>
                     </div>
                    
