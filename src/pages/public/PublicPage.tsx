@@ -308,7 +308,7 @@ const PublicPage = () => {
                 <div className={styles.wrapper}>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
                         <div className={styles.logoIconBox}>
-                            <CreditCard size={20} color="#44403c" />
+                            <img src="/mainLogos/gudokping_icon.svg" alt='logo' style={{ width : '30px', height : '30px', objectFit : 'contain'}}/>
                         </div>
                     </div>
                     <p style={{ color: '#000' }}>
