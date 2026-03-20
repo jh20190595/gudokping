@@ -1,5 +1,5 @@
 .container {
-    width : 100%;
+    width: 100%;
     min-height: 100vh;
 }
 
@@ -10,22 +10,35 @@
     background-color: #e5e7eb;
 }
 
-.bottomSection {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: max-content auto;
-    padding : 1.5rem 1.875rem;
-    gap: 1.875rem; 
-}
 
 .chartArea {
+    min-height: 250px;
+}
 
+
+.bottomSection {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 1rem;
+    gap: 1.5rem;
 }
 
 .listArea {
-    grid-row : span 2
+    grid-row: auto;
 }
 
-.PaymentReminder{
 
+@media (min-width : 1024px) {
+    .bottomSection {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: max-content auto;
+        padding: 1.5rem 1.875rem;
+        gap: 1.875rem;
+    }
+
+    .listArea {
+        grid-row: span 2
+    }
 }

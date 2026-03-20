@@ -56,7 +56,7 @@ function App() {
         };
     }, [setSession, setAuthLoading]);
 
-    useEffect(() => {
+    useEffect(() => { // 이미지 미리 가져오기
         SUBSCRIPTION_SERVICES.forEach((service) => {
             const img = new Image();
             img.src = service.logoUrl;

@@ -26,7 +26,7 @@ export default function OptionSelect({ value, options, placeholder, onSelect, is
 
     return (
         <Select.Root value={value} onValueChange={onSelect} >
-            <Select.Trigger className={styles.SelectTrigger} disabled={isEditMode} >
+            <Select.Trigger className={styles.SelectTrigger} disabled={isEditMode} > 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px',}}>
                     {selectedOption?.logoUrl && (
                         <img
@@ -42,7 +42,7 @@ export default function OptionSelect({ value, options, placeholder, onSelect, is
                 </Select.Icon>
             </Select.Trigger>
 
-            <Select.Portal>
+            <Select.Portal>  
                 <Select.Content className={styles.SelectContent} position="popper" sideOffset={5}>
                     <Select.Viewport className={styles.SelectViewport}>
                         {options.map((method, index) => {
@@ -54,7 +54,7 @@ export default function OptionSelect({ value, options, placeholder, onSelect, is
                                 >
                                     {method.logoUrl && (<img src={method.logoUrl}  alt = "logo" style={{ width: '20px', height: '20px', objectFit: 'contain', borderRadius: '30%', }} />)}
                                     <Select.ItemText>{method.label}</Select.ItemText>
-                                    <Select.ItemIndicator className={styles.SelectItemIndicator}>
+                                    <Select.ItemIndicator className={styles.SelectItemIndicator}> 
                                         <CheckIcon />
                                     </Select.ItemIndicator>
                                 </Select.Item>
