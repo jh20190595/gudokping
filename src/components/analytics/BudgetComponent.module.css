@@ -3,54 +3,103 @@
     height: 100%;
     display: grid;
     grid-template-rows: 0.5fr 0.5fr 1.5fr;
-    gap : 20px;
-    padding : 40px;
+    gap: 20px;
+    padding: 40px;
     box-sizing: border-box;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .inputWrap {
     display: flex;
     align-items: center;
-    gap : 12px;
+    gap: 12px;
     height: 30px;
     width: 40%;
 }
 
 .inputWrap > span {
-    font-size : 11px;
+    font-size: 11px;
     font-weight: 600;
-    color : #333;
+    color: #333;
     flex-shrink: 0;
 }
 
 .input {
     background-color: var(--bg-card);
-    border : 1px solid var(--border-shadow);
+    border: 1px solid var(--border-shadow);
     border-radius: 8px;
     display: flex;
     align-items: center;
-    padding : 2px 4px;
-    width: 50%
+    padding: 2px 4px;
+    width: 50%;
 }
 
 .input > input {
-    padding : 4px;
+    padding: 4px;
     background: transparent;
-    border : none;
+    border: none;
     outline: none;
     width: 97%;
     font-size: 14px;
     font-weight: 700;
-    color : var(--text-main)
+    color: var(--text-main);
 }
 
 .input:hover {
-    border : 2px solid var(--border-shadow);
+    border: 2px solid var(--border-shadow);
 }
 
 .gaugeBarWrap {
     display: flex;
     flex-direction: column;
-    gap :20px;
+    gap: 20px;
 }
 
+.budgetWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 24px;
+        gap: 16px;
+    }
+
+    .inputWrap {
+        width: 60%;
+    }
+
+    .input {
+        width: 60%;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        padding: 16px;
+        gap: 12px;
+        grid-template-rows: auto auto 1fr;
+    }
+
+    .inputWrap {
+        width: 100%;
+        height: auto;
+    }
+
+    .input {
+        width: 100%;
+        flex: 1;
+    }
+
+    .gaugeBarWrap {
+        gap: 12px;
+    }
+}

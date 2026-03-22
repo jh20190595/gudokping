@@ -40,6 +40,10 @@ export default function CalendarComponent() {
     return (
         <div className={styles.container}>
 
+            <div className={styles.title}>
+                <h4>향후 4주 결제 일정</h4>
+            </div>
+
             <div className={styles.headerDays}>
                 {headerDays.map((day,idx) => (
                     <div 
@@ -93,7 +97,7 @@ export default function CalendarComponent() {
                         return (
                             <li key={item.id} className={styles.foldItem}>
                                 <img src={serviceLogo} alt = "logo" style={{ width: '30px', height: '30px', objectFit: 'contain', borderRadius: '30%' }} />
-                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
+                                <div className = {styles.foldItemText} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
                                     <p style={{ fontSize: '12px', fontWeight: '700' }}>{item.service_name}</p>
                                     <p style={{ fontSize: '10px', fontWeight: '500', color: 'var(--text-main)' }} >{item.category}</p>
                                 </div>

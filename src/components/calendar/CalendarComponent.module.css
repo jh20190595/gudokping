@@ -10,6 +10,10 @@
     font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
 }
 
+.title {
+    display: none;
+}
+
 .headerDays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -128,4 +132,32 @@
     margin: 0;
     font-size: 12px;
     font-weight: 600;
+}
+
+@media (max-width : 768px) {
+    .title {
+        display: block;
+        text-align: center;
+        background-color: none;
+    }
+    .dateNumber {
+        font-size : 11px;
+        display: flex;
+        flex-direction: column;
+        gap : 5px;
+    }
+    .todayBadge {
+        font-size: 6px;
+        white-space: nowrap;
+    }
+    .dayItem {
+        min-height: 60px;
+    }
+    .foldWrap {
+        padding : 0;
+    }
+    .foldItem {
+        grid-template-columns: 0.2fr 1fr 1fr;
+        gap : 20px;
+    }
 }

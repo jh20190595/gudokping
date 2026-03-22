@@ -35,7 +35,6 @@
     padding: 1.2rem 1.5rem;
 }
 
-
 .listFold {
     background-color: var(--bg-card);
     display: grid;
@@ -45,24 +44,23 @@
 }
 
 .open .listFold {
-    grid-template-rows : 1fr;
-    border-top : 2px dashed var(--border-shadow);
+    grid-template-rows: 1fr;
+    border-top: 2px dashed var(--border-shadow);
 }
 
 .foldContent {
     overflow: hidden;
-    padding : 0 1.5rem;
+    padding: 0 1.5rem;
     width: 60%;
-    transition : padding 0.5s;
+    transition: padding 0.5s;
     display: grid;
-    gap : 12px;
+    gap: 12px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
 }
 
-
 .open .foldContent {
-    padding : 1.2rem 1.5rem;
+    padding: 1.2rem 1.5rem;
 }
 
 .listImg {
@@ -124,36 +122,41 @@
 }
 
 .foldItem {
-    border : 2px solid var(--border-shadow);
+    border: 2px solid var(--border-shadow);
     border-radius: 12px;
     display: grid;
-    grid-template-rows : 1fr;
+    grid-template-rows: 1fr;
     align-items: center;
-    padding : 0.8rem 1rem;
-    gap : 10px;
+    padding: 0.8rem 1rem;
+    gap: 10px;
 }
 
 .foldTitle {
-    font-size : 11px;
+    font-size: 11px;
     font-weight: 500;
 }
 
 .foldText {
-    font-size : 13px;
+    font-size: 13px;
     font-weight: 700;
 }
 
+.editBtnWrap {
+    grid-column: 1 / -1;
+    display: flex;
+}
+
 .editBtn {
-    border : 2px solid #999;
+    border: 2px solid #999;
     border-radius: 8px;
-    background-color:  #fdba74;
-    font-size : 12px;
+    background-color: #fdba74;
+    font-size: 12px;
     font-weight: 600;
-    padding : 0.3rem 2rem;
+    padding: 0.3rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap : 10px;
+    gap: 10px;
     cursor: pointer;
 }
 
@@ -172,18 +175,17 @@
 
 .modalContent {
     background-color: transparent;
-    border : none;
-    box-shadow :none;
-    padding : 0;
-    width : 90%;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    width: 90%;
     max-width: 520px;
-    max-height : 95vh;
-    padding : 20px;
+    max-height: 95vh;
+    padding: 20px;
     overflow-x: hidden;
     overflow-y: auto;
-
-    -ms-overflow-style : none;
-    scrollbar-width : none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .modalContent::-webkit-scrollbar {
@@ -204,4 +206,72 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 768px) {
+    .listMain {
+        padding: 1rem 1.2rem;
+        gap: 12px;
+    }
+
+    .foldContent {
+        width: 100%;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .open .foldContent {
+        padding: 1rem 1.2rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .listItem {
+        border-radius: 14px;
+        box-shadow: 4px 4px 0px var(--border-shadow);
+    }
+
+    .listMain {
+        padding: 0.9rem 1rem;
+        gap: 10px;
+    }
+
+    .listImg img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .listFold {
+        overflow: visible;
+    }
+
+    .foldContent {
+        width: 100%;
+        box-sizing: border-box;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: unset;
+        gap: 8px;
+    }
+
+    .open .foldContent {
+        padding: 0.9rem 1rem;
+    }
+
+    .foldItem {
+        padding: 0.6rem 0.8rem;
+        gap: 6px;
+    }
+
+    .foldTitle {
+        font-size: 10px;
+    }
+
+    .foldText {
+        font-size: 12px;
+    }
+
+    .urlBtn {
+        padding: 4px 10px;
+        font-size: 10px;
+    }
 }

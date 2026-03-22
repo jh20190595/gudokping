@@ -16,13 +16,15 @@ const CATEGORY = ['ott', 'music', 'shopping', 'ai', 'food']
 export default function DonutComponent() {
 
     const { data: subscriptions = [] } = useSubscriptions();
-
     const { summary } = useSubscriptionSummary();
     const totalMonthlycost = summary?.totalMonthlycost || 0;
 
+    const screenWidth = window.innerWidth;
+    const innerRadius = screenWidth <= 480 ? 55 : screenWidth <= 768 ? 90 : 150;
+    const outerRadius = screenWidth <= 480 ? 85 : screenWidth <= 768 ? 130 : 200;
+
     const filterData = useMemo(() => {
         if (!subscriptions) return [];
-
         const categoryData = CATEGORY.map((categoryName) => {
             const totalValue = subscriptions
                 .filter((sub) => sub.category.toLocaleLowerCase() === categoryName)
@@ -30,29 +32,25 @@ export default function DonutComponent() {
                     const monthlyPrice = sub.billing_cycle === 'yearly' ? sub.price / 12 : sub.price;
                     return acc + monthlyPrice
                 }, 0)
-            return {
-                name: categoryName,
-                value: totalValue
-            }
+            return { name: categoryName, value: totalValue }
         })
-
         return categoryData.filter(f => f.value > 0);
     }, [subscriptions])
 
     return (
         <div className={styles.chartWrapper}>
-            <div style={{ gridRow : 'span 2'}}>
+            <div style={{ gridRow: 'span 2' }}>
                 <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                         <Pie
                             data={filterData}
-                            dataKey="value" // value를 기준으로 조각하기
-                            cx="50%" // 차트의 X축 중심 위치
-                            cy="50%" // 차트의 Y축 중심 위치
-                            innerRadius={150} // 안쪽을 
-                            outerRadius={200} // 바깥쪽 반지름
-                            paddingAngle={5} // 간격
-                            stroke="none" // 테두리 선 제거
+                            dataKey="value"
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={innerRadius}
+                            outerRadius={outerRadius}
+                            paddingAngle={5}
+                            stroke="none"
                             animationDuration={800}
                             animationBegin={100}
                         >
@@ -70,12 +68,12 @@ export default function DonutComponent() {
                     </div>
                 </div>
             </div>
-            <ul className= {styles.legendWrap}>
+
+            <ul className={styles.legendWrap}>
                 {filterData.map((item, index) => {
                     const percent = totalMonthlycost > 0
                         ? Math.round((item.value / totalMonthlycost) * 100)
                         : 0;
-
                     return (
                         <li key={`legend-${item.name}`} className={styles.item}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -88,7 +86,6 @@ export default function DonutComponent() {
                                 }}></span>
                                 <span style={{ textTransform: 'uppercase' }}>{item.name}</span>
                             </div>
-
                             <div style={{ display: 'flex', gap: '16px' }}>
                                 <span style={{ color: 'var(--text-main)' }}>{percent}%</span>
                             </div>
@@ -96,8 +93,6 @@ export default function DonutComponent() {
                     )
                 })}
             </ul>
-
-
         </div>
     );
 }

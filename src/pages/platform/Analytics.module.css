@@ -1,4 +1,4 @@
-.contaier {
+.container {
     flex: 1;
 }
 
@@ -15,27 +15,22 @@
     grid-template-rows: 1fr 430px 2fr;
     padding: 3.5rem 3.5rem;
     gap: 20px;
-    flex : 1;
+    flex: 1;
 }
 
 .contentWrap > section {
     border: 2px solid #333;
     border-radius: 5px;
-    padding : 30px;
+    padding: 30px;
 }
 
 .chartsWrap {
     grid-column: span 2;
-
 }
 
-.rankWrap {
+.rankWrap {}
 
-}
-
-.budgetWrap {
-
-}
+.budgetWrap {}
 
 .visualWrap {
     grid-column: span 2;
@@ -45,8 +40,42 @@
     display: none;
 }
 
-@media (min-width : 768px) {
+
+@media (min-width: 768px) {
     .topSection {
         display: block;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .contentWrap {
+        grid-template-columns: 1fr;
+        grid-template-rows: unset;
+        grid-auto-rows: auto;
+        padding: 2rem 1.5rem;
+        gap: 16px;
+    }
+
+    .contentWrap > section {
+        padding: 20px;
+    }
+
+    .chartsWrap,
+    .visualWrap {
+        grid-column: span 1;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .contentWrap {
+        padding: 1.25rem 1rem;
+        gap: 12px;
+    }
+
+    .contentWrap > section {
+        padding: 16px;
+        border-radius: 4px;
     }
 }

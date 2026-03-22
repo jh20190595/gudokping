@@ -16,7 +16,7 @@
 }
 
 .topBtnWrap {
-    background-color: var(--bg-sub); 
+    background-color: var(--bg-sub);
     border: 2px solid var(--border-shadow);
     border-radius: 8px;
     display: flex;
@@ -37,7 +37,7 @@
     border: 2px solid transparent;
     border-radius: 6px;
     background: transparent;
-    color: var(--text-sub); 
+    color: var(--text-sub);
     font-weight: 700;
     font-size: 14px;
     padding: 6px 14px;
@@ -49,27 +49,65 @@
     color: var(--text-main);
 }
 
-
 .topBtn.activeBtn {
-    background-color: var(--bg-card); 
+    background-color: var(--bg-card);
     color: var(--text-main);
-    border: 2px solid var(--border-shadow); 
+    border: 2px solid var(--border-shadow);
     box-shadow: 2px 2px 0px var(--border-shadow);
 }
-
 
 .content {
     background-color: var(--bg-card);
     border: 3px solid var(--border-shadow);
-    box-shadow: 4px 4px 0px var(--border-shadow); 
+    box-shadow: 4px 4px 0px var(--border-shadow);
     border-radius: 12px;
     width: 100%;
     height: 500px;
     padding: 16px;
+    box-sizing: border-box;
 }
 
 .calendarContent {
     width: 100%;
     height: 500px;
     padding: 5px;
+}
+
+
+@media (max-width: 768px) {
+    .topBtn {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .content {
+        height: 400px;
+    }
+
+    .calendarContent {
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .topBtn {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    .content {
+        height: 300px;
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    .calendarContent {
+        height: 300px;
+    }
 }

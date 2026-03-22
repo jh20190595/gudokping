@@ -3,7 +3,6 @@ import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
 import styles from './TreemapComponent.module.css'
 import { SUBSCRIPTION_SERVICES } from "../../constants/subscriptionData.ts";
 
-
 const COLORS: Record<string, string> = {
     'ott': "#fca5a5",
     'shopping': "#93c5fd",
@@ -13,78 +12,105 @@ const COLORS: Record<string, string> = {
 };
 
 export default function TreemapComponent() {
-
     const { data: subscriptions } = useSubscriptions('price');
 
-    const filterData = subscriptions.map((item) => {  // recharts, Treemap 쓰기 위해선 { name : , size : } 로 가공하기
+    const filterData = subscriptions.map((item) => {
         return { name: item.service_name, size: item.price }
     });
 
     return (
         <ResponsiveContainer width='100%' height='100%'>
             <Treemap
-                data={filterData} // 트리맵에 사용할 데이터
+                data={filterData}
                 dataKey="size"
-                content={<CustomTreeMap />} // CSS 내 맛대로 조정
+                content={<CustomTreeMap />}
                 isAnimationActive={false}
             />
         </ResponsiveContainer>
     )
 }
 
-
 const CustomTreeMap = (props: any) => {
-    const { x, y, width, height, name, value, depth } = props; // 자동으로 recharts에서 값을 넘겨준다.
+    const { x, y, width, height, name, value, depth } = props;
 
-    if (depth === 0) { // depth는 자신이 몇 번째 자식인지 나타냄 ex) 전체를 감싸는 부모 박스 = 0 리스트 박스 = 1
-        return null;
-    }
+    if (depth === 0) return null;
 
     const myCategory = SUBSCRIPTION_SERVICES.find(f => f.service_name === name)?.category?.toLowerCase() || "";
     const imgLogo = SUBSCRIPTION_SERVICES.find(f => f.service_name === name)?.logoUrl;
-
     const bgColor = COLORS[myCategory] || "#eee";
 
-    const GAP = 20;
+    const screenWidth = window.innerWidth;
+    const GAP = screenWidth <= 480 ? 4 : screenWidth <= 768 ? 8 : 16;
 
     const innerX = x + GAP / 2;
     const innerY = y + GAP / 2;
+    const innerWidth = Math.max(0, width - GAP);
+    const innerHeight = Math.max(0, height - GAP);
 
-    const innerWidth = Math.max(0, width - GAP);  // 음수 안되게 막기
-    const innerHeight = Math.max(0, height - GAP); // 음수 안되게 막기
+
+    const isLarge  = innerWidth > 110 && innerHeight > 110;
+    const isMedium = innerWidth > 65  && innerHeight > 55;
+    const isSmall  = innerWidth > 32  && innerHeight > 32;
+
+    const imgSize   = Math.min(innerWidth * 0.4, innerHeight * 0.4, 48);
+    const priceSize = Math.max(Math.min(innerWidth * 0.13, 14), 8);
+    const nameSize  = Math.max(Math.min(innerWidth * 0.11, 13), 8);
+
+    if (!isSmall) {
+        return (
+            <g className={styles.treemapItem}>
+                <rect
+                    x={innerX} y={innerY}
+                    width={innerWidth} height={innerHeight}
+                    fill={bgColor}
+                    stroke="var(--border-shadow)" strokeWidth={1.5} rx={6}
+                />
+            </g>
+        );
+    }
 
     return (
-        <g className={styles.treemapItem} > {/* group의 약자 div 태그의 svg 버전 */} {/* rect = 사각형 borderRadius 적요하고싶으면 rx, ry를 깎어라*/}
+        <g className={styles.treemapItem}>
             <rect
-                className={styles.treeBox}
-                x={innerX}
-                y={innerY}
-                width={innerWidth}
-                height={innerHeight}
+                x={innerX} y={innerY}
+                width={innerWidth} height={innerHeight}
                 fill={bgColor}
-                stroke="var(--border-shadow)"
-                strokeWidth={2}
-                rx={8}
+                stroke="var(--border-shadow)" strokeWidth={1.5} rx={6}
             />
-            {width > 60 && height > 60 && (
-                <foreignObject x={innerX} y={innerY} width={innerWidth} height={innerHeight}>
-                    <div className={styles.treeInnerContent}>
-                        <div>
-                            {imgLogo && (
-                                <img className={styles.treeInnerImg} src={imgLogo} alt={name} />
-                            )}
-                        </div>
+            <foreignObject x={innerX} y={innerY} width={innerWidth} height={innerHeight}>
+                <div className={styles.treeInnerContent}>
+
+                    {imgLogo && (
+                        <img
+                            className={styles.treeInnerImg}
+                            src={imgLogo}
+                            alt={name}
+                            style={{ width: imgSize, height: imgSize, objectFit : 'contain', borderRadius :'30%' }}
+                        />
+                    )}
+
+                    {isMedium && (
                         <div className={styles.treeInnerText}>
-                            <span className={styles.treeInnerServiceName}>
-                                {name}
-                            </span>
-                            <span className={styles.treeInnerPrice}>
+                          
+                            {isLarge && (
+                                <span
+                                    className={styles.treeInnerServiceName}
+                                    style={{ fontSize: `${nameSize}px` }}
+                                >
+                                    {name}
+                                </span>
+                            )}
+                            <span
+                                className={styles.treeInnerPrice}
+                                style={{ fontSize: `${priceSize}px` }}
+                            >
                                 ₩{value.toLocaleString()}
                             </span>
                         </div>
-                    </div>
-                </foreignObject>
-            )}
+                    )}
+
+                </div>
+            </foreignObject>
         </g>
     )
 }

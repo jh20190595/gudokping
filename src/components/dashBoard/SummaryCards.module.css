@@ -18,7 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 3.125rem;
+    padding: 0.5rem 1.125rem;
     background-color: #d1fae5;
     cursor: pointer;
     font-size: 1rem;
@@ -27,7 +27,6 @@
     border: 3px solid #666;
     border-radius: 0.5rem;
 }
-
 
 
 .summaryWrap {
@@ -41,5 +40,15 @@
 @media (min-width: 768px) {
     .summaryWrap {
         grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width : 768px) {
+    .title {
+        font-size : 1rem;
+    }
+    .addSubscriptionBtn {
+        padding : 0.5rem 1rem;
+        font-size: 0.750rem;
     }
 }

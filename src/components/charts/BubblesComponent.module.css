@@ -1,14 +1,22 @@
 .bubbleWrap {
+    width: 100%;
+    height: 100%;
     animation: bubbleShow 0.5s ease-in-out forwards;
 }
 
 @keyframes bubbleShow {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .bubbleWrap {
+        min-height: 260px;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+    .bubbleWrap {
+        min-height: 200px;
     }
 }

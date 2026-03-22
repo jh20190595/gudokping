@@ -4,14 +4,14 @@
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding : 30px;
+    padding: 30px;
     box-sizing: border-box;
 }
 
 .title {
     position: absolute;
-    top : 50%;
-    left : 26%;
+    top: 50%;
+    left: 26%;
     transform: translate(-50%, -50%);
     text-align: center;
 }
@@ -19,12 +19,12 @@
 .legendWrap {
     place-self: center;
     list-style: none;
-    padding : 50px;
-    margin : 20px 0 0 0;
+    padding: 50px;
+    margin: 20px 0 0 0;
     display: flex;
     width: 70%;
     flex-direction: column;
-    gap : 12px;
+    gap: 12px;
 }
 
 .item {
@@ -33,4 +33,55 @@
     justify-content: space-between;
     font-size: 14px;
     font-weight: 500;
+}
+
+
+@media (max-width: 768px) {
+    .chartWrapper {
+        padding: 16px;
+    }
+
+    .legendWrap {
+        padding: 20px;
+        gap: 8px;
+    }
+
+    .item {
+        font-size: 12px;
+    }
+
+    .title {
+        left: 27%;
+    }
+}
+
+@media (max-width: 480px) {
+    .chartWrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .title {
+        top: 38%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .legendWrap {
+        place-self: unset;
+        width: 100%;
+        padding: 0 8px 8px;
+        margin: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .item {
+        font-size: 11px;
+        gap: 8px;
+        width: calc(50% - 4px);
+    }
 }
