@@ -44,16 +44,16 @@ export default function PaymentReminder() {
         document.head.appendChild(script);
     }, [KAKAO_JS_KEY]);
 
-    const shareMessage = (serviceName: string, price: number, serviceLogo: string) => {
+    const shareMessage = (serviceName: string, price: number, kakaoLogo: string) => {
         const { Kakao } = window as any;
 
         const CURRENT_DOMAIN = window.location.origin;
         const ASSET_DOMAIN = "https://www.gudokping.com";
 
 
-        const ImageUrl = serviceLogo.startsWith('http')
-            ? serviceLogo
-            : `${ASSET_DOMAIN}${serviceLogo}`;
+        const ImageUrl = kakaoLogo.startsWith('http')
+            ? kakaoLogo
+            : `${ASSET_DOMAIN}${kakaoLogo}`;
 
         if (!Kakao || !Kakao.Share) {
             alert("카카오 공유 기능을 불러오는 중입니다. 잠시 후 다시 시도해 주세요!");
@@ -61,7 +61,7 @@ export default function PaymentReminder() {
         }
 
         Kakao.Share.sendCustom({
-            templateId: 130867, 
+            templateId: 130867,
             templateArgs: {
                 'logoUrl': ImageUrl,  //
                 'serviceName': serviceName,
@@ -101,6 +101,9 @@ export default function PaymentReminder() {
                         const serviceLogo = SUBSCRIPTION_SERVICES.find(
                             f => f.service_name === item.service_name
                         )?.logoUrl;
+                        const kakaLogo = SUBSCRIPTION_SERVICES.find( //카카오는 png만 지원
+                            f => f.service_name === item.service_name
+                        )?.kakaoLogoUrl;
                         const isToday = item.dDay === 0;
                         return (
                             <li
@@ -129,7 +132,7 @@ export default function PaymentReminder() {
 
                                 <button
                                     className={styles.kakaoBtn}
-                                    onClick={() => shareMessage(item.service_name, item.price, serviceLogo || '')}
+                                    onClick={() => shareMessage(item.service_name, item.price, kakaLogo || '')}
                                     aria-label={`${item.service_name} 정산 요청`}
                                 >
                                     <RiKakaoTalkFill size={15} />
