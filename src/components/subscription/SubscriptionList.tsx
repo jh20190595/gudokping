@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState,lazy,Suspense } from 'react';
 import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.ts';
 import styles from './SubscriptionList.module.css';
 import { IoPencilOutline } from 'react-icons/io5';
-import SubscriptionForm from './SubscriptionForm.tsx';
 import { X } from 'lucide-react';
 import DeleteModal from '../ui/DeleteModal.tsx';
+import LoadingScreen from '../ui/LoadingScreen.tsx';
+
+const SubscriptionForm = lazy(() => import("./SubscriptionForm.tsx"));
+
 
 const COLORS: Record<string, string> = {
     'ott': "#fca5a5",
@@ -130,11 +133,13 @@ export function SubscriptionItem({ item }) {
             {isEditForm && (
                 <div className={styles.modalOverlay} onClick={() => setIsEditForm(false)}>
                     <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+                        <Suspense fallback={<LoadingScreen/>}>
                         <SubscriptionForm
                             initialData={item}
                             isEditMode={true}
                             onClose={() => setIsEditForm(false)}
                         />
+                        </Suspense>
                     </div>
                 </div>
             )}

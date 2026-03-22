@@ -1,6 +1,7 @@
 node_modules/
 dist/
 build/
+result.html
 .env
 .env.local
 .env.*.local

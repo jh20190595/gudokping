@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from './DetailsComponent.module.css';
 import { SUBSCRIPTION_SERVICES } from "../../constants/subscriptionData.ts";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
-import { motion } from 'framer-motion';
 import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
 
 export default function DetailsComponent() {
@@ -26,12 +25,7 @@ export default function DetailsComponent() {
     const currentItem = subscriptions.slice((currentPage - 1) * 5, currentPage * 5);
 
     return (
-        <motion.div
-            className={styles.container}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
-        >
+        <div className={styles.container}>
             <ul className={styles.ListWrap}>
                 {currentItem.map((item, index) => {
                     const serviceLogoUrl = SUBSCRIPTION_SERVICES.find(f => f.service_name === item.service_name)?.logoUrl
@@ -62,6 +56,6 @@ export default function DetailsComponent() {
                     </div>
                 </div>
             )}
-        </motion.div>
+        </div>
     )
 }
