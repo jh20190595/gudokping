@@ -3,7 +3,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Netflix",
         name: "넷플릭스",
         category: "OTT",
-        kakaoLogoUrl: "/logos/netflix.png",
+        kakaoLogoUrl: "/logos-kakao/netflix.png",
         logoUrl: "/logos-webp/netflix.webp",
         site_url: "https://www.netflix.com",
         plans: [
@@ -17,7 +17,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Youtube_premium",
         name: "유튜브 프리미엄",
         category: "OTT",
-        kakaoLogoUrl: "/logos/youtubepremium.png",
+        kakaoLogoUrl: "/logos-kakao/youtubepremium.png",
         logoUrl: "/logos-webp/youtubepremium.webp",
         site_url: "https://www.youtube.com/premium",
         plans: [
@@ -32,7 +32,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Tving",
         name: "티빙",
         category: "OTT",
-        kakaoLogoUrl: "/logos/tving.png",
+        kakaoLogoUrl: "/logos-kakao/tving.png",
         logoUrl: "/logos-webp/tving.webp",
         site_url: "https://www.tving.com",
         plans: [
@@ -47,7 +47,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Disney_plus",
         name: "디즈니 플러스",
         category: "OTT",
-        kakaoLogoUrl: "/logos/disney.png",
+        kakaoLogoUrl: "/logos-kakao/disney.png",
         logoUrl: "/logos-webp/disney.webp",
         site_url: "https://www.disneyplus.com",
         plans: [
@@ -60,7 +60,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Wavve",
         name: "웨이브",
         category: "OTT",
-        kakaoLogoUrl: "/logos/wavve.png",
+        kakaoLogoUrl: "/logos-kakao/wavve.png",
         logoUrl: "/logos-webp/wavve.webp",
         site_url: "https://www.wavve.com",
         plans: [
@@ -74,7 +74,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Watcha",
         name: "왓챠",
         category: "OTT",
-        kakaoLogoUrl: "/logos/watcha.png",
+        kakaoLogoUrl: "/logos-kakao/watcha.png",
         logoUrl: "/logos-webp/watcha.webp",
         site_url: "https://watcha.com",
         plans: [
@@ -87,7 +87,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Coupang_play",
         name: "쿠팡플레이",
         category: "OTT",
-        kakaoLogoUrl: "/logos/coupangplay.png",
+        kakaoLogoUrl: "/logos-kakao/coupangplay.png",
         logoUrl: "/logos-webp/coupangplay.webp",
         site_url: "https://www.coupangplay.com",
         plans: [
@@ -99,7 +99,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Melon",
         name: "멜론",
         category: "MUSIC",
-        kakaoLogoUrl: "/logos/melon.png",
+        kakaoLogoUrl: "/logos-kakao/melon.png",
         logoUrl: "/logos-webp/melon.webp",
         site_url: "https://www.melon.com",
         plans: [
@@ -115,7 +115,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Spotify",
         name: "스포티파이",
         category: "MUSIC",
-        kakaoLogoUrl: "/logos/spotify.png",
+        kakaoLogoUrl: "/logos-kakao/spotify.png",
         logoUrl: "/logos-webp/spotify.webp",
         site_url: "https://www.spotify.com",
         plans: [
@@ -130,7 +130,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Youtube_music",
         name: "유튜브 뮤직",
         category: "MUSIC",
-        kakaoLogoUrl: "/logos/youtubemusic.png",
+        kakaoLogoUrl: "/logos-kakao/youtubemusic.png",
         logoUrl: "/logos-webp/youtubemusic.webp",
         site_url: "https://music.youtube.com",
         plans: [
@@ -143,7 +143,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Apple_music",
         name: "애플 뮤직",
         category: "MUSIC",
-        kakaoLogoUrl: "/logos/applemusic.png",
+        kakaoLogoUrl: "/logos-kakao/applemusic.png",
         logoUrl: "/logos-webp/applemusic.webp",
         site_url: "https://www.apple.com/apple-music/",
         plans: [
@@ -156,7 +156,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Genie",
         name: "지니",
         category: "MUSIC",
-        kakaoLogoUrl: "/logos/genie.png",
+        kakaoLogoUrl: "/logos-kakao/genie.png",
         logoUrl:"/logos-webp/genie.webp",
         site_url: "https://www.genie.co.kr",
         plans: [
@@ -171,7 +171,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Bugs",
         name: "벅스",
         category: "MUSIC",
-        kakaoLogoUrl: "/logos/bugs.png",
+        kakaoLogoUrl: "/logos-kakao/bugs.png",
         logoUrl: "/logos-webp/bugs.webp",
         site_url: "https://music.bugs.co.kr",
         plans: [
@@ -192,7 +192,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Coupang_eats",
         name: "쿠팡 이츠",
         category: "FOOD",
-        kakaoLogoUrl: "/logos/coupangeats.png",
+        kakaoLogoUrl: "/logos-kakao/coupangeats.png",
         logoUrl: "/logos-webp/coupangeats.webp",
         site_url: "https://www.coupangeats.com",
         plans: [
@@ -204,7 +204,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Coupang_wow",
         name: "쿠팡 와우",
         category: "SHOPPING",
-        kakaoLogoUrl: "/logos/coupangwow.png",
+        kakaoLogoUrl: "/logos-kakao/coupangwow.png",
         logoUrl: "/logos-webp/coupangwow.webp",
         site_url: "https://www.coupang.com",
         plans: [
@@ -216,7 +216,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Naver_plus",
         name: "네이버 플러스 멤버십",
         category: "SHOPPING",
-        kakaoLogoUrl: "/logos/navermembership.png",
+        kakaoLogoUrl: "/logos-kakao/navermembership.png",
         logoUrl:"/logos-webp/navermembership.webp",
         site_url: "https://nid.naver.com/membership/join",
         plans: [
@@ -229,7 +229,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Baemin_club",
         name: "배민클럽",
         category: "FOOD",
-        kakaoLogoUrl: "/logos/bamin.png",
+        kakaoLogoUrl: "/logos-kakao/bamin.png",
         logoUrl: "/logos-webp/bamin.webp",
         site_url: "https://www.baemin.com",
         plans: [
@@ -242,7 +242,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Kurly_lovers",
         name: "컬리 러버스",
         category: "SHOPPING",
-        kakaoLogoUrl: "/logos/kurly.png",
+        kakaoLogoUrl: "/logos-kakao/kurly.png",
         logoUrl: "/logos-webp/kurly.webp",
         site_url: "https://www.kurly.com",
         plans: [
@@ -254,7 +254,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Shinsegae_universe",
         name: "신세계 유니버스",
         category: "SHOPPING",
-        kakaoLogoUrl: "/logos/shinsegae.png",
+        kakaoLogoUrl: "/logos-kakao/shinsegae.png",
         logoUrl: "/logos-webp/shinsegae.webp",
         site_url: "https://www.shinsegae-universe.com",
         plans: [
@@ -266,7 +266,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Chatgpt",
         name: "ChatGPT",
         category: "AI",
-        kakaoLogoUrl: "/logos/chatgpt.png",
+        kakaoLogoUrl: "/logos-kakao/chatgpt.png",
         logoUrl: "/logos-webp/chatgpt.webp",
         site_url: "https://chat.openai.com",
         plans: [
@@ -280,7 +280,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Gemini",
         name: "Gemini",
         category: "AI",
-        kakaoLogoUrl: "/logos/gemini.png",
+        kakaoLogoUrl: "/logos-kakao/gemini.png",
         logoUrl:"/logos-webp/gemini.webp",
         site_url: "https://gemini.google.com",
         plans: [
@@ -303,7 +303,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Claude",
         name: "Claude",
         category: "AI",
-        kakaoLogoUrl: "/logos/claude.png",
+        kakaoLogoUrl: "/logos-kakao/claude.png",
         logoUrl: "/logos-webp/claude.webp",
         site_url: "https://claude.ai",
         plans: [
@@ -317,7 +317,7 @@ export const SUBSCRIPTION_SERVICES: SubscriptionService[] = [
         service_name: "Cursor",
         name: "Cursor",
         category: "AI",
-        kakaoLogoUrl: "/logos/cursor.png",
+        kakaoLogoUrl: "/logos-kakao/cursor.png",
         logoUrl: "/logos-webp/cursor.webp",
         site_url: "https://www.cursor.com",
         plans: [
