@@ -32,16 +32,17 @@
 
 .itemSubText {
     font-size: 0.8rem;
-    color: #666;
+    color: #000;
 }
 
 
-@media (min-width: 768px) {
-    .cardBox {
-        padding: 1.5rem; 
-        max-width: 100%;
+@media (max-width: 768px) {
+    .itemValue {
+        font-size : 0.825rem;
+        font-weight: 600;
     }
     .itemContent {
-        font-size: 1.5rem; 
+        
     }
+    
 }

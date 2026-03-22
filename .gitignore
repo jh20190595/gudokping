@@ -1,7 +1,11 @@
 node_modules/
-.next/
-out/
+dist/
+build/
 .env
 .env.local
 .env.*.local
+.vscode/
 supabase/.temp/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

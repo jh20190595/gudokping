@@ -34,7 +34,7 @@ export default function SummaryCards() {
         {
             title: "가장 비싼 구독",
             logo: MaxPriceserviceLogo || "",
-            subText: MaxPriceService === null ? '-' : `₩ ${MaxPriceService?.price.toLocaleString()}원`,
+            value: MaxPriceService === null ? '-' : `₩ ${MaxPriceService?.price.toLocaleString()}원`,
             icon: <IoPricetag size={22} />,
             color: "#fef3c7"
         },

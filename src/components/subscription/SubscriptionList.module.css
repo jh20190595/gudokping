@@ -208,6 +208,7 @@
     align-items: center;
 }
 
+
 @media (max-width: 768px) {
     .listMain {
         padding: 1rem 1.2rem;
@@ -241,13 +242,8 @@
         height: 32px !important;
     }
 
-    .listFold {
-        overflow: visible;
-    }
-
     .foldContent {
         width: 100%;
-        box-sizing: border-box;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: unset;
         gap: 8px;

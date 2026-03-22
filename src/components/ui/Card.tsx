@@ -5,11 +5,10 @@ interface Props {
     value: string | number;
     icon: React.ReactNode;
     color: string;
-    subText?: string;
     logo? : string;
 }
 
-export default function Card({ title, value, icon, color, subText,logo }: Props) {
+export default function Card({ title, value, icon, color,logo }: Props) {
     return (
         <div className={styles.cardBox} style={{ backgroundColor: color }}>
             <div className={styles.itemHeader}>
@@ -17,9 +16,8 @@ export default function Card({ title, value, icon, color, subText,logo }: Props)
                 <div className={styles.itemTitle}>{title}</div>
             </div>
             <div className={styles.itemContent}>
-                {logo && <div><img src={logo} alt="logo" style={{ width : '60px',height : '40px', borderRadius : '30%' ,objectFit : 'contain' , display : 'block'}}/></div>}
+                {logo && <img src={logo} alt="logo" style={{ width : '50px',height : '30px', borderRadius : '30%' ,objectFit : 'contain' , display : 'block'}}/>}
                 <div className={styles.itemValue}>{value}</div>
-                {subText && <div className={styles.itemSubText}>{subText}</div>}
             </div>
         </div>
     )
