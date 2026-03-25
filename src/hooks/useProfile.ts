@@ -14,6 +14,7 @@ export const useProfileSettings = () => {
         queryFn: () => fetchEmailEnabled(userId),
         enabled: !!userId,
         staleTime : 1000 * 60 * 5,
+        gcTime : 1000 * 60 * 10;
     });
 } 
 

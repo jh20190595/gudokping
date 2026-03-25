@@ -14,7 +14,8 @@ export const useSubscriptions = (sortBy : 'price' | 'created_at' = 'created_at')
         queryKey: ['subscriptions', userId,sortBy],
         queryFn: () => fetchSubscriptionList(userId,sortBy),
         enabled: !!userId,
-        staleTime: 1000 * 60 * 5 //5분
+        staleTime: 1000 * 60 * 5, //5분
+        gcTime : 1000 * 60 * 10,
     })
 
     return {
