@@ -7,7 +7,7 @@ import styles from './PaymentReminder.module.css';
 
 export default function PaymentReminder() {
     const { data: subscriptions } = useSubscriptions('created_at');
-    const KAKAO_JS_KEY = process.env.REACT_APP_KAKAO_JS_KEY;
+    const KAKAO_JS_KEY = import.meta.env.VITE_KAKAO_JS_KEY;
 
     const upcomingList = useMemo(() => {
         if (!subscriptions) return [];

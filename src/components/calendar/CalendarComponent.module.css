@@ -154,7 +154,7 @@
         min-height: 60px;
     }
     .foldWrap {
-        padding : 0;
+        padding : 0; 
     }
     .foldItem {
         grid-template-columns: 0.2fr 1fr 1fr;
