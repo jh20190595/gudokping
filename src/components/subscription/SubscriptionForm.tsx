@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSubscriptionLogic } from '../../hooks/useSubscriptionLogic.ts';
 import { useSubscriptionMutation } from '../../hooks/useSubscriptionsQuery.ts';
 import { useModalStore } from '../../store/useModalStore.ts';
@@ -25,6 +26,13 @@ type Props = {
 }
 
 export default function SubscriptionForm({ initialData, isEditMode, onClose }: Props) {
+
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = 'unset';
+        }
+    }, []);
 
     console.log("수정할 데이터 반아옴", initialData)
 
@@ -55,7 +63,7 @@ export default function SubscriptionForm({ initialData, isEditMode, onClose }: P
     const serviceOptions = SUBSCRIPTION_SERVICES.map(item => ({
         value: item.service_name, //영어
         label: item.name, //한글
-        logoUrl : item.logoUrl,
+        logoUrl: item.logoUrl,
     }));
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -86,7 +94,7 @@ export default function SubscriptionForm({ initialData, isEditMode, onClose }: P
             <div className={styles.top}>
                 <h2>Subscription</h2>
                 <button className={styles.closeBtn} onClick={isEditMode ? onClose : closeForm}>
-                    <X size={24}  className = {styles.topCloseBtn} strokeWidth={2.5} />
+                    <X size={24} className={styles.topCloseBtn} strokeWidth={2.5} />
                 </button>
             </div>
             <div className={styles.inputWrap}>

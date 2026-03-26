@@ -5,7 +5,6 @@ import { Suspense, lazy } from 'react';
 const SubscriptionForm = lazy(() => import("./SubscriptionForm.tsx"));
 
 export default function AddSubscriptionModal() {
-
     return (
         <div className={styles.overlay}>
             <Suspense fallback={<LoadingScreen />}>
