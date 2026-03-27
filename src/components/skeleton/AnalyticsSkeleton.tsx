@@ -5,7 +5,7 @@ export default function AnalyticsSkeleton() {
     return (
         <div className={styles.container}>
             <div className={styles.topSection}>
-                <div></div>
+                <div className={skeletonStyles.skeletonSummaryCard}></div>
                 <div className={styles.divider}></div>
             </div>
 
