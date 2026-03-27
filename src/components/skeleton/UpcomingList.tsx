@@ -1,5 +1,5 @@
 import styles from '../../components/dashBoard/Upcoming.module.css';
-import skeletonStyles from './skeleton.module.css';
+import skeletonStyles from './Skeleton.module.css';
 
 export default function UpcomingListSkeleton() {
     return (

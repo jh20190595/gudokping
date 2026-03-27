@@ -1,6 +1,6 @@
 // src/components/skeleton/SubscriptionViewerSkeleton.tsx
 import styles from '../dashBoard/SubscriptionViewer.module.css';
-import skeletonStyles from './skeleton.module.css';
+import skeletonStyles from './Skeleton.module.css'
 
 export default function SubscriptionViewerSkeleton() {
     return (
