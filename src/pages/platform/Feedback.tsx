@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { supabase } from '../../lib/supabase.ts';
 
 export default function Feedback() {
-    const { session } = useAuthStore();
+    const session = useAuthStore((state) => state.session);
     
     const userId = session?.user?.id;
     const userEmail = session?.user?.email || "";

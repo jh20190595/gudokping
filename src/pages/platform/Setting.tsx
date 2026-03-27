@@ -9,12 +9,14 @@ import { useThemeStore } from '../../store/useThemeStore.ts';
 
 export default function Settings() {
 
-    const { isDark , setIsDark } = useThemeStore();
-
+    const isDark= useThemeStore((state) => state.isDark);
+    const setIsDark = useThemeStore((state) => state.setIsDark)
+    const session  = useAuthStore((state) => state.session);
+    const setSession = useAuthStore((state) => state.setSession)
 
     const { mutate : deleteMutate, isPending : isDeletePending } = useDeleteUser();
 
-    const { session, setSession } = useAuthStore();
+
     const navigate = useNavigate();
     const userId = session?.user?.id;
 

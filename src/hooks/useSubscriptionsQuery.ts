@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 export const useSubscriptions = (sortBy : 'price' | 'created_at' = 'created_at') => {
 
-    const { session } = useAuthStore();
+    const session = useAuthStore((state) => state.session);
     const userId = session?.user?.id;
 
     const queryData = useQuery<Subscription[], Error>({
@@ -27,7 +27,7 @@ export const useSubscriptions = (sortBy : 'price' | 'created_at' = 'created_at')
 
 export const useSubscriptionMutation = () => {
     const queryClient = useQueryClient();
-    const { session } = useAuthStore();
+    const session = useAuthStore((state) => state.session);
     const userId = session?.user?.id;
 
     const addMutation = useMutation({

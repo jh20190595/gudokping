@@ -23,8 +23,9 @@ const Analytics = lazy(() => import('./pages/platform/Analytics.tsx')) // 지연
 
 function App() {
 
-    const { isDark } = useThemeStore();
-
+    const isDark = useThemeStore((state) => state.isDark);
+    const setSession  = useAuthStore((state) => state.setSession);
+    const setAuthLoading = useAuthStore((state) => state.setAuthLoading)
     useEffect(() => {
         if (isDark) {
             document.documentElement.setAttribute('data-theme', 'dark');
@@ -35,7 +36,7 @@ function App() {
         }
     }, [isDark])
 
-    const { setSession, setAuthLoading } = useAuthStore();
+
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => { // 사용자가 입장하자마자 제일 먼저 보는 tsx이니 

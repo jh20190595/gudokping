@@ -5,7 +5,8 @@ import LoadingScreen from "../ui/LoadingScreen.tsx";
 
 export default function PublicLayout() {
 
-    const { session , isAuthLoading } = useAuthStore();
+    const session = useAuthStore((state) => state.session);
+    const isAuthLoading = useAuthStore((state) => state.isAuthLoading)
 
     if(isAuthLoading) {
         return <LoadingScreen/>

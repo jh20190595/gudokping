@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase.ts";
 
 export const useProfileSettings = () => {
-    const { session } = useAuthStore();
+    const session = useAuthStore((state) => state.session);
     const userId = session?.user?.id;
 
     return useQuery({
@@ -21,7 +21,7 @@ export const useProfileSettings = () => {
 
 export const useUpdateProfile = () => {
     const queryClient = useQueryClient();
-    const { session } = useAuthStore();
+    const session = useAuthStore((state) => state.session);
     const userId = session?.user?.id;
 
     return useMutation({
@@ -42,7 +42,7 @@ export const useUpdateProfile = () => {
 }
 
 export const useDeleteUser = () => {
-    const { setSession } = useAuthStore();
+    const setSession = useAuthStore((state) => state.setSession);
     const navigate = useNavigate();
 
     return useMutation({

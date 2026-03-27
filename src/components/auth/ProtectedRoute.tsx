@@ -3,7 +3,8 @@ import { useAuthStore } from "../../store/useAuthStore.ts";
 
 export default function ProtectedRoute() {
 
-    const { session, isAuthLoading} = useAuthStore();
+    const session = useAuthStore((state) => state.session);
+    const isAuthLoading = useAuthStore((state) => state.isAuthLoading);
 
     if (isAuthLoading) return null;
 

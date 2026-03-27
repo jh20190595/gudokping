@@ -6,7 +6,7 @@ import { useAuthStore } from "../../store/useAuthStore.ts";
 
 export default function SideBar() {
 
-    const { session } = useAuthStore();
+    const session = useAuthStore((state) => state.session);
 
     const userName = session?.user?.user_metadata?.name || '구독핑';
     const avatarUrl = session?.user?.user_metadata?.avatar_url || 'https://via.placeholder.com/80';
