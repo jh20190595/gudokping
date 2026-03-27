@@ -6,7 +6,7 @@ import AddSubscriptionModal from '../../components/subscription/AddSubscriptionM
 
 export default function DashBoardLayout() {
 
-    const { isOpen } = useModalStore();
+    const isOpen = useModalStore((state) => state.isOpen);
     
     return (
         <div className={styles.container}>

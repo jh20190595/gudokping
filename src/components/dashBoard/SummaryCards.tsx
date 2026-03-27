@@ -3,9 +3,10 @@ import Card from '../ui/Card.tsx';
 import styles from './SummaryCards.module.css';
 import { IoWallet, IoApps, IoPricetag, IoCalendar } from 'react-icons/io5';
 import { useModalStore } from '../../store/useModalStore.ts';
+import { memo } from 'react';
 
 
-export default function SummaryCards() {
+function SummaryCards() {
 
     const { summary } = useSubscriptionSummary();
     const { openForm } = useModalStore(); 
@@ -62,3 +63,5 @@ export default function SummaryCards() {
         </div>
     )
 }
+
+export default memo(SummaryCards);

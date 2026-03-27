@@ -3,6 +3,7 @@ import styles from './SideBar.module.css'
 import { IoHome } from 'react-icons/io5';
 import { RiFileListFill } from "react-icons/ri";
 import { useAuthStore } from "../../store/useAuthStore.ts";
+import { memo } from "react";
 
 export default function SideBar() {
 
@@ -164,3 +165,4 @@ export default function SideBar() {
         </>
     )
 }
+

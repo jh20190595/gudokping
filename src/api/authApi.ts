@@ -21,7 +21,7 @@ export const signinWithKaKao = async () => {
     const { data,error } = await supabase.auth.signInWithOAuth({
         provider : 'kakao',
         options : { 
-            redirectTo : "https://www.gudokping.com/dashBoard",
+            redirectTo : "localhost:3000/dashBoard",
         }
     });
 

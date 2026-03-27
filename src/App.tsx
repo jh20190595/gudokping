@@ -26,6 +26,7 @@ function App() {
     const isDark = useThemeStore((state) => state.isDark);
     const setSession  = useAuthStore((state) => state.setSession);
     const setAuthLoading = useAuthStore((state) => state.setAuthLoading)
+    
     useEffect(() => {
         if (isDark) {
             document.documentElement.setAttribute('data-theme', 'dark');
