@@ -2,12 +2,8 @@
     display: flex;
     flex-direction: column;
     gap : 12px;
+    min-height: 350px;
 }
-
-.top {
-
-}
-
 .menuWrap {
     display: flex;
     justify-content: space-between;

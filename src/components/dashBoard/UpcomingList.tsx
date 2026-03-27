@@ -7,12 +7,13 @@ import { SUBSCRIPTION_SERVICES } from '../../constants/subscriptionData.ts';
 import ExtendModal from '../ui/ExtendModal.tsx';
 import { Subscription } from '../../types/subscription.ts';
 import LoadingScreen from '../ui/LoadingScreen.tsx';
+import UpcomingListSkeleton from '../skeleton/UpcomingList.tsx';
 
 const SubscriptionForm = lazy(() => import("../subscription/SubscriptionForm.tsx"));
 
 function UpcomingList() {
 
-    const { data: subscriptions } = useSubscriptions('created_at');
+    const { data: subscriptions, isLoading } = useSubscriptions('created_at');
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [isExtendId, setIsExtendId] = useState<string | null>(null);
     const [editTargetItem, setEditTargetItem] = useState<Subscription | null>(null);
@@ -50,6 +51,8 @@ function UpcomingList() {
 
     const totalPage = Math.ceil(upcomingList.length / 5);
     const currentItem = upcomingList.slice((currentPage - 1) * 5, currentPage * 5);
+
+    if(isLoading) return <UpcomingListSkeleton/>
 
     if (upcomingList.length === 0) {
         return <div className={styles.emptyMsg}>🎉 당분간 결제 예정이 없어요!</div>;

@@ -3,17 +3,16 @@ import styles from './SubscriptionViewer.module.css';
 
 import { useSubscriptions } from '../../hooks/useSubscriptionsQuery.ts';
 import DetailsComponent from "../ui/DetailsComponent.tsx";
-import LoadingScreen from "../ui/LoadingScreen.tsx";
 import OverviewComponent from "../ui/OverviewComponent.tsx";
+import SubscriptionViewerSkeleton from "../skeleton/SubscriptionViewerSkeleton.tsx";
 
 export default function SubscriptionViewer() {
 
-    const { data: subscriptions, isLoading } = useSubscriptions('created_at');
+    const { data: subscriptions, isLoading = true } = useSubscriptions('created_at');
     const [selectMenu, setSelectMenu] = useState<'Overview' | 'Details'>('Overview')
-
+    
+    if(isLoading) return <SubscriptionViewerSkeleton/>
     if (subscriptions.length === 0) return <div>등록된 구독이 없어요! </div>
-
-    if(isLoading) return <LoadingScreen/>
 
     return (
         <div className={styles.container}>

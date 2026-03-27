@@ -13,14 +13,14 @@ export default function Analytics() {
     return (
         <div className={styles.container}>
             <div className={styles.topSection}>
-            <SummaryCards />
-            <div className={styles.divider}></div>
+                <SummaryCards />
+                <div className={styles.divider}></div>
             </div>
 
             <div className={styles.contentWrap}>
 
                 <section className={styles.chartsWrap}> {/* 그래프 영역 */}
-                    <MonthlyCostComponent/>
+                    <MonthlyCostComponent />
                 </section>
 
                 <section className={styles.rankWrap}> {/* 가격순위  영역 */}
@@ -32,7 +32,7 @@ export default function Analytics() {
                 </section>
 
                 <section className={styles.visualWrap}> {/* 시각자료 영역 */}
-                    <VisualComponent/>
+                    <VisualComponent />
                 </section>
 
             </div>

@@ -12,6 +12,7 @@
     "jsx": "react-jsx",
     "strict": false,
     "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true, 
     "esModuleInterop": true,
     "types": ["vite/client"]
   },

@@ -1,0 +1,79 @@
+/* src/components/skeleton/skeleton.module.css */
+.skeletonBase {
+    background: linear-gradient(
+        90deg,
+        var(--skeleton-base) 25%,
+        var(--skeleton-highlight) 50%,
+        var(--skeleton-base) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+@keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeletonTitle {
+    composes: skeletonBase;
+    width: 30%;
+    height: 20px;
+    margin-bottom: 4px;
+}
+
+.skeletonImg {
+    composes: skeletonBase;
+    width: 40px;
+    height: 40px;
+    border-radius: 30%;
+    flex-shrink: 0;
+}
+
+.skeletonContent {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.skeletonName {
+    composes: skeletonBase;
+    width: 50%;
+    height: 13px;
+}
+
+.skeletonDday {
+    composes: skeletonBase;
+    width: 25%;
+    height: 11px;
+}
+
+.skeletonPrice {
+    composes: skeletonBase;
+    width: 60px;
+    height: 13px;
+    justify-self: end;
+}
+
+.skeletonBtn {
+    composes: skeletonBase;
+    width: 70px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+.skeletonViewerItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--skeleton-base);
+}
+
+.skeletonSection {
+    composes :skeletonBase;
+    border-radius: 5px;
+    min-height: 200px;
+}

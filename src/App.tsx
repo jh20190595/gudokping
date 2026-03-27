@@ -12,12 +12,12 @@ import Setting from './pages/platform/Setting.tsx';
 import PublicLayout from './components/layout/PublicLayout.tsx';
 import ProtectedRoute from './components/auth/ProtectedRoute.tsx';
 import { Toaster } from 'react-hot-toast';
-import LoadingScreen from './components/ui/LoadingScreen.tsx';
 import { useAuthStore } from './store/useAuthStore.ts';
 import { supabase } from './lib/supabase.ts';
 
 import { SUBSCRIPTION_SERVICES } from './constants/subscriptionData.ts';
 import { useThemeStore } from './store/useThemeStore.ts';
+import AnalyticsSkeleton from './components/skeleton/AnalyticsSkeleton.tsx';
 
 const Analytics = lazy(() => import('./pages/platform/Analytics.tsx')) // 지연로딩
 
@@ -92,7 +92,7 @@ function App() {
                         <Route path='/help' element={<Help />} />
                         <Route path='/setting' element={<Setting />} />
                         <Route path='/analytics' element={
-                            <Suspense fallback={<LoadingScreen />}>
+                            <Suspense fallback={<AnalyticsSkeleton/>}>
                                 <Analytics />
                             </Suspense>
                         } />
