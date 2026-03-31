@@ -30,7 +30,7 @@
 
   <img src="https://skillicons.dev/icons?i=react,ts,vite,vercel,supabase" />
   <br/><br/>
-  <img src="https://img.shields.io/badge/Zustand-000000?style=for-the-badge&logo=zustand&logoColor=white"/>
+  <img src="src/readme_assets/tanstack.svg" width="48" height="48"/>
   <img src="https://img.shields.io/badge/TanStack_Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white"/>
 
 
