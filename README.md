@@ -28,9 +28,9 @@
 ### 기술 스택
 
 
-  <img src="https://skillicons.dev/icons?i=react,ts,vite,vercel,supabase" />
+  <img src="https://skillicons.dev/icons?i=react,ts,vite,vercel,supabase" /> 
+<img src="src/readme_assets/tanstack.svg" width="48" height="48"/>
   <br/><br/>
-  <img src="src/readme_assets/tanstack.svg" width="48" height="48"/>
   <img src="https://img.shields.io/badge/TanStack_Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white"/>
 
 
