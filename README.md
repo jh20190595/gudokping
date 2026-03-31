@@ -3,15 +3,19 @@
 
 **구독 서비스 통합 관리 및 카카오톡 정산 알림 플랫폼**
 
-[서비스 바로가기](https://www.gudokping.com)
+ https://www.gudokping.com
 
 
----
+<br/><br/>
+<br/><br/>
 
 ## 서비스 소개
 
 흩어진 구독 서비스를 한 곳에서 관리하고,  
 결제일이 다가오면 카카오톡으로 파티원에게 정산을 요청할 수 있는 서비스입니다.
+
+<br/><br/>
+<br/><br/>
 
 # 구독핑은 이런 분들을 위한 서비스입니다.
 
@@ -19,7 +23,8 @@
  - 무료 체험 후 깜빡하고 결제가 되어버린 경험이 있는 분
  - 내가 매달 구독에 얼마를 쓰는지 한눈에 파악하고 싶은 분
 
----
+<br/><br/>
+<br/><br/>
 
 ## 기술 스택
 
@@ -30,7 +35,10 @@
   <img src="https://img.shields.io/badge/TanStack_Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white"/>
 </div>
 
-## ⚙️ 아키텍처
+<br/><br/>
+<br/><br/>
+
+## 아키텍처
 
 | 구분 | 내용 |
 |---|---|
