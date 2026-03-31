@@ -20,7 +20,7 @@ export default function SideBar() {
                 <div className={styles.logoWrap}>
                     <img src={avatarUrl} alt="profile" className={styles.avatar} />
                     <div className={styles.userInfo}>
-                        <p className={styles.userName}>{userName}</p>
+                        <p className={styles.userName}>User</p>
                     </div>
                 </div>
 
