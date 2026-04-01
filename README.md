@@ -22,6 +22,7 @@
   <img src="src/readme_assets/readme3.webp" width="200" alt="모바일 화면 3" />
   <img src="src/readme_assets/readme4.webp" width="200" alt="모바일 화면 4" />
   <img src="src/readme_assets/readme5.webp" width="200" alt="모바일 화면 5" />
+  <img src="src/readme_assets/readme6.webp" width="200" alt="모바일 화면 5" />
 </div>
 
 
