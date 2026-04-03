@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import PublicPage from "../../pages/public/PublicPage.tsx";
 import { useAuthStore } from "../../store/useAuthStore.ts";
-import SubscriptionViewerSkeleton from "../skeleton/SubscriptionViewerSkeleton.tsx";
+import PlatformLayoutSkeleton from "../skeleton/PlatformLayoutSkeleton.tsx"
 
 
 export default function PublicLayout() {
@@ -10,7 +10,7 @@ export default function PublicLayout() {
     const isAuthLoading = useAuthStore((state) => state.isAuthLoading)
 
     if(isAuthLoading) {
-        return <SubscriptionViewerSkeleton/>
+        return <PlatformLayoutSkeleton/>
     }
 
     if(session) {

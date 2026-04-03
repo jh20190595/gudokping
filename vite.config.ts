@@ -7,7 +7,7 @@ export default defineConfig({
     cssCodeSplit : true
   },
   resolve: {
-    tsconfigPaths: true  // 추가
+    tsconfigPaths: true  
   },
   server: {
     port: 3000

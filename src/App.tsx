@@ -18,6 +18,7 @@ import { supabase } from './lib/supabase.ts';
 import { SUBSCRIPTION_SERVICES } from './constants/subscriptionData.ts';
 import { useThemeStore } from './store/useThemeStore.ts';
 import AnalyticsSkeleton from './components/skeleton/AnalyticsSkeleton.tsx';
+import PlatformLayoutSkeleton from './components/skeleton/PlatformLayoutSkeleton.tsx'
 
 const Analytics = lazy(() => import('./pages/platform/Analytics.tsx')) // 지연로딩
 
@@ -93,6 +94,7 @@ function App() {
                         <Route path='/feedback' element={<Feedback />} />
                         <Route path='/help' element={<Help />} />
                         <Route path='/setting' element={<Setting />} />
+                        <Route path='/example' element={<PlatformLayoutSkeleton/>}/>
                         <Route path='/analytics' element={
                             <Suspense fallback={<AnalyticsSkeleton/>}>
                                 <Analytics />

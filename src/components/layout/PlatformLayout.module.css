@@ -5,6 +5,8 @@
     width: 100%;
     margin: 0 auto;
     min-height: 100vh; 
+    max-width: 3200px; 
+    margin: 0 auto;
 }
 
 .sideWrap {
